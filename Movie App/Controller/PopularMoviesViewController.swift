@@ -14,13 +14,16 @@ class PopularMoviesViewController: UIViewController {
 
     var popularResults = PopularResults()
     var movies: [Results] = []
+    
 
     @IBOutlet weak var moviesTableView: UITableView!
     
     func prepareTableView() {
         moviesTableView.dataSource = self
+        moviesTableView.delegate = self
         self.moviesTableView.register(UINib(nibName: MovieCell.getClassName(), bundle: nil), forCellReuseIdentifier: MovieCell.getClassName())
         
+//        Prepare Pagination
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(loadData), for: .valueChanged)
         moviesTableView.refreshControl = refreshControl
@@ -30,29 +33,28 @@ class PopularMoviesViewController: UIViewController {
         super.viewDidLoad()
         
         prepareTableView()
+        networkCall()
+    }
+    
+    @objc func loadData() {
+//        Make network call
+        networkCall()
         
-        
+        moviesTableView.refreshControl?.endRefreshing()
+    }
+    
+    func networkCall() {
         NetworkManager.shared.fetchDataObject(
-            urlString: NetworkConstants.shared.getPopularMovies(),
+            urlString: NetworkConstants.shared.getPopularMovies(pageNumber: currentPage),
             dataType: PopularResults.self, completion: { result in
                 if let fetchedMovies = result.results, let maxPage = result.total_pages {
-                    self.movies = fetchedMovies
+                    self.movies += fetchedMovies
                     self.totalPages = maxPage
                 }
                 self.moviesTableView.reloadData()
             })
-    }
-    
-    @objc func loadData() {
-        // Make network call to fetch data for currentPage
-        currentPage += 1
-        moviesTableView.refreshControl?.endRefreshing()
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == movies.count - 1, currentPage < totalPages {
-            loadData()
-        }
+        //        Increment current page by 1
+            currentPage += 1
     }
 
 }
@@ -75,18 +77,18 @@ extension PopularMoviesViewController: UITableViewDataSource {
         
         return movieCell
     }
+    
+    
 }
 
-//extension UIImageView {
-//    func load(url: URL) {
-//        DispatchQueue.global().async { [weak self] in
-//            if let data = try? Data(contentsOf: url) {
-//                if let image = UIImage(data: data) {
-//                    DispatchQueue.main.async {
-//                        self?.image = image
-//                    }
-//                }
-//            }
-//        }
-//    }
-//}
+//MARK: - UITableViewDelegate
+
+extension PopularMoviesViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == movies.count - 1, currentPage < totalPages {
+            loadData()
+        }
+    }
+    
+}

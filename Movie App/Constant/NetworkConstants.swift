@@ -26,12 +26,15 @@ struct NetworkConstants {
 //              credits                  /movie/{movie_id}/credits
 //              recommendations          /movie/{movie_id}/recommendations
     
+//    Add-ons
+    private let pageAddon: String = "&page="
+    
     
 //MARK: - GET URL Functions
     
 //    GET Popular Movies URL
-    func getPopularMovies() -> URL {
-        if let url = URL(string: "\(baseURL)\(popularEndpoint)\(apiKey)") {
+    func getPopularMovies(pageNumber num: Int) -> URL {
+        if let url = URL(string: "\(baseURL)\(popularEndpoint)\(apiKey)\(pageAddon)\(num)") {
             return url
         } else {
             return URL(string: "www.google.com")!
