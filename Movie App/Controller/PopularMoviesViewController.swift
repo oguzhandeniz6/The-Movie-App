@@ -12,8 +12,8 @@ class PopularMoviesViewController: UIViewController {
     private var currentPage = 1
     private var totalPages = 1
 
-    var popularResults = PopularResults()
-    var movies: [Results] = []
+    private var popularResults = APIResults()
+    private var movies: [Results] = []
     
 
     @IBOutlet weak var moviesTableView: UITableView!
@@ -21,7 +21,7 @@ class PopularMoviesViewController: UIViewController {
     func prepareTableView() {
         moviesTableView.dataSource = self
         moviesTableView.delegate = self
-        self.moviesTableView.register(UINib(nibName: MovieCell.getClassName(), bundle: nil), forCellReuseIdentifier: MovieCell.getClassName())
+        moviesTableView.register(cellName: MovieCell.getClassName())
         
 //        Prepare Pagination
         let refreshControl = UIRefreshControl()
@@ -46,15 +46,15 @@ class PopularMoviesViewController: UIViewController {
     func networkCall() {
         NetworkManager.shared.fetchDataObject(
             urlString: NetworkConstants.shared.getPopularMovies(pageNumber: currentPage),
-            dataType: PopularResults.self, completion: { result in
+            dataType: APIResults.self, completion: { result in
                 if let fetchedMovies = result.results, let maxPage = result.total_pages {
                     self.movies += fetchedMovies
                     self.totalPages = maxPage
+//                    Increment current page by 1
+                    self.currentPage += 1
                 }
                 self.moviesTableView.reloadData()
             })
-        //        Increment current page by 1
-            currentPage += 1
     }
 
 }
@@ -89,6 +89,16 @@ extension PopularMoviesViewController: UITableViewDelegate {
         if indexPath.row == movies.count - 1, currentPage < totalPages {
             loadData()
         }
+    }
+    
+}
+
+//MARK: - Navigation Functions
+
+extension PopularMoviesViewController {
+    
+    @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
+        
     }
     
 }

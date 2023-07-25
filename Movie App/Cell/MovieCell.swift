@@ -19,7 +19,7 @@ class MovieCell: UITableViewCell {
     func fillCell(_ movie: Results) {
         if let title = movie.title, let rating = movie.vote_average, let releaseDate = movie.release_date, let posterPath = movie.poster_path {
             self.movieTitleLabel.text = title
-            self.movieRatingLabel.text = "\(rating)"
+            self.movieRatingLabel.text = String(format: "%.1f" ,rating)
             self.movieDateLabel.text = releaseDate
             self.movieImageView.kf.setImage(with: NetworkConstants.shared.getMoviePoster(posterPath: posterPath))
         }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PopularResults: Codable {
+struct APIResults: Codable {
     let page: Int?
     let results: [Results]?
     let total_pages: Int?

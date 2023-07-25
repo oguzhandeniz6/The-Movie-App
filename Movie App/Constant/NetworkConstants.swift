@@ -28,71 +28,44 @@ struct NetworkConstants {
     
 //    Add-ons
     private let pageAddon: String = "&page="
+    private let queryAddon: String = "&query="
     
     
 //MARK: - GET URL Functions
     
 //    GET Popular Movies URL
     func getPopularMovies(pageNumber num: Int) -> URL {
-        if let url = URL(string: "\(baseURL)\(popularEndpoint)\(apiKey)\(pageAddon)\(num)") {
-            return url
-        } else {
-            return URL(string: "www.google.com")!
-        }
+        return Utilities.stringToURL("\(baseURL)\(popularEndpoint)\(apiKey)\(pageAddon)\(num)")
     }
     
 //    GET Search URL
-    func getSearch() -> URL {
-        if let url = URL(string: "\(baseURL)\(searchEndpoint)\(apiKey)") {
-            return url
-        } else {
-            return URL(string: "www.google.com")!
-        }
+    func getSearch(searchKey key: String, pageNumber num: Int) -> URL {
+        return Utilities.stringToURL("\(baseURL)\(searchEndpoint)\(apiKey)\(queryAddon)\(key)\(pageAddon)\(num)")
     }
     
 //    GET Movie URL
     func getMovie(movieID id: Int) -> URL {
-        if let url = URL(string: "\(baseURL)\(movieEndpoint)\(id)\(apiKey)") {
-            return url
-        } else {
-            return URL(string: "www.google.com")!
-        }
+        return Utilities.stringToURL("\(baseURL)\(movieEndpoint)\(id)\(apiKey)")
     }
     
 //    GET Movie Credits URL
     func getMovieCredits(movieID id: Int) -> URL {
-        if let url = URL(string: "\(baseURL)\(movieEndpoint)\(id)/credits\(apiKey)") {
-            return url
-        } else {
-            return URL(string: "www.google.com")!
-        }
+        return Utilities.stringToURL("\(baseURL)\(movieEndpoint)\(id)/credits\(apiKey)")
     }
     
 //    GET Movie Recommendations URL
     func getMovieRecommendations(movieID id: Int) -> URL {
-        if let url = URL(string: "\(baseURL)\(movieEndpoint)\(id)/recommendations\(apiKey)") {
-            return url
-        } else {
-            return URL(string: "www.google.com")!
-        }
+        return Utilities.stringToURL("\(baseURL)\(movieEndpoint)\(id)/recommendations\(apiKey)")
     }
     
 //    GET Person Details URL
     func getPersonDetails(personID id: Int) -> URL {
-        if let url = URL(string: "\(baseURL)\(personEndpoint)\(id)\(apiKey)") {
-            return url
-        } else {
-            return URL(string: "www.google.com")!
-        }
+        return Utilities.stringToURL("\(baseURL)\(personEndpoint)\(id)\(apiKey)")
     }
     
 //    GET Movie Poster URL
     func getMoviePoster(posterPath path: String) -> URL {
-        if let url = URL(string: "\(imageURL)\(path)") {
-            return url
-        } else {
-            return URL(string: "www.google.com")!
-        }
+        return Utilities.stringToURL("\(imageURL)\(path)")
     }
     
 }
