@@ -21,7 +21,7 @@ class SearchViewController: UIViewController {
     
     func prepareTableView() {
         searchTableView.dataSource = self
-//        searchTableView.delegate = self
+        searchTableView.delegate = self
         searchTableView.register(cellName: MovieCell.getClassName())
         
 //        Prepare Pagination
@@ -61,14 +61,17 @@ class SearchViewController: UIViewController {
     
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
-//        Clear the TableView
-        movies.removeAll()
-        currentPage = 1
-//        If textLabel is not empty
-        if let movieName = searchTextLabel.text {
-            networkCall(movieName)
-            searchTextLabel.endEditing(true)
+//        Scroll back to top and clear the TableView
+        if !movies.isEmpty {
+            searchTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: false)
+            movies.removeAll()
+            searchTableView.reloadData()
         }
+        currentPage = 1
+        
+        searchKey = searchTextLabel.text ?? ""
+        networkCall(searchKey)
+        searchTextLabel.endEditing(true)
     }
     
 
@@ -92,6 +95,18 @@ extension SearchViewController: UITableViewDataSource {
         
         return movieCell
     }
+}
+
+//MARK: - UITableViewDelegate
+
+extension SearchViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == movies.count - 1, currentPage < totalPages {
+            loadData()
+        }
+    }
+    
 }
 
 //MARK: - UITextFieldDelegate

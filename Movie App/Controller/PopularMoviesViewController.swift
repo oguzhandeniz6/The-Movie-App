@@ -92,13 +92,3 @@ extension PopularMoviesViewController: UITableViewDelegate {
     }
     
 }
-
-//MARK: - Navigation Functions
-
-extension PopularMoviesViewController {
-    
-    @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
-        
-    }
-    
-}
