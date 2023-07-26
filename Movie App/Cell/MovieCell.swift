@@ -17,6 +17,7 @@ class MovieCell: UITableViewCell {
     @IBOutlet weak var movieDateLabel: UILabel!
     
     func fillCell(_ movie: Results) {
+        self.selectionStyle = .none
         if let title = movie.title, let rating = movie.vote_average, let releaseDate = movie.release_date, let posterPath = movie.poster_path {
             self.movieTitleLabel.text = title
             self.movieRatingLabel.text = String(format: "%.1f" ,rating)

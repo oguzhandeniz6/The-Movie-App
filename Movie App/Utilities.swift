@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Utilities {
     
@@ -15,6 +16,11 @@ class Utilities {
         } else {
             return URL(string: "www.google.com")!
         }
+    }
+    
+    static func changeViewController(currentVC: UIViewController, nextVC: UIViewController.Type) {
+        let newVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: nextVC.self))
+        currentVC.navigationController?.pushViewController(newVC, animated: true)
     }
     
 }

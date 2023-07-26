@@ -91,4 +91,8 @@ extension PopularMoviesViewController: UITableViewDelegate {
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        Utilities.changeViewController(currentVC: self, nextVC: MovieDetailViewController.self)
+    }
+    
 }
