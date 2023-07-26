@@ -12,9 +12,10 @@ struct MovieDetail: Codable {
     let id: Int?
     let title: String?
     let original_title: String?
+    let poster_path: String?
     let original_language: String?
     let release_date: String?
-    let budget: String?
+    let budget: Int?
     let revenue: Int?
     let genres: [Genre]?
     let overview: String?

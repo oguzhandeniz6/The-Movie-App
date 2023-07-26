@@ -18,9 +18,22 @@ class Utilities {
         }
     }
     
-    static func changeViewController(currentVC: UIViewController, nextVC: UIViewController.Type) {
-        let newVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: nextVC.self))
-        currentVC.navigationController?.pushViewController(newVC, animated: true)
+    static func genresArrayToStr(gen: [Genre]?) -> String{
+        guard var safeGen = gen else {
+            return ""
+        }
+        if safeGen.count > 0 {
+            var returnStr: String = safeGen[0].name ?? ""
+            safeGen.removeFirst()
+            
+            for item in safeGen {
+                returnStr += ", \(item.name ?? "")"
+            }
+            
+            return returnStr
+        } else {
+            return ""
+        }
     }
     
 }

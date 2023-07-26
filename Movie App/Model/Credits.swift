@@ -10,7 +10,7 @@ import Foundation
 struct Credits: Codable {
     
     let id: Int?
-    let cast: [Cast]
+    let cast: [Cast]?
     
 }
 

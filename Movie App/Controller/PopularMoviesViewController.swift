@@ -92,7 +92,14 @@ extension PopularMoviesViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        Utilities.changeViewController(currentVC: self, nextVC: MovieDetailViewController.self)
+        
+        if let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: MovieDetailViewController.self)) as? MovieDetailViewController {
+            
+            nextVC.movieID = movies[indexPath.row].id ?? 0
+            nextVC.posterPath = movies[indexPath.row].poster_path ?? ""
+            
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
     }
     
 }
