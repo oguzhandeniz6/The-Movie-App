@@ -26,6 +26,7 @@
 		FBB4F3F52A6FC48A001EF7EE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB4F3F42A6FC48A001EF7EE /* SearchViewController.swift */; };
 		FBB4F3F82A6FEB32001EF7EE /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB4F3F72A6FEB32001EF7EE /* TableViewExtension.swift */; };
 		FBB4F3FA2A6FFB80001EF7EE /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB4F3F92A6FFB80001EF7EE /* Utilities.swift */; };
+		FBEBFC7A2A726EDA0051B8EF /* CastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBEBFC782A726EDA0051B8EF /* CastView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		FBB4F3F42A6FC48A001EF7EE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		FBB4F3F72A6FEB32001EF7EE /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 		FBB4F3F92A6FFB80001EF7EE /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		FBEBFC792A726EDA0051B8EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CastView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			children = (
 				FB7F1F382A6E508800F04E41 /* LaunchScreen.storyboard */,
 				FB7F1F332A6E508600F04E41 /* Main.storyboard */,
+				FBEBFC782A726EDA0051B8EF /* CastView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB7F1F3A2A6E508800F04E41 /* LaunchScreen.storyboard in Resources */,
+				FBEBFC7A2A726EDA0051B8EF /* CastView.xib in Resources */,
 				FB7F1F372A6E508800F04E41 /* Assets.xcassets in Resources */,
 				FB7F1F492A6E5D9800F04E41 /* MovieCell.xib in Resources */,
 				FB7F1F352A6E508600F04E41 /* Main.storyboard in Resources */,
@@ -273,6 +277,14 @@
 				FB7F1F392A6E508800F04E41 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		FBEBFC782A726EDA0051B8EF /* CastView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FBEBFC792A726EDA0051B8EF /* Base */,
+			);
+			name = CastView.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

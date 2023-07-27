@@ -6,11 +6,11 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MovieDetailViewController: UIViewController {
     
     var movieID: Int = 0
-    var posterPath: String = ""
     private var cast: [Cast] = []
     private var recommendations: [Results] = []
     private var homepageURL: URL?
@@ -23,12 +23,13 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var genresLabel: UILabel!
     @IBOutlet weak var runtimeLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var castScrollView: UIScrollView!
     @IBOutlet weak var budgetLabel: UIButton!
     @IBOutlet weak var revenueLabel: UIButton!
-    @IBOutlet weak var companyLogoImageView: UIImageView!
-    @IBOutlet weak var companyNameLabel: UILabel!
+    @IBOutlet weak var recommendationsScrollView: UIScrollView!
+    @IBOutlet weak var companiesTableView: UITableView!
     
     @IBOutlet weak var detailsView: UIView! {
         didSet {
@@ -76,10 +77,16 @@ class MovieDetailViewController: UIViewController {
         taglineLabel.text = movieDetail.tagline
         genresLabel.text = Utilities.genresArrayToStr(gen: movieDetail.genres)
         runtimeLabel.text = "\(movieDetail.runtime ?? 0) min"
+        scoreLabel.text = String(format: "%.1f" , movieDetail.vote_average ?? 0.0)
         overviewLabel.text = movieDetail.overview
-        budgetLabel.titleLabel?.text = " \(movieDetail.budget ?? 0)$"
-        revenueLabel.titleLabel?.text = " \(movieDetail.revenue ?? 0)$"
+        budgetLabel.setTitle(" \(movieDetail.budget ?? 0)$", for: .normal)
+        revenueLabel.setTitle(" \(movieDetail.revenue ?? 0)$", for: .normal)
         homepageURL = Utilities.stringToURL(movieDetail.homepage ?? "")
+        
+        if let posterPath = movieDetail.poster_path {
+            posterImageView.kf.setImage(with: NetworkConstants.shared.getMoviePoster(posterPath: posterPath))
+        }
+        
     }
     
     
