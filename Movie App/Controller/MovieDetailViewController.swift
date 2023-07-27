@@ -25,12 +25,13 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var runtimeLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
-    @IBOutlet weak var castScrollView: UIScrollView!
+    @IBOutlet weak var castView: UIView!
     @IBOutlet weak var budgetLabel: UIButton!
     @IBOutlet weak var revenueLabel: UIButton!
-    @IBOutlet weak var recommendationsScrollView: UIScrollView!
-    @IBOutlet weak var companiesTableView: UITableView!
+    @IBOutlet weak var releaseDateLabel: UILabel!
     
+    @IBOutlet weak var recommendationsView: UIView!
+    @IBOutlet weak var companiesTableView: UITableView!
     @IBOutlet weak var detailsView: UIView! {
         didSet {
             detailsView.layer.cornerRadius = 30
@@ -61,6 +62,7 @@ class MovieDetailViewController: UIViewController {
             dataType: Credits.self, completion: { result in
                 if let credits = result.cast {
                     self.cast = credits
+//                    self.prepareCastScrollView()
                 }
             })
         NetworkManager.shared.fetchDataObject(
@@ -79,14 +81,22 @@ class MovieDetailViewController: UIViewController {
         runtimeLabel.text = "\(movieDetail.runtime ?? 0) min"
         scoreLabel.text = String(format: "%.1f" , movieDetail.vote_average ?? 0.0)
         overviewLabel.text = movieDetail.overview
-        budgetLabel.setTitle(" \(movieDetail.budget ?? 0)$", for: .normal)
-        revenueLabel.setTitle(" \(movieDetail.revenue ?? 0)$", for: .normal)
+        budgetLabel.setTitle(Utilities.moneyFormatChanger(amount: movieDetail.budget ?? 0), for: .normal)
+        revenueLabel.setTitle(Utilities.moneyFormatChanger(amount: movieDetail.revenue ?? 0), for: .normal)
+        releaseDateLabel.text = Utilities.dateFormatChanger(str: movieDetail.release_date ?? "")
         homepageURL = Utilities.stringToURL(movieDetail.homepage ?? "")
         
         if let posterPath = movieDetail.poster_path {
             posterImageView.kf.setImage(with: NetworkConstants.shared.getMoviePoster(posterPath: posterPath))
         }
         
+    }
+    
+    func prepareCastScrollView() {
+        for i in 0..<cast.count {
+            let personView = CastView(frame: CGRect(x: CGFloat(i) * (CastView.castViewWidth + CastView.spacing), y: 0, width: CastView.castViewWidth, height: CastView.castViewHeight))
+            castView.addSubview(personView)
+        }
     }
     
     

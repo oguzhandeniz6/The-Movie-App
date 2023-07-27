@@ -36,4 +36,57 @@ class Utilities {
         }
     }
     
+    static func dateFormatChanger(str: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yy-MM-dd"
+        
+        guard let date = dateFormatter.date(from: str) else {
+            dateFormatter.dateFormat = "MMM d, yy"
+            return dateFormatter.string(from: Date(timeIntervalSince1970: 0))
+        }
+        
+        dateFormatter.dateFormat = "MMM d, yy"
+        
+        return dateFormatter.string(from: date)
+    }
+    
+    static func moneyFormatChanger(amount: Int) -> String {
+        // BURAYLA UĞRAŞILACAK
+        
+//        let currencyFormatter = NumberFormatter()
+//        currencyFormatter.usesGroupingSeparator = true
+//        currencyFormatter.numberStyle = .currency
+//        // localize to your grouping and decimal separator
+//        currencyFormatter.locale = Locale.current
+//
+//        guard let priceString = currencyFormatter.string(from: amount as NSNumber) else {
+//            return "$\(amount)"
+//        }
+        
+//        let numberFormatter = NumberFormatter()
+//        numberFormatter.numberStyle = .decimal
+//        numberFormatter.groupingSeparator = ","
+//        numberFormatter.groupingSize = 3
+//
+//        guard let formattedString = numberFormatter.string(from: NSNumber(value: amount)) else {
+//            return "$\(amount)"
+//        }
+        
+//        switch "\(amount)".count {
+//        case 4..<7:
+//            return "$\(String(format: "%.3f", amount)) K"
+//        case 7..<10:
+//            return "$\(String(format: "%.6f", amount)) M"
+//        case 10...:
+//            return "$\(String(format: "%.9f", amount)) B"
+//        default:
+//            return "$\(String(amount))"
+//        }
+        
+        
+//        return priceString
+        
+        return "$\(amount)"
+    }
+    
 }

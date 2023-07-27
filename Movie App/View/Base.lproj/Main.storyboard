@@ -28,7 +28,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Lr-hS-7pu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1602" y="332"/>
+            <point key="canvasLocation" x="-1602" y="788"/>
         </scene>
         <!--Item-->
         <scene sceneID="qRI-av-Kw6">
@@ -47,7 +47,58 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dhc-0J-YFd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1602" y="-420"/>
+            <point key="canvasLocation" x="-1602" y="-18"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="o3i-TU-diZ">
+            <objects>
+                <navigationController id="hiQ-0h-KDy" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="88j-HY-Ajp"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="K50-7W-BHW">
+                        <rect key="frame" x="0.0" y="50" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="Main Color"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="xXi-Qe-4he" kind="relationship" relationship="rootViewController" id="WSw-w4-FV9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T0w-gp-idT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1602" y="-862"/>
+        </scene>
+        <!--Favorite Movies-->
+        <scene sceneID="Vhi-h1-uG5">
+            <objects>
+                <viewController storyboardIdentifier="FavoriteMoviesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xXi-Qe-4he" customClass="FavoriteMoviesViewController" customModule="Movie_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tsr-HW-Rls">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0dV-5t-77R">
+                                <rect key="frame" x="0.0" y="94" width="375" height="635"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="dj8-S5-uFi"/>
+                        <color key="backgroundColor" name="Main Color"/>
+                        <constraints>
+                            <constraint firstItem="0dV-5t-77R" firstAttribute="leading" secondItem="dj8-S5-uFi" secondAttribute="leading" id="Gu6-DS-mgY"/>
+                            <constraint firstItem="dj8-S5-uFi" firstAttribute="bottom" secondItem="0dV-5t-77R" secondAttribute="bottom" id="Z11-ni-Lsk"/>
+                            <constraint firstItem="0dV-5t-77R" firstAttribute="top" secondItem="dj8-S5-uFi" secondAttribute="top" id="ZC8-s0-RwZ"/>
+                            <constraint firstItem="dj8-S5-uFi" firstAttribute="trailing" secondItem="0dV-5t-77R" secondAttribute="trailing" id="j87-V0-SqQ"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Favorite Movies" image="heart.fill" catalog="system" id="bF9-Sa-T46"/>
+                    <navigationItem key="navigationItem" id="syH-tH-V7Z"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="favoriteTableView" destination="0dV-5t-77R" id="Or3-My-Ug0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iUr-za-YzL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-663" y="-862"/>
         </scene>
         <!--Popular Movies-->
         <scene sceneID="tne-QT-ifu">
@@ -80,7 +131,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-663" y="-419"/>
+            <point key="canvasLocation" x="-663" y="-18"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="DWL-8P-Bfr">
@@ -96,6 +147,7 @@
                     <connections>
                         <segue destination="2y3-gd-5jK" kind="relationship" relationship="viewControllers" id="fcI-DE-v2O"/>
                         <segue destination="ZaN-l6-orB" kind="relationship" relationship="viewControllers" id="Dof-j3-TLx"/>
+                        <segue destination="hiQ-0h-KDy" kind="relationship" relationship="viewControllers" id="GLM-lf-x2o"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rIp-se-o8m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -171,7 +223,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8me-zf-rbs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-663" y="332"/>
+            <point key="canvasLocation" x="-663" y="788"/>
         </scene>
         <!--Movie Detail View Controller-->
         <scene sceneID="GEL-nz-Mb6">
@@ -204,7 +256,7 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="HDj-rL-5rM"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="36"/>
+                                                                <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="32"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -213,7 +265,7 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="25" id="dzU-r1-MMu"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="20"/>
+                                                                <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="18"/>
                                                                 <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -221,20 +273,20 @@
                                                                 <rect key="frame" x="0.0" y="90" width="335" height="21"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Genres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="dqH-bV-AMl">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="267.66666666666669" height="21"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="271.33333333333331" height="21"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="21" id="e7c-Ol-j4i"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" name="Charter-Italic" family="Charter" pointSize="16"/>
+                                                                        <fontDescription key="fontDescription" name="Charter-Italic" family="Charter" pointSize="15"/>
                                                                         <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Runtime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="Eec-uO-JbU">
-                                                                        <rect key="frame" x="277.66666666666669" y="0.0" width="57.333333333333314" height="21"/>
+                                                                        <rect key="frame" x="281.33333333333331" y="0.0" width="53.666666666666686" height="21"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="21" id="CbS-Wm-mUA"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" name="Charter-Italic" family="Charter" pointSize="16"/>
+                                                                        <fontDescription key="fontDescription" name="Charter-Italic" family="Charter" pointSize="15"/>
                                                                         <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -333,18 +385,29 @@
                                                                     </button>
                                                                 </subviews>
                                                             </stackView>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBI-Kb-sWX">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5iU-js-tsn" userLabel="Horizontal Stack View">
                                                                 <rect key="frame" x="0.0" y="382" width="335" height="35"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="35" id="5hs-cF-lri"/>
-                                                                </constraints>
-                                                                <color key="tintColor" name="Alternative Color 1"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="link" catalog="system" title="Movie Homepage"/>
-                                                                <connections>
-                                                                    <action selector="homepageButtonPressed:" destination="y0c-B6-he6" eventType="touchUpInside" id="jet-69-9GF"/>
-                                                                </connections>
-                                                            </button>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBI-Kb-sWX">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="243.33333333333334" height="35"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="35" id="5hs-cF-lri"/>
+                                                                        </constraints>
+                                                                        <color key="tintColor" name="Alternative Color 1"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" image="link" catalog="system" title="Movie Homepage"/>
+                                                                        <connections>
+                                                                            <action selector="homepageButtonPressed:" destination="y0c-B6-he6" eventType="touchUpInside" id="jet-69-9GF"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan 1, 1970" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWR-U5-ef5">
+                                                                        <rect key="frame" x="243.33333333333329" y="0.0" width="91.666666666666657" height="35"/>
+                                                                        <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="17"/>
+                                                                        <color key="textColor" white="0.33000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
                                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WuU-gj-DJi" userLabel="Recommendations Scroll View">
                                                                 <rect key="frame" x="0.0" y="427" width="335" height="120"/>
                                                                 <subviews>
@@ -416,13 +479,14 @@
                     </view>
                     <connections>
                         <outlet property="budgetLabel" destination="fNv-gq-qsa" id="GF3-2H-GMa"/>
-                        <outlet property="castScrollView" destination="sAY-e9-M72" id="HkL-W6-Z7m"/>
+                        <outlet property="castView" destination="3H3-EB-sM4" id="wnw-I8-5q0"/>
                         <outlet property="companiesTableView" destination="crd-iu-WFf" id="Ahf-mD-v9a"/>
                         <outlet property="detailsView" destination="wu7-8U-Xjf" id="d98-F1-vuU"/>
                         <outlet property="genresLabel" destination="dqH-bV-AMl" id="KvO-vp-Vtx"/>
                         <outlet property="overviewLabel" destination="qSk-bZ-kOX" id="16I-ns-OwB"/>
                         <outlet property="posterImageView" destination="Vu9-k9-Qy2" id="ooW-cn-rwG"/>
-                        <outlet property="recommendationsScrollView" destination="WuU-gj-DJi" id="ObC-Wx-PeT"/>
+                        <outlet property="recommendationsView" destination="r1e-48-rJx" id="92N-IN-8J9"/>
+                        <outlet property="releaseDateLabel" destination="QWR-U5-ef5" id="rFf-Su-7zl"/>
                         <outlet property="revenueLabel" destination="tIZ-VE-8f9" id="58U-32-O58"/>
                         <outlet property="runtimeLabel" destination="Eec-uO-JbU" id="oJG-Ue-oNc"/>
                         <outlet property="scoreLabel" destination="fmq-8y-Fbk" id="hXv-6D-2Ao"/>
@@ -438,6 +502,7 @@
     <resources>
         <image name="dollarsign.circle.fill" catalog="system" width="128" height="123"/>
         <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="link" catalog="system" width="128" height="124"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="123"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
