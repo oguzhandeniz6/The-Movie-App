@@ -237,7 +237,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xJb-UL-nmS">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1265"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1335"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vu9-k9-Qy2" userLabel="Poster Image View">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
@@ -246,10 +246,10 @@
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wu7-8U-Xjf" userLabel="Details View">
-                                                <rect key="frame" x="0.0" y="570" width="375" height="695"/>
+                                                <rect key="frame" x="0.0" y="570" width="375" height="765"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zie-wT-2ZY" userLabel="Details Stack View">
-                                                        <rect key="frame" x="20" y="10" width="335" height="675"/>
+                                                        <rect key="frame" x="20" y="10" width="335" height="745"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypG-sn-S7z">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="45"/>
@@ -337,11 +337,11 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sAY-e9-M72" userLabel="Cast Scroll View">
-                                                                <rect key="frame" x="0.0" y="207" width="335" height="120"/>
+                                                                <rect key="frame" x="0.0" y="207" width="335" height="190"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3H3-EB-sM4">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="120"/>
-                                                                        <color key="backgroundColor" name="Main Color"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="190"/>
+                                                                        <color key="backgroundColor" name="Alternative Color 4"/>
                                                                     </view>
                                                                 </subviews>
                                                                 <constraints>
@@ -349,7 +349,7 @@
                                                                     <constraint firstItem="3H3-EB-sM4" firstAttribute="height" secondItem="cV7-Af-RKA" secondAttribute="height" id="Mqb-4L-QoD"/>
                                                                     <constraint firstItem="3H3-EB-sM4" firstAttribute="leading" secondItem="Spt-3m-hE2" secondAttribute="leading" id="OR3-Uj-V8j"/>
                                                                     <constraint firstItem="3H3-EB-sM4" firstAttribute="width" secondItem="cV7-Af-RKA" secondAttribute="width" priority="250" id="dnh-hb-ilM"/>
-                                                                    <constraint firstAttribute="height" constant="120" id="igI-ME-N3u"/>
+                                                                    <constraint firstAttribute="height" constant="190" id="igI-ME-N3u"/>
                                                                     <constraint firstItem="3H3-EB-sM4" firstAttribute="trailing" secondItem="Spt-3m-hE2" secondAttribute="trailing" id="puy-kx-w5f"/>
                                                                     <constraint firstItem="3H3-EB-sM4" firstAttribute="bottom" secondItem="Spt-3m-hE2" secondAttribute="bottom" id="r07-3e-YTG"/>
                                                                 </constraints>
@@ -357,7 +357,7 @@
                                                                 <viewLayoutGuide key="frameLayoutGuide" id="cV7-Af-RKA"/>
                                                             </scrollView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yc6-Ik-ynx" userLabel="Profit Stack View">
-                                                                <rect key="frame" x="0.0" y="337" width="335" height="35"/>
+                                                                <rect key="frame" x="0.0" y="407" width="335" height="35"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNv-gq-qsa">
                                                                         <rect key="frame" x="0.0" y="0.0" width="167.66666666666666" height="35"/>
@@ -386,7 +386,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5iU-js-tsn" userLabel="Horizontal Stack View">
-                                                                <rect key="frame" x="0.0" y="382" width="335" height="35"/>
+                                                                <rect key="frame" x="0.0" y="452" width="335" height="35"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBI-Kb-sWX">
                                                                         <rect key="frame" x="0.0" y="0.0" width="243.33333333333334" height="35"/>
@@ -409,7 +409,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WuU-gj-DJi" userLabel="Recommendations Scroll View">
-                                                                <rect key="frame" x="0.0" y="427" width="335" height="120"/>
+                                                                <rect key="frame" x="0.0" y="497" width="335" height="120"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r1e-48-rJx">
                                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="120"/>
@@ -429,7 +429,7 @@
                                                                 <viewLayoutGuide key="frameLayoutGuide" id="bzX-bu-aon"/>
                                                             </scrollView>
                                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="crd-iu-WFf" userLabel="Companies Table View">
-                                                                <rect key="frame" x="0.0" y="557" width="335" height="118"/>
+                                                                <rect key="frame" x="0.0" y="627" width="335" height="118"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             </tableView>
                                                         </subviews>
@@ -479,12 +479,14 @@
                     </view>
                     <connections>
                         <outlet property="budgetLabel" destination="fNv-gq-qsa" id="GF3-2H-GMa"/>
+                        <outlet property="castScrollView" destination="sAY-e9-M72" id="3ME-eD-LXv"/>
                         <outlet property="castView" destination="3H3-EB-sM4" id="wnw-I8-5q0"/>
                         <outlet property="companiesTableView" destination="crd-iu-WFf" id="Ahf-mD-v9a"/>
                         <outlet property="detailsView" destination="wu7-8U-Xjf" id="d98-F1-vuU"/>
                         <outlet property="genresLabel" destination="dqH-bV-AMl" id="KvO-vp-Vtx"/>
                         <outlet property="overviewLabel" destination="qSk-bZ-kOX" id="16I-ns-OwB"/>
                         <outlet property="posterImageView" destination="Vu9-k9-Qy2" id="ooW-cn-rwG"/>
+                        <outlet property="recommendationsScrollView" destination="WuU-gj-DJi" id="sXg-uR-pcp"/>
                         <outlet property="recommendationsView" destination="r1e-48-rJx" id="92N-IN-8J9"/>
                         <outlet property="releaseDateLabel" destination="QWR-U5-ef5" id="rFf-Su-7zl"/>
                         <outlet property="revenueLabel" destination="tIZ-VE-8f9" id="58U-32-O58"/>

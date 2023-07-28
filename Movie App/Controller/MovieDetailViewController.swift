@@ -29,8 +29,11 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var budgetLabel: UIButton!
     @IBOutlet weak var revenueLabel: UIButton!
     @IBOutlet weak var releaseDateLabel: UILabel!
-    
     @IBOutlet weak var recommendationsView: UIView!
+    
+    
+    @IBOutlet weak var castScrollView: UIScrollView!
+    @IBOutlet weak var recommendationsScrollView: UIScrollView!
     @IBOutlet weak var companiesTableView: UITableView!
     @IBOutlet weak var detailsView: UIView! {
         didSet {
@@ -62,7 +65,7 @@ class MovieDetailViewController: UIViewController {
             dataType: Credits.self, completion: { result in
                 if let credits = result.cast {
                     self.cast = credits
-//                    self.prepareCastScrollView()
+                    self.prepareCastScrollView()
                 }
             })
         NetworkManager.shared.fetchDataObject(
@@ -94,9 +97,12 @@ class MovieDetailViewController: UIViewController {
     
     func prepareCastScrollView() {
         for i in 0..<cast.count {
-            let personView = CastView(frame: CGRect(x: CGFloat(i) * (CastView.castViewWidth + CastView.spacing), y: 0, width: CastView.castViewWidth, height: CastView.castViewHeight))
+            let personView = CastView(frame: CGRect(x: CGFloat(i) * (CastView.castViewWidth), y: 0, width: CastView.castViewWidth, height: CastView.castViewHeight))
+            personView.fillView(person: cast[i])
             castView.addSubview(personView)
         }
+        
+        castScrollView.contentSize = CGSize(width: CGFloat(cast.count) * (CastView.castViewWidth), height: CastView.castViewHeight)
     }
     
     

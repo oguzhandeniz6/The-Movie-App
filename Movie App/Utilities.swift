@@ -51,42 +51,32 @@ class Utilities {
     }
     
     static func moneyFormatChanger(amount: Int) -> String {
-        // BURAYLA UĞRAŞILACAK
         
-//        let currencyFormatter = NumberFormatter()
-//        currencyFormatter.usesGroupingSeparator = true
-//        currencyFormatter.numberStyle = .currency
-//        // localize to your grouping and decimal separator
-//        currencyFormatter.locale = Locale.current
-//
-//        guard let priceString = currencyFormatter.string(from: amount as NSNumber) else {
-//            return "$\(amount)"
-//        }
+        var formattedPrice = Double(amount) / 1000.0
         
-//        let numberFormatter = NumberFormatter()
-//        numberFormatter.numberStyle = .decimal
-//        numberFormatter.groupingSeparator = ","
-//        numberFormatter.groupingSize = 3
-//
-//        guard let formattedString = numberFormatter.string(from: NSNumber(value: amount)) else {
-//            return "$\(amount)"
-//        }
-        
-//        switch "\(amount)".count {
-//        case 4..<7:
-//            return "$\(String(format: "%.3f", amount)) K"
-//        case 7..<10:
-//            return "$\(String(format: "%.6f", amount)) M"
-//        case 10...:
-//            return "$\(String(format: "%.9f", amount)) B"
-//        default:
-//            return "$\(String(amount))"
-//        }
-        
-        
-//        return priceString
-        
-        return "$\(amount)"
+        if formattedPrice < 1 {
+            return "$\(amount)"
+        } else {
+            formattedPrice /= 1000
+            
+            if formattedPrice < 1 {
+                return "$\(String(format: "%.1f", formattedPrice * 1000)) K"
+            } else {
+                formattedPrice /= 1000
+                
+                if formattedPrice < 1 {
+                    return "$\(String(format: "%.1f", formattedPrice * 1000)) M"
+                } else {
+                    formattedPrice /= 1000
+                    
+                    if formattedPrice < 1 {
+                        return "$\(String(format: "%.1f", formattedPrice * 1000)) B"
+                    } else {
+                        return "$\(String(format: "%.1f", formattedPrice)) B"
+                    }
+                }
+            }
+        }
     }
     
 }

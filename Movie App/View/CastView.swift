@@ -9,8 +9,8 @@ import UIKit
 
 class CastView: UIView {
     
-    static let castViewWidth: CGFloat = 120.0
-    static let castViewHeight: CGFloat = 120.0
+    static let castViewWidth: CGFloat = 100.0
+    static let castViewHeight: CGFloat = 190.0
     static let spacing: CGFloat = 4.0
 
     @IBOutlet weak var contentView: UIView!
@@ -44,7 +44,6 @@ class CastView: UIView {
         }
         addSubview(view)
         view.frame = bounds
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
     
 }
