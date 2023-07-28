@@ -435,7 +435,7 @@
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" name="Alternative Color 4"/>
                                                 <constraints>
                                                     <constraint firstItem="zie-wT-2ZY" firstAttribute="top" secondItem="wu7-8U-Xjf" secondAttribute="top" constant="10" id="FM4-WA-pjn"/>
                                                     <constraint firstItem="zie-wT-2ZY" firstAttribute="leading" secondItem="wu7-8U-Xjf" secondAttribute="leading" constant="20" id="Xtb-gx-3N1"/>
@@ -499,6 +499,142 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vv7-Yb-rbI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="218" y="-18"/>
+        </scene>
+        <!--Cast View Controller-->
+        <scene sceneID="Ore-er-cqz">
+            <objects>
+                <viewController storyboardIdentifier="CastViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8B1-VU-O7t" customClass="CastViewController" customModule="Movie_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zFd-Sy-A2d">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4C5-kO-2MH">
+                                <rect key="frame" x="0.0" y="50" width="375" height="728"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cIA-P2-uF3">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="928"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5ye-id-JnA" userLabel="Photo Image View">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="600" id="br4-HH-wkk"/>
+                                                </constraints>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Po5-Jg-OrD" userLabel="Bio View">
+                                                <rect key="frame" x="0.0" y="570" width="375" height="358"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="wNR-wG-Ha7" userLabel="Bio Stack View">
+                                                        <rect key="frame" x="20" y="10" width="335" height="338"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Actor Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMr-QS-NrB" userLabel="Name Label">
+                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="41.666666666666664"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="ifU-wb-jd5"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="34"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M3C-46-xY0" userLabel="Day Stack View">
+                                                                <rect key="frame" x="0.0" y="45.666666666666629" width="335" height="25"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Jan 1, 1970" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1b-Ha-Uak" userLabel="Birthday Label">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="247.66666666666666" height="25"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="25" id="Yj0-Xc-56U"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" name="Charter-BoldItalic" family="Charter" pointSize="16"/>
+                                                                        <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan 2, 1970" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQQ-UM-v9X" userLabel="Deathday Label">
+                                                                        <rect key="frame" x="247.66666666666671" y="0.0" width="87.333333333333343" height="25"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="25" id="tAa-so-aTZ"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" name="Charter-BoldItalic" family="Charter" pointSize="16"/>
+                                                                        <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="London, United Kingdom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RbW-hs-Esx" userLabel="Place of Birth Label">
+                                                                <rect key="frame" x="0.0" y="74.666666666666629" width="335" height="25"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="25" id="JHM-P9-CRD"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="16"/>
+                                                                <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJG-8z-ab4" userLabel="Biography Label">
+                                                                <rect key="frame" x="0.0" y="103.66666666666664" width="335" height="234.33333333333337"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="aed-DM-xZ4"/>
+                                                                </constraints>
+                                                                <mutableString key="text">                                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</mutableString>
+                                                                <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="16"/>
+                                                                <color key="textColor" white="0.33000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" name="Alternative Color 4"/>
+                                                <constraints>
+                                                    <constraint firstItem="wNR-wG-Ha7" firstAttribute="leading" secondItem="Po5-Jg-OrD" secondAttribute="leading" constant="20" id="3dh-oL-JuL"/>
+                                                    <constraint firstAttribute="bottom" secondItem="wNR-wG-Ha7" secondAttribute="bottom" constant="10" id="R8n-ok-Pw2"/>
+                                                    <constraint firstItem="wNR-wG-Ha7" firstAttribute="top" secondItem="Po5-Jg-OrD" secondAttribute="top" constant="10" id="trD-8a-vNC"/>
+                                                    <constraint firstAttribute="trailing" secondItem="wNR-wG-Ha7" secondAttribute="trailing" constant="20" id="yR2-Kx-3hW"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="5ye-id-JnA" firstAttribute="leading" secondItem="cIA-P2-uF3" secondAttribute="leading" id="4oW-07-mRp"/>
+                                            <constraint firstItem="5ye-id-JnA" firstAttribute="top" secondItem="cIA-P2-uF3" secondAttribute="top" id="CRF-07-8Xs"/>
+                                            <constraint firstAttribute="trailing" secondItem="5ye-id-JnA" secondAttribute="trailing" id="IJa-gS-MdJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="Po5-Jg-OrD" secondAttribute="bottom" id="d5m-yn-lgl"/>
+                                            <constraint firstItem="Po5-Jg-OrD" firstAttribute="top" secondItem="5ye-id-JnA" secondAttribute="bottom" constant="-30" id="doF-6J-Z8C"/>
+                                            <constraint firstAttribute="trailing" secondItem="Po5-Jg-OrD" secondAttribute="trailing" id="lFz-LB-olo"/>
+                                            <constraint firstItem="Po5-Jg-OrD" firstAttribute="leading" secondItem="cIA-P2-uF3" secondAttribute="leading" id="vZI-Nv-sIc"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="cIA-P2-uF3" firstAttribute="width" secondItem="ebE-pY-XO3" secondAttribute="width" id="H3o-bd-QP6"/>
+                                    <constraint firstItem="RjH-Mr-521" firstAttribute="top" secondItem="cIA-P2-uF3" secondAttribute="top" id="S6t-Mk-tXr"/>
+                                    <constraint firstItem="cIA-P2-uF3" firstAttribute="height" secondItem="ebE-pY-XO3" secondAttribute="height" priority="250" id="TsC-Ol-Iza"/>
+                                    <constraint firstItem="cIA-P2-uF3" firstAttribute="trailing" secondItem="RjH-Mr-521" secondAttribute="trailing" id="Y5W-nk-IHA"/>
+                                    <constraint firstItem="cIA-P2-uF3" firstAttribute="bottom" secondItem="RjH-Mr-521" secondAttribute="bottom" id="gLk-Q8-NIX"/>
+                                    <constraint firstItem="cIA-P2-uF3" firstAttribute="leading" secondItem="RjH-Mr-521" secondAttribute="leading" id="jDd-YP-Yld"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="RjH-Mr-521"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="ebE-pY-XO3"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="e3c-Io-05T"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="e3c-Io-05T" firstAttribute="bottom" secondItem="4C5-kO-2MH" secondAttribute="bottom" id="7Rd-Vp-14L"/>
+                            <constraint firstItem="4C5-kO-2MH" firstAttribute="leading" secondItem="e3c-Io-05T" secondAttribute="leading" id="Kjg-FB-eHI"/>
+                            <constraint firstItem="4C5-kO-2MH" firstAttribute="top" secondItem="e3c-Io-05T" secondAttribute="top" id="c0a-p6-uFj"/>
+                            <constraint firstItem="e3c-Io-05T" firstAttribute="trailing" secondItem="4C5-kO-2MH" secondAttribute="trailing" id="feE-VI-vNm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="actorNameLabel" destination="sMr-QS-NrB" id="wbt-Ox-tgP"/>
+                        <outlet property="actorPhotoImageView" destination="5ye-id-JnA" id="xyB-93-9Hf"/>
+                        <outlet property="bioLabel" destination="hJG-8z-ab4" id="uHK-hl-tUw"/>
+                        <outlet property="bioView" destination="Po5-Jg-OrD" id="lEw-ot-L12"/>
+                        <outlet property="birthPlaceLabel" destination="RbW-hs-Esx" id="ftQ-tj-4te"/>
+                        <outlet property="birthdayLabel" destination="w1b-Ha-Uak" id="4kw-Bh-CNS"/>
+                        <outlet property="deathdayLabel" destination="gQQ-UM-v9X" id="3sv-hH-0yw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ig-UC-yPy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1204" y="-18"/>
         </scene>
     </scenes>
     <resources>
