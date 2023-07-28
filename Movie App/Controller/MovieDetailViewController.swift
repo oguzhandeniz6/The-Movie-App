@@ -73,9 +73,17 @@ class MovieDetailViewController: UIViewController {
             dataType: APIResults.self, completion: { result in
                 if let fetchedMovies = result.results {
                     self.recommendations = fetchedMovies
+                    self.prepareRecommendationScrollView()
                 }
             })
     }
+
+    
+}
+
+//MARK: - Prepare Extensions
+
+extension MovieDetailViewController {
     
     func preparePage(movieDetail: MovieDetail) {
         titleLabel.text = movieDetail.title
@@ -105,6 +113,14 @@ class MovieDetailViewController: UIViewController {
         castScrollView.contentSize = CGSize(width: CGFloat(cast.count) * (CastView.castViewWidth), height: CastView.castViewHeight)
     }
     
+    func prepareRecommendationScrollView() {
+        for i in 0..<recommendations.count {
+            let movieView = RecommendationView(frame: CGRect(x: CGFloat(i) * (RecommendationView.recommendationViewWidth), y: 0, width: RecommendationView.recommendationViewWidth, height: RecommendationView.recommendationViewHeight))
+            movieView.fillView(movie: recommendations[i])
+            recommendationsView.addSubview(movieView)
+        }
+        
+        recommendationsScrollView.contentSize = CGSize(width: CGFloat(recommendations.count) * (RecommendationView.recommendationViewWidth), height: RecommendationView.recommendationViewHeight)
+    }
     
-
 }
