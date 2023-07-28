@@ -104,6 +104,12 @@ extension MovieDetailViewController {
     }
     
     func prepareCastScrollView() {
+        
+        if cast.count == 0 {
+            castScrollView.isHidden = true
+            return
+        }
+        
         for i in 0..<cast.count {
             let personView = CastView(frame: CGRect(x: CGFloat(i) * (CastView.castViewWidth), y: 0, width: CastView.castViewWidth, height: CastView.castViewHeight))
             personView.fillView(person: cast[i])
@@ -114,6 +120,12 @@ extension MovieDetailViewController {
     }
     
     func prepareRecommendationScrollView() {
+        
+        if recommendations.count == 0 {
+            recommendationsScrollView.isHidden = true
+            return
+        }
+        
         for i in 0..<recommendations.count {
             let movieView = RecommendationView(frame: CGRect(x: CGFloat(i) * (RecommendationView.recommendationViewWidth), y: 0, width: RecommendationView.recommendationViewWidth, height: RecommendationView.recommendationViewHeight))
             movieView.fillView(movie: recommendations[i])

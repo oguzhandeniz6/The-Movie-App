@@ -43,9 +43,15 @@ class CastViewController: UIViewController {
     func preparePage(actor: Actor) {
         actorNameLabel.text = actor.name
         birthdayLabel.text = Utilities.dateFormatChanger(str: actor.birthday ?? "")
-        deathdayLabel.text = Utilities.dateFormatChanger(str: actor.deathday ?? "")
+        
+        if actor.deathday != nil {
+            deathdayLabel.text = Utilities.dateFormatChanger(str: actor.deathday ?? "")
+        } else {
+            deathdayLabel.text = ""
+        }
+        
         birthPlaceLabel.text = actor.place_of_birth
-        bioLabel.text = actor.biography
+        bioLabel.text = "\n\(actor.biography ?? "")"
         actorPhotoImageView.kf.setImage(with: NetworkConstants.shared.getMoviePoster(posterPath: actor.profile_path ?? ""))
     }
 }
