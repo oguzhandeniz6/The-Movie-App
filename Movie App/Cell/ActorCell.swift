@@ -9,6 +9,9 @@ import UIKit
 
 class ActorCell: UICollectionViewCell {
     
+    static let actorCellWidth: CGFloat = 100.0
+    static let actorCellHeight: CGFloat = 190.0
+    
     @IBOutlet weak var personImageView: UIImageView!
     @IBOutlet weak var personName: UILabel!
     @IBOutlet weak var characterName: UILabel!

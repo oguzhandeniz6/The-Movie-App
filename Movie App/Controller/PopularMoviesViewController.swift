@@ -16,23 +16,15 @@ class PopularMoviesViewController: UIViewController {
     private var movies: [Results] = []
     
 
-    @IBOutlet weak var moviesTableView: UITableView!
-    
-    func prepareTableView() {
-        moviesTableView.dataSource = self
-        moviesTableView.delegate = self
-        moviesTableView.register(cellName: MovieCell.getClassName())
-        
-//        Prepare Pagination
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(loadData), for: .valueChanged)
-        moviesTableView.refreshControl = refreshControl
+    @IBOutlet weak var moviesTableView: UITableView!  {
+        didSet {
+            prepareTableView()
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        prepareTableView()
         loadData()
     }
     
@@ -43,6 +35,21 @@ class PopularMoviesViewController: UIViewController {
         moviesTableView.refreshControl?.endRefreshing()
     }
 
+}
+
+//MARK: - Prepare Extensions
+
+extension PopularMoviesViewController {
+    func prepareTableView() {
+        moviesTableView.dataSource = self
+        moviesTableView.delegate = self
+        moviesTableView.register(cellName: MovieCell.getClassName())
+        
+//        Prepare Pagination
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(loadData), for: .valueChanged)
+        moviesTableView.refreshControl = refreshControl
+    }
 }
 
 //MARK: - UITableViewDataSource

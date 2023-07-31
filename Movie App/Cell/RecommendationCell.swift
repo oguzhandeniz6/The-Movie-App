@@ -9,6 +9,9 @@ import UIKit
 
 class RecommendationCell: UICollectionViewCell {
     
+    static let recommendationCellWidth: CGFloat = 120.0
+    static let recommendationCellHeight: CGFloat = 200.0
+    
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!
 

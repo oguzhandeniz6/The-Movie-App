@@ -16,7 +16,7 @@ class MovieDetailViewController: UIViewController {
     private var homepageURL: URL?
     
     
-//    IBOutlets
+    //    IBOutlets
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var taglineLabel: UILabel!
@@ -30,8 +30,16 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var releaseDateLabel: UILabel!
     
     
-    @IBOutlet weak var castCollectionView: UICollectionView!
-    @IBOutlet weak var recommendationsCollectionView: UICollectionView!
+    @IBOutlet weak var castCollectionView: UICollectionView! {
+        didSet {
+            prepareCollectionView(collectionView: castCollectionView, cellName: ActorCell.getClassName(), width: ActorCell.actorCellWidth, height: ActorCell.actorCellHeight)
+        }
+    }
+    @IBOutlet weak var recommendationsCollectionView: UICollectionView! {
+        didSet {
+            prepareCollectionView(collectionView: recommendationsCollectionView, cellName: RecommendationCell.getClassName(), width: RecommendationCell.recommendationCellWidth, height: RecommendationCell.recommendationCellHeight)
+        }
+    }
     @IBOutlet weak var companiesTableView: UITableView!
     @IBOutlet weak var detailsView: UIView! {
         didSet {
@@ -39,12 +47,11 @@ class MovieDetailViewController: UIViewController {
         }
     }
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         networkCalls()
-        prepareCollectionViews()
     }
     
     @IBAction func homepageButtonPressed(_ sender: UIButton) {
@@ -58,7 +65,7 @@ class MovieDetailViewController: UIViewController {
         NetworkService.getCast(movieID: movieID, mdetailVC: self)
         NetworkService.getRecommendations(movieID: movieID, mdetailVC: self)
     }
-
+    
     
 }
 
@@ -66,14 +73,17 @@ class MovieDetailViewController: UIViewController {
 
 extension MovieDetailViewController {
     
-    func prepareCollectionViews() {
-        castCollectionView.dataSource = self
-        castCollectionView.delegate = self
-        castCollectionView.register(cellName: ActorCell.getClassName())
+    func prepareCollectionView(collectionView: UICollectionView, cellName: String, width: CGFloat, height: CGFloat) {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: width, height: height)
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.minimumInteritemSpacing = 0.0
         
-        recommendationsCollectionView.dataSource = self
-        recommendationsCollectionView.delegate = self
-        castCollectionView.register(cellName: RecommendationCell.getClassName())
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(cellName: cellName)
+        collectionView.collectionViewLayout = flowLayout
+        
     }
     
     func preparePage(movieDetail: MovieDetail) {
@@ -102,8 +112,22 @@ extension MovieDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
         case self.castCollectionView:
+            
+            if cast.count == 0 {
+                castCollectionView.isHidden = true
+            } else {
+                castCollectionView.isHidden = false
+            }
+            
             return cast.count
         case self.recommendationsCollectionView:
+            
+            if recommendations.count == 0 {
+                recommendationsCollectionView.isHidden = true
+            } else {
+                recommendationsCollectionView.isHidden = false
+            }
+            
             return recommendations.count
         default:
             return 0
@@ -125,7 +149,7 @@ extension MovieDetailViewController: UICollectionViewDataSource {
             
         case self.recommendationsCollectionView:
             
-            guard let cell = castCollectionView.dequeueReusableCell(withReuseIdentifier: RecommendationCell.getClassName(), for: indexPath) as? RecommendationCell else {
+            guard let cell = recommendationsCollectionView.dequeueReusableCell(withReuseIdentifier: RecommendationCell.getClassName(), for: indexPath) as? RecommendationCell else {
                 return UICollectionViewCell()
             }
             let movie = recommendations[indexPath.row]

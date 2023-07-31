@@ -16,26 +16,19 @@ class SearchViewController: UIViewController {
     private var movies: [Results] = []
     private var searchKey: String = ""
     
-    @IBOutlet weak var searchTableView: UITableView!
-    @IBOutlet weak var searchTextLabel: UITextField!
-    
-    func prepareTableView() {
-        searchTableView.dataSource = self
-        searchTableView.delegate = self
-        searchTableView.register(cellName: MovieCell.getClassName())
-        
-//        Prepare Pagination
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(loadData), for: .valueChanged)
-        searchTableView.refreshControl = refreshControl
+    @IBOutlet weak var searchTableView: UITableView! {
+        didSet {
+            prepareTableView()
+        }
     }
-    
+    @IBOutlet weak var searchTextLabel: UITextField! {
+        didSet {
+            searchTextLabel.delegate = self
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        searchTextLabel.delegate = self
-        prepareTableView()
     }
     
     @objc func loadData() {
@@ -61,6 +54,22 @@ class SearchViewController: UIViewController {
     }
     
 
+}
+
+//MARK: - Prepare Extensions
+
+extension SearchViewController {
+    
+    func prepareTableView() {
+        searchTableView.dataSource = self
+        searchTableView.delegate = self
+        searchTableView.register(cellName: MovieCell.getClassName())
+        
+//        Prepare Pagination
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(loadData), for: .valueChanged)
+        searchTableView.refreshControl = refreshControl
+    }
 }
 
 //MARK: - UITableViewDataSource
