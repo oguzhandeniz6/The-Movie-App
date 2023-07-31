@@ -38,23 +38,9 @@ class SearchViewController: UIViewController {
         prepareTableView()
     }
     
-    func networkCall(_ movieName: String) {
-        NetworkManager.shared.fetchDataObject(
-            urlString: NetworkConstants.shared.getSearch(searchKey: movieName, pageNumber: currentPage),
-            dataType: APIResults.self, completion: { result in
-                if let fetchedMovies = result.results, let maxPage = result.total_pages {
-                    self.movies += fetchedMovies
-                    self.totalPages = maxPage
-//                    Increment current page by 1
-                    self.currentPage += 1
-                }
-                self.searchTableView.reloadData()
-            })
-    }
-    
     @objc func loadData() {
 //        Make network call
-        networkCall(searchKey)
+        NetworkService.getSearchResults(pageNumber: currentPage, searchKey: self.searchKey, searchVC: self)
         
         searchTableView.refreshControl?.endRefreshing()
     }
@@ -70,7 +56,7 @@ class SearchViewController: UIViewController {
         currentPage = 1
         
         searchKey = searchTextLabel.text ?? ""
-        networkCall(searchKey)
+        loadData()
         searchTextLabel.endEditing(true)
     }
     
@@ -126,6 +112,24 @@ extension SearchViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
+    }
+    
+}
+
+//MARK: - SearchViewController Extension
+
+extension SearchViewController {
+    
+    func appendMovies(newMovies: [Results]) {
+        self.movies += newMovies
+    }
+    
+    func setTotalPages(maxPage: Int) {
+        self.totalPages = maxPage
+    }
+    
+    func incrementCurrentPage() {
+        self.currentPage += 1
     }
     
 }

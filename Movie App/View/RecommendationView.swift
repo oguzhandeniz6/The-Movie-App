@@ -31,7 +31,7 @@ class RecommendationView: UIView {
         self.movieNameLabel.text = movie.title
 
         if let photo = movie.poster_path {
-            self.posterImageView.kf.setImage(with: NetworkConstants.shared.getMoviePoster(posterPath: photo))
+            self.posterImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: photo))
         }
     }
     

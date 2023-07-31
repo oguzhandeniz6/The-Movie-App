@@ -33,7 +33,7 @@ class CastView: UIView {
         self.characterName.text = person.character
         
         if let photo = person.profile_path {
-            self.personImageView.kf.setImage(with: NetworkConstants.shared.getMoviePoster(posterPath: photo))
+            self.personImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: photo))
         }
     }
     

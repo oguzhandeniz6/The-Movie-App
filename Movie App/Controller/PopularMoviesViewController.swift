@@ -33,28 +33,14 @@ class PopularMoviesViewController: UIViewController {
         super.viewDidLoad()
         
         prepareTableView()
-        networkCall()
+        loadData()
     }
     
     @objc func loadData() {
 //        Make network call
-        networkCall()
+        NetworkService.getPopularMovies(pageNumber: currentPage, popularVC: self)
         
         moviesTableView.refreshControl?.endRefreshing()
-    }
-    
-    func networkCall() {
-        NetworkManager.shared.fetchDataObject(
-            urlString: NetworkConstants.shared.getPopularMovies(pageNumber: currentPage),
-            dataType: APIResults.self, completion: { result in
-                if let fetchedMovies = result.results, let maxPage = result.total_pages {
-                    self.movies += fetchedMovies
-                    self.totalPages = maxPage
-//                    Increment current page by 1
-                    self.currentPage += 1
-                }
-                self.moviesTableView.reloadData()
-            })
     }
 
 }
@@ -99,6 +85,24 @@ extension PopularMoviesViewController: UITableViewDelegate {
             
             self.navigationController?.pushViewController(nextVC, animated: true)
         }
+    }
+    
+}
+
+//MARK: - PopularMoviesViewController Extension
+
+extension PopularMoviesViewController {
+    
+    func appendMovies(newMovies: [Results]) {
+        self.movies += newMovies
+    }
+    
+    func setTotalPages(maxPage: Int) {
+        self.totalPages = maxPage
+    }
+    
+    func incrementCurrentPage() {
+        self.currentPage += 1
     }
     
 }

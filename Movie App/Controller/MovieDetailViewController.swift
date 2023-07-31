@@ -45,7 +45,7 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        networkCall()
+        networkCalls()
     }
     
     @IBAction func homepageButtonPressed(_ sender: UIButton) {
@@ -54,28 +54,10 @@ class MovieDetailViewController: UIViewController {
         }
     }
     
-    func networkCall() {
-        NetworkManager.shared.fetchDataObject(
-            urlString: NetworkConstants.shared.getMovie(movieID: movieID),
-            dataType: MovieDetail.self, completion: { result in
-                self.preparePage(movieDetail: result)
-            })
-        NetworkManager.shared.fetchDataObject(
-            urlString: NetworkConstants.shared.getMovieCredits(movieID: movieID),
-            dataType: Credits.self, completion: { result in
-                if let credits = result.cast {
-                    self.cast = credits
-                    self.prepareCastScrollView()
-                }
-            })
-        NetworkManager.shared.fetchDataObject(
-            urlString: NetworkConstants.shared.getMovieRecommendations(movieID: movieID),
-            dataType: APIResults.self, completion: { result in
-                if let fetchedMovies = result.results {
-                    self.recommendations = fetchedMovies
-                    self.prepareRecommendationScrollView()
-                }
-            })
+    func networkCalls() {
+        NetworkService.getMovie(movieID: movieID, mdetailVC: self)
+        NetworkService.getCast(movieID: movieID, mdetailVC: self)
+        NetworkService.getRecommendations(movieID: movieID, mdetailVC: self)
     }
 
     
@@ -98,7 +80,7 @@ extension MovieDetailViewController {
         homepageURL = Utilities.stringToURL(movieDetail.homepage ?? "")
         
         if let posterPath = movieDetail.poster_path {
-            posterImageView.kf.setImage(with: NetworkConstants.shared.getMoviePoster(posterPath: posterPath))
+            posterImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath))
         }
         
     }
@@ -133,6 +115,20 @@ extension MovieDetailViewController {
         }
         
         recommendationsScrollView.contentSize = CGSize(width: CGFloat(recommendations.count) * (RecommendationView.recommendationViewWidth), height: RecommendationView.recommendationViewHeight)
+    }
+    
+}
+
+//MARK: - MovieDetailViewController Extension
+
+extension MovieDetailViewController {
+    
+    func setCast(cast: [Cast]) {
+        self.cast = cast
+    }
+    
+    func setRecommendations(recommendations: [Results]) {
+        self.recommendations = recommendations
     }
     
 }

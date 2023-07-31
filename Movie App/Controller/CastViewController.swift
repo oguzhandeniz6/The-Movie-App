@@ -29,15 +29,7 @@ class CastViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        networkCall()
-    }
-    
-    func networkCall() {
-        NetworkManager.shared.fetchDataObject(
-            urlString: NetworkConstants.shared.getPersonDetails(personID: actorID),
-            dataType: Actor.self, completion: { result in
-                self.preparePage(actor: result)
-            })
+        NetworkService.getActorDetails(actorID: actorID, castVC: self)
     }
     
     func preparePage(actor: Actor) {
@@ -52,6 +44,6 @@ class CastViewController: UIViewController {
         
         birthPlaceLabel.text = actor.place_of_birth
         bioLabel.text = "\n\(actor.biography ?? "")"
-        actorPhotoImageView.kf.setImage(with: NetworkConstants.shared.getMoviePoster(posterPath: actor.profile_path ?? ""))
+        actorPhotoImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: actor.profile_path ?? ""))
     }
 }

@@ -20,8 +20,11 @@ class NetworkManager {
             case let .success(data):
                 completion(data)
             case let .failure(error):
-//                buraya da bak
-                print(error)
+                
+                switch error {
+                default:
+                    print(error)
+                }
             }
         }
     }
