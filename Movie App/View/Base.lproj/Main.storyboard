@@ -336,26 +336,20 @@
                                                                 <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sAY-e9-M72" userLabel="Cast Scroll View">
+                                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2XW-bF-uu7" userLabel="Cast Collection View">
                                                                 <rect key="frame" x="0.0" y="186" width="335" height="190"/>
-                                                                <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3H3-EB-sM4">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="190"/>
-                                                                        <color key="backgroundColor" name="Alternative Color 4"/>
-                                                                    </view>
-                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
-                                                                    <constraint firstItem="3H3-EB-sM4" firstAttribute="top" secondItem="Spt-3m-hE2" secondAttribute="top" id="8HV-KH-9Y9"/>
-                                                                    <constraint firstItem="3H3-EB-sM4" firstAttribute="height" secondItem="cV7-Af-RKA" secondAttribute="height" id="Mqb-4L-QoD"/>
-                                                                    <constraint firstItem="3H3-EB-sM4" firstAttribute="leading" secondItem="Spt-3m-hE2" secondAttribute="leading" id="OR3-Uj-V8j"/>
-                                                                    <constraint firstItem="3H3-EB-sM4" firstAttribute="width" secondItem="cV7-Af-RKA" secondAttribute="width" priority="250" id="dnh-hb-ilM"/>
-                                                                    <constraint firstAttribute="height" constant="190" id="igI-ME-N3u"/>
-                                                                    <constraint firstItem="3H3-EB-sM4" firstAttribute="trailing" secondItem="Spt-3m-hE2" secondAttribute="trailing" id="puy-kx-w5f"/>
-                                                                    <constraint firstItem="3H3-EB-sM4" firstAttribute="bottom" secondItem="Spt-3m-hE2" secondAttribute="bottom" id="r07-3e-YTG"/>
+                                                                    <constraint firstAttribute="height" constant="190" id="OrS-rf-76J"/>
                                                                 </constraints>
-                                                                <viewLayoutGuide key="contentLayoutGuide" id="Spt-3m-hE2"/>
-                                                                <viewLayoutGuide key="frameLayoutGuide" id="cV7-Af-RKA"/>
-                                                            </scrollView>
+                                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DKg-lw-7fO">
+                                                                    <size key="itemSize" width="128" height="128"/>
+                                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                </collectionViewFlowLayout>
+                                                                <cells/>
+                                                            </collectionView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yc6-Ik-ynx" userLabel="Profit Stack View">
                                                                 <rect key="frame" x="0.0" y="386" width="335" height="35"/>
                                                                 <subviews>
@@ -408,26 +402,20 @@
                                                                     </label>
                                                                 </subviews>
                                                             </stackView>
-                                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WuU-gj-DJi" userLabel="Recommendations Scroll View">
+                                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eix-gt-0iF" userLabel="Recommendations Collection View">
                                                                 <rect key="frame" x="0.0" y="476" width="335" height="200"/>
-                                                                <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r1e-48-rJx">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="200"/>
-                                                                        <color key="backgroundColor" name="Alternative Color 4"/>
-                                                                    </view>
-                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
-                                                                    <constraint firstItem="r1e-48-rJx" firstAttribute="trailing" secondItem="N39-Pi-NW3" secondAttribute="trailing" id="6wu-b9-zR0"/>
-                                                                    <constraint firstAttribute="height" constant="200" id="APN-cy-gYd"/>
-                                                                    <constraint firstItem="r1e-48-rJx" firstAttribute="width" secondItem="bzX-bu-aon" secondAttribute="width" priority="250" id="Bac-RQ-HxU"/>
-                                                                    <constraint firstItem="r1e-48-rJx" firstAttribute="bottom" secondItem="N39-Pi-NW3" secondAttribute="bottom" id="I76-h0-39i"/>
-                                                                    <constraint firstItem="r1e-48-rJx" firstAttribute="top" secondItem="N39-Pi-NW3" secondAttribute="top" id="Ip4-so-wYw"/>
-                                                                    <constraint firstItem="r1e-48-rJx" firstAttribute="height" secondItem="bzX-bu-aon" secondAttribute="height" id="S66-V8-lvS"/>
-                                                                    <constraint firstItem="r1e-48-rJx" firstAttribute="leading" secondItem="N39-Pi-NW3" secondAttribute="leading" id="pZR-7x-Umx"/>
+                                                                    <constraint firstAttribute="height" constant="200" id="lV2-xA-9h8"/>
                                                                 </constraints>
-                                                                <viewLayoutGuide key="contentLayoutGuide" id="N39-Pi-NW3"/>
-                                                                <viewLayoutGuide key="frameLayoutGuide" id="bzX-bu-aon"/>
-                                                            </scrollView>
+                                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mOb-Bc-PdT">
+                                                                    <size key="itemSize" width="128" height="128"/>
+                                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                </collectionViewFlowLayout>
+                                                                <cells/>
+                                                            </collectionView>
                                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="crd-iu-WFf" userLabel="Companies Table View">
                                                                 <rect key="frame" x="0.0" y="686" width="335" height="118"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -479,15 +467,13 @@
                     </view>
                     <connections>
                         <outlet property="budgetLabel" destination="fNv-gq-qsa" id="GF3-2H-GMa"/>
-                        <outlet property="castScrollView" destination="sAY-e9-M72" id="3ME-eD-LXv"/>
-                        <outlet property="castView" destination="3H3-EB-sM4" id="wnw-I8-5q0"/>
+                        <outlet property="castCollectionView" destination="2XW-bF-uu7" id="cpb-4U-cjQ"/>
                         <outlet property="companiesTableView" destination="crd-iu-WFf" id="Ahf-mD-v9a"/>
                         <outlet property="detailsView" destination="wu7-8U-Xjf" id="d98-F1-vuU"/>
                         <outlet property="genresLabel" destination="dqH-bV-AMl" id="KvO-vp-Vtx"/>
                         <outlet property="overviewLabel" destination="qSk-bZ-kOX" id="16I-ns-OwB"/>
                         <outlet property="posterImageView" destination="Vu9-k9-Qy2" id="ooW-cn-rwG"/>
-                        <outlet property="recommendationsScrollView" destination="WuU-gj-DJi" id="sXg-uR-pcp"/>
-                        <outlet property="recommendationsView" destination="r1e-48-rJx" id="92N-IN-8J9"/>
+                        <outlet property="recommendationsCollectionView" destination="eix-gt-0iF" id="oJW-oz-s8f"/>
                         <outlet property="releaseDateLabel" destination="QWR-U5-ef5" id="rFf-Su-7zl"/>
                         <outlet property="revenueLabel" destination="tIZ-VE-8f9" id="58U-32-O58"/>
                         <outlet property="runtimeLabel" destination="Eec-uO-JbU" id="oJG-Ue-oNc"/>

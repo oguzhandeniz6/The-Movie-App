@@ -25,15 +25,13 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var runtimeLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
-    @IBOutlet weak var castView: UIView!
     @IBOutlet weak var budgetLabel: UIButton!
     @IBOutlet weak var revenueLabel: UIButton!
     @IBOutlet weak var releaseDateLabel: UILabel!
-    @IBOutlet weak var recommendationsView: UIView!
     
     
-    @IBOutlet weak var castScrollView: UIScrollView!
-    @IBOutlet weak var recommendationsScrollView: UIScrollView!
+    @IBOutlet weak var castCollectionView: UICollectionView!
+    @IBOutlet weak var recommendationsCollectionView: UICollectionView!
     @IBOutlet weak var companiesTableView: UITableView!
     @IBOutlet weak var detailsView: UIView! {
         didSet {
@@ -46,6 +44,7 @@ class MovieDetailViewController: UIViewController {
         super.viewDidLoad()
 
         networkCalls()
+        prepareCollectionViews()
     }
     
     @IBAction func homepageButtonPressed(_ sender: UIButton) {
@@ -67,6 +66,16 @@ class MovieDetailViewController: UIViewController {
 
 extension MovieDetailViewController {
     
+    func prepareCollectionViews() {
+        castCollectionView.dataSource = self
+        castCollectionView.delegate = self
+        castCollectionView.register(cellName: ActorCell.getClassName())
+        
+        recommendationsCollectionView.dataSource = self
+        recommendationsCollectionView.delegate = self
+        castCollectionView.register(cellName: RecommendationCell.getClassName())
+    }
+    
     func preparePage(movieDetail: MovieDetail) {
         titleLabel.text = movieDetail.title
         taglineLabel.text = movieDetail.tagline
@@ -85,39 +94,85 @@ extension MovieDetailViewController {
         
     }
     
-    func prepareCastScrollView() {
-        
-        if cast.count == 0 {
-            castScrollView.isHidden = true
-            return
+}
+
+//MARK: - UICollectionViewDataSource
+
+extension MovieDetailViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch collectionView {
+        case self.castCollectionView:
+            return cast.count
+        case self.recommendationsCollectionView:
+            return recommendations.count
+        default:
+            return 0
         }
-        
-        for i in 0..<cast.count {
-            let personView = CastView(frame: CGRect(x: CGFloat(i) * (CastView.castViewWidth), y: 0, width: CastView.castViewWidth, height: CastView.castViewHeight))
-            personView.fillView(person: cast[i])
-            castView.addSubview(personView)
-        }
-        
-        castScrollView.contentSize = CGSize(width: CGFloat(cast.count) * (CastView.castViewWidth), height: CastView.castViewHeight)
     }
     
-    func prepareRecommendationScrollView() {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if recommendations.count == 0 {
-            recommendationsScrollView.isHidden = true
-            return
+        switch collectionView {
+        case self.castCollectionView:
+            
+            guard let cell = castCollectionView.dequeueReusableCell(withReuseIdentifier: ActorCell.getClassName(), for: indexPath) as? ActorCell else {
+                return UICollectionViewCell()
+            }
+            let actor = cast[indexPath.row]
+            cell.fillCell(actor)
+            
+            return cell
+            
+        case self.recommendationsCollectionView:
+            
+            guard let cell = castCollectionView.dequeueReusableCell(withReuseIdentifier: RecommendationCell.getClassName(), for: indexPath) as? RecommendationCell else {
+                return UICollectionViewCell()
+            }
+            let movie = recommendations[indexPath.row]
+            cell.fillCell(movie)
+            
+            return cell
+            
+        default:
+            return UICollectionViewCell()
         }
-        
-        for i in 0..<recommendations.count {
-            let movieView = RecommendationView(frame: CGRect(x: CGFloat(i) * (RecommendationView.recommendationViewWidth), y: 0, width: RecommendationView.recommendationViewWidth, height: RecommendationView.recommendationViewHeight))
-            movieView.fillView(movie: recommendations[i])
-            recommendationsView.addSubview(movieView)
-        }
-        
-        recommendationsScrollView.contentSize = CGSize(width: CGFloat(recommendations.count) * (RecommendationView.recommendationViewWidth), height: RecommendationView.recommendationViewHeight)
     }
     
 }
+
+//MARK: - UICollectionViewDelegate
+
+extension MovieDetailViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        switch collectionView {
+        case self.castCollectionView:
+            
+            if let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: CastViewController.self)) as? CastViewController {
+                
+                nextVC.actorID = cast[indexPath.row].id ?? 0
+                
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }
+            
+        case self.recommendationsCollectionView:
+            
+            if let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: MovieDetailViewController.self)) as? MovieDetailViewController {
+                
+                nextVC.movieID = recommendations[indexPath.row].id ?? 0
+                
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }
+            
+        default:
+            break
+        }
+        
+    }
+    
+}
+
 
 //MARK: - MovieDetailViewController Extension
 

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ActorCell" reuseIdentifier="ActorCell" id="gTV-IL-0wX" customClass="ActorCell" customModule="Movie_App" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="188"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="100" height="188"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vrs-OS-IOM">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="188"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h2F-La-LZV" userLabel="Photo Image View">
+                                <rect key="frame" x="5" y="-1" width="90" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="Y9w-Xs-DpR"/>
+                                    <constraint firstAttribute="height" constant="140" id="r48-rW-kiE"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="This is a Significantly / Long Character Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999998807907104" translatesAutoresizingMaskIntoConstraints="NO" id="nkd-BS-zfW" userLabel="Character Label">
+                                <rect key="frame" x="0.0" y="168" width="100" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Wew-tT-mgF"/>
+                                    <constraint firstAttribute="height" constant="20" id="X2d-jz-oME"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Charter-BoldItalic" family="Charter" pointSize="11"/>
+                                <color key="textColor" white="0.33000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a Significantly Long Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999998807907104" translatesAutoresizingMaskIntoConstraints="NO" id="Man-WQ-Ty9" userLabel="Name Label">
+                                <rect key="frame" x="0.0" y="143" width="100" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="FTi-1c-rdi"/>
+                                    <constraint firstAttribute="width" constant="100" id="Xi0-ub-qWs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Man-WQ-Ty9" firstAttribute="leading" secondItem="Vrs-OS-IOM" secondAttribute="leading" id="9Rn-Lz-j4A"/>
+                            <constraint firstItem="h2F-La-LZV" firstAttribute="centerY" secondItem="Vrs-OS-IOM" secondAttribute="centerY" constant="-25" id="VIX-en-3BD"/>
+                            <constraint firstAttribute="bottom" secondItem="nkd-BS-zfW" secondAttribute="bottom" id="Vwg-a5-DxB"/>
+                            <constraint firstItem="Man-WQ-Ty9" firstAttribute="top" secondItem="h2F-La-LZV" secondAttribute="bottom" constant="4" id="YCg-ND-oKl"/>
+                            <constraint firstAttribute="trailing" secondItem="nkd-BS-zfW" secondAttribute="trailing" id="a8w-mh-Pgk"/>
+                            <constraint firstItem="nkd-BS-zfW" firstAttribute="top" secondItem="Man-WQ-Ty9" secondAttribute="bottom" id="ey0-XA-OmF"/>
+                            <constraint firstItem="h2F-La-LZV" firstAttribute="centerX" secondItem="Vrs-OS-IOM" secondAttribute="centerX" id="fX6-iy-I95"/>
+                            <constraint firstItem="nkd-BS-zfW" firstAttribute="leading" secondItem="Vrs-OS-IOM" secondAttribute="leading" id="gud-6A-tkP"/>
+                            <constraint firstAttribute="trailing" secondItem="Man-WQ-Ty9" secondAttribute="trailing" id="hkP-Fs-ABP"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="Vrs-OS-IOM" secondAttribute="trailing" id="I09-3Y-8KL"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="top" secondItem="Vrs-OS-IOM" secondAttribute="top" constant="59" id="iQ0-Z9-7U8"/>
+                <constraint firstItem="Vrs-OS-IOM" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="plm-BS-8Gd"/>
+                <constraint firstItem="Vrs-OS-IOM" firstAttribute="bottom" secondItem="ZTg-uK-7eu" secondAttribute="bottom" constant="34" id="vGP-c9-ijv"/>
+            </constraints>
+            <size key="customSize" width="100" height="188"/>
+            <connections>
+                <outlet property="characterName" destination="nkd-BS-zfW" id="5s2-ZV-KYq"/>
+                <outlet property="personImageView" destination="h2F-La-LZV" id="rkO-iO-dlZ"/>
+                <outlet property="personName" destination="Man-WQ-Ty9" id="Y9x-iP-DUi"/>
+            </connections>
+            <point key="canvasLocation" x="18" y="47"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -41,7 +41,7 @@ class NetworkService {
         NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getMovieCreditsURL(movieID: movieID), dataType: Credits.self) { result in
             if let credits = result.cast {
                 mdetailVC.setCast(cast: credits)
-                mdetailVC.prepareCastScrollView()
+                mdetailVC.castCollectionView.reloadData()
             }
         }
     }
@@ -50,7 +50,7 @@ class NetworkService {
         NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getMovieRecommendationsURL(movieID: movieID), dataType: APIResults.self) { result in
             if let fetchedMovies = result.results {
                 mdetailVC.setRecommendations(recommendations: fetchedMovies)
-                mdetailVC.prepareRecommendationScrollView()
+                mdetailVC.recommendationsCollectionView.reloadData()
             }
         }
     }
