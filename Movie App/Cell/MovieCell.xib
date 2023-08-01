@@ -98,6 +98,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="favoriteIcon" destination="4cQ-GA-yHk" id="j3X-0N-pGX"/>
                 <outlet property="movieDateLabel" destination="GAd-6x-IVK" id="60E-Sa-ABm"/>
                 <outlet property="movieImageView" destination="UK7-er-HuA" id="m6F-Uc-dd9"/>
                 <outlet property="movieRatingLabel" destination="w0c-uh-a0D" id="ULo-OM-J00"/>

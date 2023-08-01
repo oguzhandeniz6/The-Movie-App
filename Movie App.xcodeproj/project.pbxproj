@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FB6B970B2A78E32B0093798D /* MovieModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB6B97092A78E32B0093798D /* MovieModel.xcdatamodeld */; };
 		FB6B970D2A78EBC70093798D /* CoreDataFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6B970C2A78EBC70093798D /* CoreDataFunctions.swift */; };
 		FB6B970F2A78EC2F0093798D /* CoreDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6B970E2A78EC2F0093798D /* CoreDataConstants.swift */; };
+		FB6B97112A7945EA0093798D /* MovieModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB6B97092A78E32B0093798D /* MovieModel.xcdatamodeld */; };
 		FB70E98E2A6EBD1700B8E4D5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = FB70E98D2A6EBD1700B8E4D5 /* Kingfisher */; };
 		FB7D58C02A779794001B00F9 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7D58BF2A779794001B00F9 /* NetworkService.swift */; };
 		FB7D58C42A77BFAE001B00F9 /* ActorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7D58C22A77BFAE001B00F9 /* ActorCell.swift */; };
@@ -95,6 +95,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FB6B97102A7912CD0093798D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				FB6B97092A78E32B0093798D /* MovieModel.xcdatamodeld */,
+				FB6B970C2A78EBC70093798D /* CoreDataFunctions.swift */,
+				FB6B970E2A78EC2F0093798D /* CoreDataConstants.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		FB7D58C12A7797C3001B00F9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +134,7 @@
 		FB7F1F2C2A6E508600F04E41 /* Movie App */ = {
 			isa = PBXGroup;
 			children = (
+				FB6B97102A7912CD0093798D /* CoreData */,
 				FBB4F3F62A6FEAF7001EF7EE /* Extension */,
 				FB7F1F412A6E5D0F00F04E41 /* Model */,
 				FB7F1F4F2A6E640B00F04E41 /* Utilities */,
@@ -134,9 +145,6 @@
 				FB7F1F422A6E5D1600F04E41 /* View */,
 				FB7F1F362A6E508800F04E41 /* Assets.xcassets */,
 				FB7F1F3B2A6E508800F04E41 /* Info.plist */,
-				FB6B97092A78E32B0093798D /* MovieModel.xcdatamodeld */,
-				FB6B970C2A78EBC70093798D /* CoreDataFunctions.swift */,
-				FB6B970E2A78EC2F0093798D /* CoreDataConstants.swift */,
 			);
 			path = "Movie App";
 			sourceTree = "<group>";
@@ -311,7 +319,6 @@
 				FB9B86992A710301003C24A8 /* MovieDetailViewController.swift in Sources */,
 				FB7D58C82A77C396001B00F9 /* RecommendationCell.swift in Sources */,
 				FB7F1F2E2A6E508600F04E41 /* AppDelegate.swift in Sources */,
-				FB6B970B2A78E32B0093798D /* MovieModel.xcdatamodeld in Sources */,
 				FB7F1F4B2A6E5DDC00F04E41 /* NetworkManager.swift in Sources */,
 				FB7F1F482A6E5D9800F04E41 /* MovieCell.swift in Sources */,
 				FB7F1F532A6E6C7F00F04E41 /* APIResults.swift in Sources */,
@@ -320,6 +327,7 @@
 				FB7F1F302A6E508600F04E41 /* SceneDelegate.swift in Sources */,
 				FB9B86972A70FA69003C24A8 /* Credits.swift in Sources */,
 				FBEBFC7E2A728D4B0051B8EF /* FavoriteMoviesViewController.swift in Sources */,
+				FB6B97112A7945EA0093798D /* MovieModel.xcdatamodeld in Sources */,
 				FB7D58C02A779794001B00F9 /* NetworkService.swift in Sources */,
 				FBC387612A73E42500179216 /* Actor.swift in Sources */,
 				FB9B86952A70F67B003C24A8 /* MovieDetail.swift in Sources */,

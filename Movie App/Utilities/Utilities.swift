@@ -10,6 +10,9 @@ import UIKit
 
 class Utilities {
     
+    static let unfavoriteIcon = "heart"
+    static let favoriteIcon = "heart.fill"
+    
     static func stringToURL(_ str: String) -> URL {
         if let url = URL(string: str.replacingOccurrences(of: " ", with: "+")) {
             return url
