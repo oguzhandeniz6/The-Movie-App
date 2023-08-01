@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB6B970B2A78E32B0093798D /* MovieModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB6B97092A78E32B0093798D /* MovieModel.xcdatamodeld */; };
+		FB6B970D2A78EBC70093798D /* CoreDataFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6B970C2A78EBC70093798D /* CoreDataFunctions.swift */; };
+		FB6B970F2A78EC2F0093798D /* CoreDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6B970E2A78EC2F0093798D /* CoreDataConstants.swift */; };
 		FB70E98E2A6EBD1700B8E4D5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = FB70E98D2A6EBD1700B8E4D5 /* Kingfisher */; };
 		FB7D58C02A779794001B00F9 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7D58BF2A779794001B00F9 /* NetworkService.swift */; };
 		FB7D58C42A77BFAE001B00F9 /* ActorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7D58C22A77BFAE001B00F9 /* ActorCell.swift */; };
@@ -42,6 +45,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB6B970A2A78E32B0093798D /* MovieModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovieModel.xcdatamodel; sourceTree = "<group>"; };
+		FB6B970C2A78EBC70093798D /* CoreDataFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFunctions.swift; sourceTree = "<group>"; };
+		FB6B970E2A78EC2F0093798D /* CoreDataConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataConstants.swift; sourceTree = "<group>"; };
 		FB7D58BF2A779794001B00F9 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		FB7D58C22A77BFAE001B00F9 /* ActorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorCell.swift; sourceTree = "<group>"; };
 		FB7D58C32A77BFAE001B00F9 /* ActorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActorCell.xib; sourceTree = "<group>"; };
@@ -128,6 +134,9 @@
 				FB7F1F422A6E5D1600F04E41 /* View */,
 				FB7F1F362A6E508800F04E41 /* Assets.xcassets */,
 				FB7F1F3B2A6E508800F04E41 /* Info.plist */,
+				FB6B97092A78E32B0093798D /* MovieModel.xcdatamodeld */,
+				FB6B970C2A78EBC70093798D /* CoreDataFunctions.swift */,
+				FB6B970E2A78EC2F0093798D /* CoreDataConstants.swift */,
 			);
 			path = "Movie App";
 			sourceTree = "<group>";
@@ -297,10 +306,12 @@
 				FB7D58C42A77BFAE001B00F9 /* ActorCell.swift in Sources */,
 				FB7D58CB2A77C5B9001B00F9 /* CollectionViewExtension.swift in Sources */,
 				FBC3875D2A73B35200179216 /* RecommendationView.swift in Sources */,
+				FB6B970D2A78EBC70093798D /* CoreDataFunctions.swift in Sources */,
 				FBB4F3F52A6FC48A001EF7EE /* SearchViewController.swift in Sources */,
 				FB9B86992A710301003C24A8 /* MovieDetailViewController.swift in Sources */,
 				FB7D58C82A77C396001B00F9 /* RecommendationCell.swift in Sources */,
 				FB7F1F2E2A6E508600F04E41 /* AppDelegate.swift in Sources */,
+				FB6B970B2A78E32B0093798D /* MovieModel.xcdatamodeld in Sources */,
 				FB7F1F4B2A6E5DDC00F04E41 /* NetworkManager.swift in Sources */,
 				FB7F1F482A6E5D9800F04E41 /* MovieCell.swift in Sources */,
 				FB7F1F532A6E6C7F00F04E41 /* APIResults.swift in Sources */,
@@ -313,6 +324,7 @@
 				FBC387612A73E42500179216 /* Actor.swift in Sources */,
 				FB9B86952A70F67B003C24A8 /* MovieDetail.swift in Sources */,
 				FBEBFC7C2A727E4D0051B8EF /* CastView.swift in Sources */,
+				FB6B970F2A78EC2F0093798D /* CoreDataConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,6 +584,19 @@
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		FB6B97092A78E32B0093798D /* MovieModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FB6B970A2A78E32B0093798D /* MovieModel.xcdatamodel */,
+			);
+			currentVersion = FB6B970A2A78E32B0093798D /* MovieModel.xcdatamodel */;
+			path = MovieModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FB7F1F222A6E508600F04E41 /* Project object */;
 }

@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import CoreData
 
 class FavoriteMoviesViewController: UIViewController {
     
-    private var movies: [Results] = []
+    private var movies: [NSManagedObject] = []
     
     @IBOutlet weak var favoriteTableView: UITableView!
     
@@ -17,7 +18,7 @@ class FavoriteMoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        movies = CoreDataFunctions.loadMovies()
     }
 
 }

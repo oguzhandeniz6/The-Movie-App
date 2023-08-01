@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import CoreData
 
 class MovieCell: UITableViewCell {
     
@@ -23,6 +24,22 @@ class MovieCell: UITableViewCell {
             self.movieRatingLabel.text = String(format: "%.1f" ,rating)
             self.movieDateLabel.text = Utilities.dateFormatChanger(str: releaseDate)
             self.movieImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath))
+        }
+    }
+    
+    func fillCell(_ movie: NSManagedObject) {
+        self.selectionStyle = .none
+        
+        if let title = movie.value(forKey: CoreDataConstants.titleKeyPath) as? String,
+           let rating = movie.value(forKey: CoreDataConstants.scoreKeyPath) as? Double,
+           let releaseDate = movie.value(forKey: CoreDataConstants.releaseDateKeyPath) as? String,
+           let posterPath = movie.value(forKey: CoreDataConstants.posterPathKeyPath) as? String {
+            
+            self.movieTitleLabel.text = title
+            self.movieRatingLabel.text = String(format: "%.1f" ,rating)
+            self.movieDateLabel.text = Utilities.dateFormatChanger(str: releaseDate)
+            self.movieImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath))
+            
         }
     }
     

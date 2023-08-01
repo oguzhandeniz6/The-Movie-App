@@ -225,31 +225,6 @@
             </objects>
             <point key="canvasLocation" x="-663" y="788"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Ylf-4r-Lua">
-            <objects>
-                <viewController id="iO6-XG-mDY" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Egr-WR-5ON">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dls-Rf-ig1">
-                                <rect key="frame" x="0.0" y="50" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="iO6-XG-mDY" id="qTy-Lp-aPc"/>
-                                </connections>
-                            </searchBar>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Ww9-qI-9jD"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AmJ-gk-pHL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="217" y="788"/>
-        </scene>
         <!--Movie Detail View Controller-->
         <scene sceneID="GEL-nz-Mb6">
             <objects>
