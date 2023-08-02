@@ -39,6 +39,9 @@
 		FBC3875D2A73B35200179216 /* RecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC3875C2A73B35200179216 /* RecommendationView.swift */; };
 		FBC3875F2A73E26F00179216 /* CastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC3875E2A73E26F00179216 /* CastViewController.swift */; };
 		FBC387612A73E42500179216 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC387602A73E42500179216 /* Actor.swift */; };
+		FBC72C152A7A30B200A6B09B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC72C142A7A30B200A6B09B /* CoreDataStack.swift */; };
+		FBC72C202A7A33C300A6B09B /* MovieEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC72C1E2A7A33C300A6B09B /* MovieEntity+CoreDataClass.swift */; };
+		FBC72C212A7A33C300A6B09B /* MovieEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC72C1F2A7A33C300A6B09B /* MovieEntity+CoreDataProperties.swift */; };
 		FBEBFC7A2A726EDA0051B8EF /* CastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBEBFC782A726EDA0051B8EF /* CastView.xib */; };
 		FBEBFC7C2A727E4D0051B8EF /* CastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEBFC7B2A727E4D0051B8EF /* CastView.swift */; };
 		FBEBFC7E2A728D4B0051B8EF /* FavoriteMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEBFC7D2A728D4B0051B8EF /* FavoriteMoviesViewController.swift */; };
@@ -77,6 +80,9 @@
 		FBC3875C2A73B35200179216 /* RecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationView.swift; sourceTree = "<group>"; };
 		FBC3875E2A73E26F00179216 /* CastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastViewController.swift; sourceTree = "<group>"; };
 		FBC387602A73E42500179216 /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
+		FBC72C142A7A30B200A6B09B /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		FBC72C1E2A7A33C300A6B09B /* MovieEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FBC72C1F2A7A33C300A6B09B /* MovieEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FBEBFC792A726EDA0051B8EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CastView.xib; sourceTree = "<group>"; };
 		FBEBFC7B2A727E4D0051B8EF /* CastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastView.swift; sourceTree = "<group>"; };
 		FBEBFC7D2A728D4B0051B8EF /* FavoriteMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMoviesViewController.swift; sourceTree = "<group>"; };
@@ -99,8 +105,11 @@
 			isa = PBXGroup;
 			children = (
 				FB6B97092A78E32B0093798D /* MovieModel.xcdatamodeld */,
+				FBC72C1E2A7A33C300A6B09B /* MovieEntity+CoreDataClass.swift */,
+				FBC72C1F2A7A33C300A6B09B /* MovieEntity+CoreDataProperties.swift */,
 				FB6B970C2A78EBC70093798D /* CoreDataFunctions.swift */,
 				FB6B970E2A78EC2F0093798D /* CoreDataConstants.swift */,
+				FBC72C142A7A30B200A6B09B /* CoreDataStack.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -327,11 +336,14 @@
 				FB7F1F302A6E508600F04E41 /* SceneDelegate.swift in Sources */,
 				FB9B86972A70FA69003C24A8 /* Credits.swift in Sources */,
 				FBEBFC7E2A728D4B0051B8EF /* FavoriteMoviesViewController.swift in Sources */,
+				FBC72C212A7A33C300A6B09B /* MovieEntity+CoreDataProperties.swift in Sources */,
+				FBC72C152A7A30B200A6B09B /* CoreDataStack.swift in Sources */,
 				FB6B97112A7945EA0093798D /* MovieModel.xcdatamodeld in Sources */,
 				FB7D58C02A779794001B00F9 /* NetworkService.swift in Sources */,
 				FBC387612A73E42500179216 /* Actor.swift in Sources */,
 				FB9B86952A70F67B003C24A8 /* MovieDetail.swift in Sources */,
 				FBEBFC7C2A727E4D0051B8EF /* CastView.swift in Sources */,
+				FBC72C202A7A33C300A6B09B /* MovieEntity+CoreDataClass.swift in Sources */,
 				FB6B970F2A78EC2F0093798D /* CoreDataConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

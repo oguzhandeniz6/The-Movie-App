@@ -28,6 +28,12 @@ class PopularMoviesViewController: UIViewController {
         loadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        moviesTableView.reloadData()
+    }
+    
     @objc func loadData() {
 //        Make network call
         NetworkService.getPopularMovies(pageNumber: currentPage, popularVC: self)

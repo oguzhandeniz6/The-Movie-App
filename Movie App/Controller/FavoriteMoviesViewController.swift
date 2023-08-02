@@ -29,7 +29,6 @@ class FavoriteMoviesViewController: UIViewController {
         super.viewWillAppear(animated)
         
         movies = CoreDataFunctions.loadMovies()
-        print(movies)
         favoriteTableView.reloadData()
     }
 

@@ -13,16 +13,13 @@ class CoreDataFunctions {
     
     static func saveMovie(id: Int, score: Double, title: String, poster_path: String, releaseDate: String) {
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
+        let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
         
         guard let entity = NSEntityDescription.entity(forEntityName: CoreDataConstants.entityName, in: managedContext) else {
             return
         }
         let mov = NSManagedObject(entity: entity, insertInto: managedContext)
+//        let mov = MovieEntity(context: managedContext)
         
         mov.setValue(id, forKey: CoreDataConstants.idKeyPath)
         mov.setValue(title, forKey: CoreDataConstants.titleKeyPath)
@@ -30,42 +27,32 @@ class CoreDataFunctions {
         mov.setValue(score, forKey: CoreDataConstants.scoreKeyPath)
         mov.setValue(releaseDate, forKey: CoreDataConstants.releaseDateKeyPath)
         
-        do {
-            try managedContext.save()
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
+        AppDelegate.sharedAppDelegate.coreDataStack.saveContext()
     }
     
     static func loadMovies() -> [NSManagedObject] {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return []
-        }
         
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: CoreDataConstants.entityName)
+        let movieFetch: NSFetchRequest<MovieEntity> = MovieEntity.fetchRequest()
         
         do {
-            return try managedContext.fetch(fetchRequest)
+            let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
+            return try managedContext.fetch(movieFetch)
+            
         } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+            print("Fetch error: \(error) description: \(error.userInfo)")
             return []
         }
     }
     
     static func deleteMovie(id: Int) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
         
-        let managedContext = appDelegate.persistentContainer.viewContext
+        let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
         
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSManagedObject.fetchRequest()
-        fetchRequest.predicate = NSPredicate.init(format: "\(CoreDataConstants.idKeyPath)=\(id)")
+        let fetchRequest: NSFetchRequest<MovieEntity> = MovieEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate.init(format: "id==\(id)")
         
         do {
-            let objects = try managedContext.fetch(fetchRequest) as! [NSManagedObject]
+            let objects = try managedContext.fetch(fetchRequest)
             for obj in objects {
                 managedContext.delete(obj)
             }
@@ -77,14 +64,11 @@ class CoreDataFunctions {
     }
     
     static func checkMovie(id: Int) -> Bool {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return true
-        }
         
-        let managedContext = appDelegate.persistentContainer.viewContext
+        let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
         
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSManagedObject.fetchRequest()
-        fetchRequest.predicate = NSPredicate.init(format: "\(CoreDataConstants.idKeyPath) == %@", id)
+        let fetchRequest: NSFetchRequest<MovieEntity> = MovieEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate.init(format: "id==\(id)")
         
         do {
             let objects = try managedContext.fetch(fetchRequest)

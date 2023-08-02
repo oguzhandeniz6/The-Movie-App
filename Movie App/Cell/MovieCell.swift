@@ -16,6 +16,7 @@ class MovieCell: UITableViewCell {
     @IBOutlet weak var favoriteIcon: UIImageView! {
         didSet {
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(favoriteIconTapped(tapGestureRecognizer:)))
+            tapGestureRecognizer.delegate = self
             self.isUserInteractionEnabled = true
             self.addGestureRecognizer(tapGestureRecognizer)
         }
@@ -30,6 +31,29 @@ class MovieCell: UITableViewCell {
     @IBOutlet weak var movieRatingLabel: UILabel!
     @IBOutlet weak var movieDateLabel: UILabel!
     
+    static func getClassName() -> String {
+        return String(describing: MovieCell.self)
+    }
+    
+    @objc func favoriteIconTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        
+        if isFavorite {
+            CoreDataFunctions.deleteMovie(id: self.movieID)
+            isFavorite = false
+            favoriteIcon.image = UIImage(systemName: Utilities.unfavoriteIcon)
+        } else {
+            CoreDataFunctions.saveMovie(id: self.movieID, score: self.score, title: self.movieTitleLabel.text ?? "", poster_path: self.posterPath, releaseDate: self.releaseDate)
+            isFavorite = true
+            favoriteIcon.image = UIImage(systemName: Utilities.favoriteIcon)
+        }
+    }
+    
+}
+
+//MARK: - FillCell Methods
+
+extension MovieCell {
+    
     func fillCell(_ movie: Results) {
         
         self.selectionStyle = .none
@@ -38,6 +62,10 @@ class MovieCell: UITableViewCell {
             
             if CoreDataFunctions.checkMovie(id: id) {
                 favoriteIcon.image = UIImage(systemName: Utilities.favoriteIcon)
+                isFavorite = true
+            } else {
+                favoriteIcon.image = UIImage(systemName: Utilities.unfavoriteIcon)
+                isFavorite = false
             }
             
             self.movieID = movie.id ?? 0
@@ -64,6 +92,10 @@ class MovieCell: UITableViewCell {
             
             if CoreDataFunctions.checkMovie(id: id) {
                 favoriteIcon.image = UIImage(systemName: Utilities.favoriteIcon)
+                isFavorite = true
+            } else {
+                favoriteIcon.image = UIImage(systemName: Utilities.unfavoriteIcon)
+                isFavorite = false
             }
             
             
@@ -80,32 +112,19 @@ class MovieCell: UITableViewCell {
         }
     }
     
-    static func getClassName() -> String {
-        return String(describing: MovieCell.self)
-    }
-    
-    @objc func favoriteIconTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        
-        if isFavorite {
-            CoreDataFunctions.deleteMovie(id: self.movieID)
-            isFavorite = false
-            favoriteIcon.image = UIImage(systemName: Utilities.unfavoriteIcon)
-        } else {
-            CoreDataFunctions.saveMovie(id: self.movieID, score: self.score, title: self.movieTitleLabel.text ?? "", poster_path: self.posterPath, releaseDate: self.releaseDate)
-            isFavorite = true
-            favoriteIcon.image = UIImage(systemName: Utilities.favoriteIcon)
-        }
-    }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }
+
+//MARK: - Gesture Recognizer
+
+//extension MovieCell {
+//    
+//    override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+//        
+//        if touch.view != self.favoriteIcon {
+//            return false
+//        } else {
+//            return true
+//        }
+//    }
+//    
+//}
