@@ -22,9 +22,10 @@ class NetworkService {
     
     static func getSearchResults(pageNumber: Int, searchKey: String,searchVC: SearchViewController) {
         NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getSearchURL(searchKey: searchKey, pageNumber: pageNumber), dataType: APIResults.self) { result in
-            if let fetchedMovies = result.results, let maxPage = result.total_pages {
+            if let fetchedMovies = result.results, let maxPage = result.total_pages, let currPage = result.page {
                 searchVC.appendMovies(newMovies: fetchedMovies)
                 searchVC.setTotalPages(maxPage: maxPage)
+                searchVC.setCurrrentPage(currPage: currPage)
                 searchVC.incrementCurrentPage()
                 searchVC.searchTableView.reloadData()
             }
@@ -59,6 +60,10 @@ class NetworkService {
         NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getPersonDetailsURL(personID: actorID), dataType: Actor.self) { result in
             castVC.preparePage(actor: result)
         }
+    }
+    
+    static func clearRequests() {
+        NetworkManager.shared.cancelAllRequests()
     }
     
 }

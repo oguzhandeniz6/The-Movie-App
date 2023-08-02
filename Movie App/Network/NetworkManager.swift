@@ -28,4 +28,12 @@ class NetworkManager {
             }
         }
     }
+    
+    func cancelAllRequests() {
+        Alamofire.Session.default.session.getTasksWithCompletionHandler({ dataTasks, uploadTasks, downloadTasks in
+            dataTasks.forEach { $0.cancel() }
+            uploadTasks.forEach { $0.cancel() }
+            downloadTasks.forEach { $0.cancel() }
+        })
+    }
 }

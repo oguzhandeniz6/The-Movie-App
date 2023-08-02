@@ -40,11 +40,11 @@ class MovieCell: UITableViewCell {
         if isFavorite {
             CoreDataFunctions.deleteMovie(id: self.movieID)
             isFavorite = false
-            favoriteIcon.image = UIImage(systemName: Utilities.unfavoriteIcon)
+            favoriteIcon.image = UIImage(systemName: UIConstants.unfavoriteIcon)
         } else {
             CoreDataFunctions.saveMovie(id: self.movieID, score: self.score, title: self.movieTitleLabel.text ?? "", poster_path: self.posterPath, releaseDate: self.releaseDate)
             isFavorite = true
-            favoriteIcon.image = UIImage(systemName: Utilities.favoriteIcon)
+            favoriteIcon.image = UIImage(systemName: UIConstants.favoriteIcon)
         }
     }
     
@@ -67,10 +67,10 @@ extension MovieCell {
             
 //            Favorite System
             if CoreDataFunctions.checkMovie(id: id) {
-                self.favoriteIcon.image = UIImage(systemName: Utilities.favoriteIcon)
+                self.favoriteIcon.image = UIImage(systemName: UIConstants.favoriteIcon)
                 self.isFavorite = true
             } else {
-                self.favoriteIcon.image = UIImage(systemName: Utilities.unfavoriteIcon)
+                self.favoriteIcon.image = UIImage(systemName: UIConstants.unfavoriteIcon)
                 self.isFavorite = false
             }
             
@@ -99,10 +99,10 @@ extension MovieCell {
 //            Favorite System
             
             if CoreDataFunctions.checkMovie(id: id) {
-                self.favoriteIcon.image = UIImage(systemName: Utilities.favoriteIcon)
+                self.favoriteIcon.image = UIImage(systemName: UIConstants.favoriteIcon)
                 self.isFavorite = true
             } else {
-                self.favoriteIcon.image = UIImage(systemName: Utilities.unfavoriteIcon)
+                self.favoriteIcon.image = UIImage(systemName: UIConstants.unfavoriteIcon)
                 self.isFavorite = false
             }
             

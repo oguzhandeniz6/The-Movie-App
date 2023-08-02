@@ -10,9 +10,6 @@ import UIKit
 
 class Utilities {
     
-    static let unfavoriteIcon = "heart"
-    static let favoriteIcon = "heart.fill"
-    
     static func stringToURL(_ str: String) -> URL {
         if let url = URL(string: str.replacingOccurrences(of: " ", with: "+")) {
             return url
@@ -44,11 +41,11 @@ class Utilities {
         dateFormatter.dateFormat = "yy-MM-dd"
         
         guard let date = dateFormatter.date(from: str) else {
-            dateFormatter.dateFormat = "MMM d, yy"
+            dateFormatter.dateFormat = "MMM d, yyyy"
             return dateFormatter.string(from: Date(timeIntervalSince1970: 0))
         }
         
-        dateFormatter.dateFormat = "MMM d, yy"
+        dateFormatter.dateFormat = "MMM d, yyyy"
         
         return dateFormatter.string(from: date)
     }

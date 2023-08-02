@@ -11,12 +11,6 @@ struct APIResults: Codable {
     let page: Int?
     let results: [Results]?
     let total_pages: Int?
-    
-    init() {
-        self.page = 1
-        self.results = []
-        self.total_pages = 1
-    }
 }
 
 struct Results: Codable {

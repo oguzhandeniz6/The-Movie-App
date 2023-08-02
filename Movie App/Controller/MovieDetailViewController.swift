@@ -124,10 +124,10 @@ extension MovieDetailViewController {
         score = movieDetail.vote_average ?? 0.0
         
         if CoreDataFunctions.checkMovie(id: movieID) {
-            self.favoriteIcon.image = UIImage(systemName: Utilities.favoriteIcon)
+            self.favoriteIcon.image = UIImage(systemName: UIConstants.favoriteIcon)
             self.isFavorite = true
         } else {
-            self.favoriteIcon.image = UIImage(systemName: Utilities.unfavoriteIcon)
+            self.favoriteIcon.image = UIImage(systemName: UIConstants.unfavoriteIcon)
             self.isFavorite = false
         }
         
@@ -235,11 +235,11 @@ extension MovieDetailViewController: UIGestureRecognizerDelegate {
         if isFavorite {
             CoreDataFunctions.deleteMovie(id: self.movieID)
             isFavorite = false
-            favoriteIcon.image = UIImage(systemName: Utilities.unfavoriteIcon)
+            favoriteIcon.image = UIImage(systemName: UIConstants.unfavoriteIcon)
         } else {
             CoreDataFunctions.saveMovie(id: self.movieID, score: self.score, title: self.titleLabel.text ?? "", poster_path: self.posterPath, releaseDate: self.releaseDate)
             isFavorite = true
-            favoriteIcon.image = UIImage(systemName: Utilities.favoriteIcon)
+            favoriteIcon.image = UIImage(systemName: UIConstants.favoriteIcon)
         }
     }
 }

@@ -7,12 +7,17 @@
 
 import UIKit
 
+var searchController = UISearchController() {
+    didSet {
+        searchController.searchBar.barTintColor = UIConstants.alternativeColor4
+    }
+}
+
 class SearchViewController: UIViewController {
     
     private var currentPage = 1
     private var totalPages = 1
 
-    private var searchResults = APIResults()
     private var movies: [Results] = []
     private var searchKey: String = ""
     
@@ -21,38 +26,20 @@ class SearchViewController: UIViewController {
             prepareTableView()
         }
     }
-    @IBOutlet weak var searchTextLabel: UITextField! {
-        didSet {
-            searchTextLabel.delegate = self
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self
     }
     
     @objc func loadData() {
 //        Make network call
         NetworkService.getSearchResults(pageNumber: currentPage, searchKey: self.searchKey, searchVC: self)
         
+        searchTableView.reloadData()
         searchTableView.refreshControl?.endRefreshing()
     }
-    
-    
-    @IBAction func searchButtonPressed(_ sender: UIButton) {
-//        Scroll back to top and clear the TableView
-        if !movies.isEmpty {
-            searchTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: false)
-            movies.removeAll()
-            searchTableView.reloadData()
-        }
-        currentPage = 1
-        
-        searchKey = searchTextLabel.text ?? ""
-        loadData()
-        searchTextLabel.endEditing(true)
-    }
-    
 
 }
 
@@ -115,12 +102,23 @@ extension SearchViewController: UITableViewDelegate {
     
 }
 
-//MARK: - UITextFieldDelegate
+//MARK: - UISearchResultsUpdating
 
-extension SearchViewController: UITextFieldDelegate {
+extension SearchViewController: UISearchResultsUpdating {
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.text = ""
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        NetworkService.clearRequests()
+        movies = []
+        guard let text = searchController.searchBar.text else {
+            return
+        }
+        currentPage = 1
+        
+        searchKey = text
+        
+        Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(loadData), userInfo: nil, repeats: false)
+        
     }
     
 }
@@ -135,6 +133,10 @@ extension SearchViewController {
     
     func setTotalPages(maxPage: Int) {
         self.totalPages = maxPage
+    }
+    
+    func setCurrrentPage(currPage: Int) {
+        self.currentPage = currPage
     }
     
     func incrementCurrentPage() {

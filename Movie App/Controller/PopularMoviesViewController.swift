@@ -12,7 +12,6 @@ class PopularMoviesViewController: UIViewController {
     private var currentPage = 1
     private var totalPages = 1
 
-    private var popularResults = APIResults()
     private var movies: [Results] = []
     
 
