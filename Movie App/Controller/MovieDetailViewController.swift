@@ -10,6 +10,12 @@ import Kingfisher
 
 class MovieDetailViewController: UIViewController {
     
+    private var isFavorite: Bool = false
+    
+    private var posterPath: String = ""
+    private var releaseDate: String = ""
+    private var score: Double = 0.0
+    
     var movieID: Int = 0
     private var cast: [Cast] = []
     private var recommendations: [Results] = []
@@ -46,6 +52,16 @@ class MovieDetailViewController: UIViewController {
             detailsView.layer.cornerRadius = 30
         }
     }
+    
+    @IBOutlet weak var favoriteIcon: UIImageView! {
+        didSet {
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(favoriteIconTapped(tapGestureRecognizer:)))
+            tapGestureRecognizer.delegate = self
+            favoriteIcon.isUserInteractionEnabled = true
+            favoriteIcon.addGestureRecognizer(tapGestureRecognizer)
+        }
+    }
+    
     
     
     override func viewDidLoad() {
@@ -100,6 +116,19 @@ extension MovieDetailViewController {
         
         if let posterPath = movieDetail.poster_path {
             posterImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath))
+        }
+//        Favorite System
+        
+        posterPath = movieDetail.poster_path ?? ""
+        releaseDate = movieDetail.release_date ?? ""
+        score = movieDetail.vote_average ?? 0.0
+        
+        if CoreDataFunctions.checkMovie(id: movieID) {
+            self.favoriteIcon.image = UIImage(systemName: Utilities.favoriteIcon)
+            self.isFavorite = true
+        } else {
+            self.favoriteIcon.image = UIImage(systemName: Utilities.unfavoriteIcon)
+            self.isFavorite = false
         }
         
     }
@@ -195,6 +224,24 @@ extension MovieDetailViewController: UICollectionViewDelegate {
         
     }
     
+}
+
+//MARK: - UIGestureRecognizerDelegate
+
+extension MovieDetailViewController: UIGestureRecognizerDelegate {
+    
+    @objc func favoriteIconTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        
+        if isFavorite {
+            CoreDataFunctions.deleteMovie(id: self.movieID)
+            isFavorite = false
+            favoriteIcon.image = UIImage(systemName: Utilities.unfavoriteIcon)
+        } else {
+            CoreDataFunctions.saveMovie(id: self.movieID, score: self.score, title: self.titleLabel.text ?? "", poster_path: self.posterPath, releaseDate: self.releaseDate)
+            isFavorite = true
+            favoriteIcon.image = UIImage(systemName: Utilities.favoriteIcon)
+        }
+    }
 }
 
 

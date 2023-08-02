@@ -15,6 +15,7 @@ class FavoriteMoviesViewController: UIViewController {
     @IBOutlet weak var favoriteTableView: UITableView! {
         didSet {
             favoriteTableView.dataSource = self
+            favoriteTableView.delegate = self
             favoriteTableView.register(cellName: MovieCell.getClassName())
             favoriteTableView.reloadData()
         }

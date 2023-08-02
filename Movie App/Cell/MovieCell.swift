@@ -17,8 +17,8 @@ class MovieCell: UITableViewCell {
         didSet {
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(favoriteIconTapped(tapGestureRecognizer:)))
             tapGestureRecognizer.delegate = self
-            self.isUserInteractionEnabled = true
-            self.addGestureRecognizer(tapGestureRecognizer)
+            favoriteIcon.isUserInteractionEnabled = true
+            favoriteIcon.addGestureRecognizer(tapGestureRecognizer)
         }
     }
     
@@ -60,23 +60,24 @@ extension MovieCell {
         
         if let id = movie.id, let title = movie.title, let rating = movie.vote_average, let releaseDate = movie.release_date, let posterPath = movie.poster_path {
             
+            self.movieTitleLabel.text = title
+            self.movieRatingLabel.text = String(format: "%.1f" ,rating)
+            self.movieDateLabel.text = Utilities.dateFormatChanger(str: releaseDate)
+            self.movieImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath))
+            
+//            Favorite System
             if CoreDataFunctions.checkMovie(id: id) {
-                favoriteIcon.image = UIImage(systemName: Utilities.favoriteIcon)
-                isFavorite = true
+                self.favoriteIcon.image = UIImage(systemName: Utilities.favoriteIcon)
+                self.isFavorite = true
             } else {
-                favoriteIcon.image = UIImage(systemName: Utilities.unfavoriteIcon)
-                isFavorite = false
+                self.favoriteIcon.image = UIImage(systemName: Utilities.unfavoriteIcon)
+                self.isFavorite = false
             }
             
             self.movieID = movie.id ?? 0
             self.posterPath = movie.poster_path ?? ""
             self.releaseDate = movie.release_date ?? ""
             self.score = movie.vote_average ?? 0.0
-            
-            self.movieTitleLabel.text = title
-            self.movieRatingLabel.text = String(format: "%.1f" ,rating)
-            self.movieDateLabel.text = Utilities.dateFormatChanger(str: releaseDate)
-            self.movieImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath))
         }
     }
     
@@ -90,12 +91,19 @@ extension MovieCell {
            let releaseDate = movie.value(forKey: CoreDataConstants.releaseDateKeyPath) as? String,
            let posterPath = movie.value(forKey: CoreDataConstants.posterPathKeyPath) as? String {
             
+            self.movieTitleLabel.text = title
+            self.movieRatingLabel.text = String(format: "%.1f" ,rating)
+            self.movieDateLabel.text = Utilities.dateFormatChanger(str: releaseDate)
+            self.movieImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath))
+            
+//            Favorite System
+            
             if CoreDataFunctions.checkMovie(id: id) {
-                favoriteIcon.image = UIImage(systemName: Utilities.favoriteIcon)
-                isFavorite = true
+                self.favoriteIcon.image = UIImage(systemName: Utilities.favoriteIcon)
+                self.isFavorite = true
             } else {
-                favoriteIcon.image = UIImage(systemName: Utilities.unfavoriteIcon)
-                isFavorite = false
+                self.favoriteIcon.image = UIImage(systemName: Utilities.unfavoriteIcon)
+                self.isFavorite = false
             }
             
             
@@ -104,27 +112,8 @@ extension MovieCell {
             self.releaseDate = movie.value(forKey: CoreDataConstants.releaseDateKeyPath) as? String ?? ""
             self.score = movie.value(forKey: CoreDataConstants.scoreKeyPath) as? Double ?? 0.0
             
-            self.movieTitleLabel.text = title
-            self.movieRatingLabel.text = String(format: "%.1f" ,rating)
-            self.movieDateLabel.text = Utilities.dateFormatChanger(str: releaseDate)
-            self.movieImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath))
-            
         }
     }
     
 }
 
-//MARK: - Gesture Recognizer
-
-//extension MovieCell {
-//    
-//    override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-//        
-//        if touch.view != self.favoriteIcon {
-//            return false
-//        } else {
-//            return true
-//        }
-//    }
-//    
-//}
