@@ -26,6 +26,13 @@ class SearchViewController: UIViewController {
             prepareTableView()
         }
     }
+    
+    @IBOutlet weak var searchTabBar: UITabBarItem! {
+        didSet {
+            searchTabBar.title = "searchTabBar".localizeString(lang: NSLocale.current.languageCode ?? "en")
+        }
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

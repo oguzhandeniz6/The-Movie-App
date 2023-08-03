@@ -10,6 +10,14 @@ import UIKit
 
 class Utilities {
     
+    static func getLanguage() -> String{
+        if NSLocale.current.languageCode == "tr" {
+            return "tr-TR"
+        } else {
+            return "en-US"
+        }
+    }
+    
     static func stringToURL(_ str: String) -> URL {
         if let url = URL(string: str.replacingOccurrences(of: " ", with: "+")) {
             return url

@@ -14,7 +14,13 @@ class PopularMoviesViewController: UIViewController {
 
     private var movies: [Results] = []
     
-
+    
+    @IBOutlet weak var popularTabBar: UITabBarItem! {
+        didSet {
+            popularTabBar.title = "popularTabBar".localizeString(lang: NSLocale.current.languageCode ?? "en")
+        }
+    }
+    
     @IBOutlet weak var moviesTableView: UITableView!  {
         didSet {
             prepareTableView()
@@ -23,6 +29,8 @@ class PopularMoviesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(NSLocale.current.languageCode ?? "")
+        print(Bundle.main.preferredLocalizations[0])
         
         loadData()
     }

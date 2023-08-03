@@ -44,6 +44,6 @@ class CastViewController: UIViewController {
         
         birthPlaceLabel.text = actor.place_of_birth
         bioLabel.text = "\n\(actor.biography ?? "")"
-        actorPhotoImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: actor.profile_path ?? ""))
+        actorPhotoImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: actor.profile_path ?? "", imageSize: ProfileSize.original.rawValue))
     }
 }

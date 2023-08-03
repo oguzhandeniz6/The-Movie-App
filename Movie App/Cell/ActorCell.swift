@@ -29,7 +29,7 @@ class ActorCell: UICollectionViewCell {
         personName.text = actor.original_name
         characterName.text = actor.character
         
-        personImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: actor.profile_path ?? ""))
+        personImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: actor.profile_path ?? "", imageSize: ProfileSize.high.rawValue))
     }
 
 }

@@ -35,6 +35,12 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var revenueLabel: UIButton!
     @IBOutlet weak var releaseDateLabel: UILabel!
     
+    @IBOutlet weak var movieHomepage: UIButton! {
+        didSet {
+            movieHomepage.titleLabel?.text = "movieHomepage".localizeString(lang: NSLocale.current.languageCode ?? "en")
+        }
+    }
+    
     
     @IBOutlet weak var castCollectionView: UICollectionView! {
         didSet {
@@ -115,7 +121,7 @@ extension MovieDetailViewController {
         homepageURL = Utilities.stringToURL(movieDetail.homepage ?? "")
         
         if let posterPath = movieDetail.poster_path {
-            posterImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath))
+            posterImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath, imageSize: PosterSize.original.rawValue))
         }
 //        Favorite System
         

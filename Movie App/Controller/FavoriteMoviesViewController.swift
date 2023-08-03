@@ -21,6 +21,13 @@ class FavoriteMoviesViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var favoriteTabBar: UITabBarItem! {
+        didSet {
+            favoriteTabBar.title = "favoriteTabBar".localizeString(lang: NSLocale.current.languageCode ?? "en")
+        }
+    }
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

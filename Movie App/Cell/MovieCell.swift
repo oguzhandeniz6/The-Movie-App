@@ -63,7 +63,7 @@ extension MovieCell {
             self.movieTitleLabel.text = title
             self.movieRatingLabel.text = String(format: "%.1f" ,rating)
             self.movieDateLabel.text = Utilities.dateFormatChanger(str: releaseDate)
-            self.movieImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath))
+            self.movieImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath, imageSize: PosterSize.high.rawValue))
             
 //            Favorite System
             if CoreDataFunctions.checkMovie(id: id) {
@@ -94,7 +94,7 @@ extension MovieCell {
             self.movieTitleLabel.text = title
             self.movieRatingLabel.text = String(format: "%.1f" ,rating)
             self.movieDateLabel.text = Utilities.dateFormatChanger(str: releaseDate)
-            self.movieImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath))
+            self.movieImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath, imageSize: PosterSize.high.rawValue))
             
 //            Favorite System
             

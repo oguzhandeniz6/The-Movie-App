@@ -27,7 +27,7 @@ class RecommendationCell: UICollectionViewCell {
     func fillCell(_ movie: Results) {
         movieNameLabel.text = movie.title
         
-        posterImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: movie.poster_path ?? ""))
+        posterImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: movie.poster_path ?? "", imageSize: PosterSize.high.rawValue))
     }
 
 }

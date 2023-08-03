@@ -92,6 +92,7 @@
                     <navigationItem key="navigationItem" id="syH-tH-V7Z"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="favoriteTabBar" destination="bF9-Sa-T46" id="LYf-KR-mR1"/>
                         <outlet property="favoriteTableView" destination="0dV-5t-77R" id="Or3-My-Ug0"/>
                     </connections>
                 </viewController>
@@ -126,6 +127,7 @@
                     <navigationItem key="navigationItem" id="vZJ-gm-5pe"/>
                     <connections>
                         <outlet property="moviesTableView" destination="8p9-Yu-Whf" id="HHX-P2-WY7"/>
+                        <outlet property="popularTabBar" destination="MKm-ec-TTP" id="hJq-aT-trc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -186,6 +188,7 @@
                     <tabBarItem key="tabBarItem" title="Search Movie" image="magnifyingglass.circle.fill" catalog="system" id="a0h-yg-9Ha"/>
                     <navigationItem key="navigationItem" id="xYW-zh-2IA"/>
                     <connections>
+                        <outlet property="searchTabBar" destination="a0h-yg-9Ha" id="dSP-5N-69T"/>
                         <outlet property="searchTableView" destination="WvT-Kx-nEK" id="MUs-9R-ynf"/>
                     </connections>
                 </viewController>
@@ -437,6 +440,7 @@
                         <outlet property="detailsView" destination="wu7-8U-Xjf" id="d98-F1-vuU"/>
                         <outlet property="favoriteIcon" destination="ETg-tU-qgO" id="REo-Df-AAe"/>
                         <outlet property="genresLabel" destination="dqH-bV-AMl" id="KvO-vp-Vtx"/>
+                        <outlet property="movieHomepage" destination="BBI-Kb-sWX" id="fNt-g1-gjT"/>
                         <outlet property="overviewLabel" destination="qSk-bZ-kOX" id="16I-ns-OwB"/>
                         <outlet property="posterImageView" destination="Vu9-k9-Qy2" id="ooW-cn-rwG"/>
                         <outlet property="recommendationsCollectionView" destination="eix-gt-0iF" id="oJW-oz-s8f"/>

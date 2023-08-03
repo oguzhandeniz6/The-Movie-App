@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  Movie App
+
+  Created by oguzhan.deniz on 3.08.2023.
+  
+*/
+
+"searchTabBar" = "Film Ara";
+"popularTabBar" = "Popüler Filmler";
+"favoriteTabBar" = "Favori Filmlerim";
+"movieHomepage" = "Film Anasayfası";

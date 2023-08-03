@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  Movie App
+
+  Created by oguzhan.deniz on 3.08.2023.
+  
+*/
+
+"searchTabBar" = "Search Movie";
+"popularTabBar" = "Popular Movies";
+"favoriteTabBar" = "Favorite Movies";
+"movieHomepage" = "Movie Homepage";
