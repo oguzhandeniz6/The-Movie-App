@@ -14,4 +14,8 @@ extension String {
         }
         return self
     }
+    
+    func percentEncode() -> String{
+        return self.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) ?? self
+    }
 }

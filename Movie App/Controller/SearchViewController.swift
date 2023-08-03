@@ -42,10 +42,17 @@ class SearchViewController: UIViewController {
     
     @objc func loadData() {
 //        Make network call
-        NetworkService.getSearchResults(pageNumber: currentPage, searchKey: self.searchKey, searchVC: self)
+        NetworkService.getSearchResults(pageNumber: currentPage, searchKey: self.searchKey.percentEncode(), searchVC: self)
+        currentPage += 1
         
         searchTableView.reloadData()
         searchTableView.refreshControl?.endRefreshing()
+    }
+    
+    @objc func networkCall() {
+        NetworkService.getSearchResults(pageNumber: currentPage, searchKey: self.searchKey.percentEncode(), searchVC: self)
+        
+        searchTableView.reloadData()
     }
 
 }
@@ -115,16 +122,22 @@ extension SearchViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         
-        NetworkService.clearRequests()
-        movies = []
         guard let text = searchController.searchBar.text else {
             return
         }
+        
+        if text == searchKey {
+            return
+        }
+        
+        NetworkService.clearRequests()
+        movies = []
+        
         currentPage = 1
         
         searchKey = text
-        
-        Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(loadData), userInfo: nil, repeats: false)
+        print(searchKey)
+        Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(networkCall), userInfo: nil, repeats: false)
         
     }
     
