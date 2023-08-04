@@ -7,11 +7,7 @@
 
 import UIKit
 
-var searchController = UISearchController() {
-    didSet {
-        searchController.searchBar.barTintColor = UIConstants.alternativeColor4
-    }
-}
+var searchController = UISearchController()
 
 class SearchViewController: UIViewController {
     
