@@ -136,7 +136,7 @@ extension SearchViewController: UISearchResultsUpdating {
         currentPage = 1
         
         searchKey = text
-        print(searchKey)
+
         Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(networkCall), userInfo: nil, repeats: false)
         
     }

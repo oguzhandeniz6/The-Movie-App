@@ -4,8 +4,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -35,7 +35,7 @@
                                     <constraint firstAttribute="height" constant="20" id="X2d-jz-oME"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Charter-BoldItalic" family="Charter" pointSize="11"/>
-                                <color key="textColor" white="0.33000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" name="Text Color 2"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a Significantly Long Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999998807907104" translatesAutoresizingMaskIntoConstraints="NO" id="Man-WQ-Ty9" userLabel="Name Label">
@@ -45,11 +45,11 @@
                                     <constraint firstAttribute="width" constant="100" id="Xi0-ub-qWs"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="13"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="Text Color 1"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="Alternative Color 3"/>
                         <constraints>
                             <constraint firstItem="Man-WQ-Ty9" firstAttribute="leading" secondItem="Vrs-OS-IOM" secondAttribute="leading" id="9Rn-Lz-j4A"/>
                             <constraint firstItem="h2F-La-LZV" firstAttribute="centerY" secondItem="Vrs-OS-IOM" secondAttribute="centerY" constant="-25" id="VIX-en-3BD"/>
@@ -79,8 +79,14 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="Alternative Color 3">
+            <color red="0.96470588235294119" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Text Color 1">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Text Color 2">
+            <color white="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
     </resources>
 </document>
