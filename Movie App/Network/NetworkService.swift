@@ -64,6 +64,7 @@ class NetworkService {
         NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getGenres(), dataType: Genres.self) { result in
             if let genresList = result.genres {
                 mainVC.setGenresList(genres: genresList)
+                mainVC.setChosenGenres(genres: Utilities.getRandomNElement(source: genresList, numOfElms: 3))
             }
         }
     }

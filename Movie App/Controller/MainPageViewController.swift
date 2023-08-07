@@ -21,7 +21,6 @@ class MainPageViewController: UIViewController {
     
     func getStartGenres() {
         NetworkService.getGenres(mainVC: self)
-        chosenGenres = Utilities.getRandomNElement(source: genresList, numOfElms: 3)
     }
 
 }
@@ -32,5 +31,9 @@ extension MainPageViewController {
     
     func setGenresList(genres: [Genre]) {
         self.genresList = genres
+    }
+    
+    func setChosenGenres(genres: [Genre]) {
+        self.chosenGenres = genres
     }
 }
