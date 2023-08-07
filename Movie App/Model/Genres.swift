@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct GenresAPI {
+struct Genres: Codable {
     let genres: [Genre]?
 }

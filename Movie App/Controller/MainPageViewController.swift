@@ -8,22 +8,29 @@
 import UIKit
 
 class MainPageViewController: UIViewController {
+    
+    private var genresList: [Genre] = []
+    private var chosenGenres: [Genre] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getStartGenres()
 
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func getStartGenres() {
+        NetworkService.getGenres(mainVC: self)
+        chosenGenres = Utilities.getRandomNElement(source: genresList, numOfElms: 3)
     }
-    */
 
+}
+
+//MARK: - MainPageViewController Extension
+
+extension MainPageViewController {
+    
+    func setGenresList(genres: [Genre]) {
+        self.genresList = genres
+    }
 }

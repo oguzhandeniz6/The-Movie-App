@@ -17,6 +17,7 @@ struct NetworkConstants {
 //    Basic endpoints
     private static let popularEndpoint: String = "/movie/popular"
     private static let searchEndpoint:String = "/search/movie"
+    private static let genresEndpoint: String = "/genre/movie/list"
     
 //    Complex endpoints
     private static let movieEndpoint: String = "/movie/"
@@ -65,6 +66,10 @@ struct NetworkConstants {
 //    GET Movie Poster URL
     static func getMovieImageURL(posterPath path: String, imageSize size: String) -> URL {
         return Utilities.stringToURL("\(imageURL)\(size)\(path)")
+    }
+    
+    static func getGenres() -> URL {
+        return Utilities.stringToURL("\(baseURL)\(genresEndpoint)\(apiKey)")
     }
     
 }

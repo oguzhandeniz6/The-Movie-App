@@ -66,6 +66,65 @@
             </objects>
             <point key="canvasLocation" x="-1602" y="-862"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mbf-52-szR">
+            <objects>
+                <navigationController id="81k-Im-R9q" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xgb-PP-h1H">
+                        <rect key="frame" x="0.0" y="50" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="tgC-Ce-msT" kind="relationship" relationship="rootViewController" id="de8-zb-Wxh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N9K-Xt-WUe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1602" y="-1647"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="FrO-PB-Y7E">
+            <objects>
+                <viewController id="tgC-Ce-msT" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7WC-5g-XeR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZYd-AR-9sa">
+                                <rect key="frame" x="0.0" y="94" width="375" height="684"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AsV-US-34q">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="684"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="AsV-US-34q" firstAttribute="top" secondItem="cdi-fB-O43" secondAttribute="top" id="6rL-SX-zPw"/>
+                                    <constraint firstItem="AsV-US-34q" firstAttribute="width" secondItem="jTY-Z0-DfW" secondAttribute="width" priority="250" id="7TF-lj-i47"/>
+                                    <constraint firstItem="AsV-US-34q" firstAttribute="bottom" secondItem="cdi-fB-O43" secondAttribute="bottom" id="CpV-0O-cY0"/>
+                                    <constraint firstItem="AsV-US-34q" firstAttribute="trailing" secondItem="cdi-fB-O43" secondAttribute="trailing" id="QMv-h1-YtA"/>
+                                    <constraint firstItem="AsV-US-34q" firstAttribute="leading" secondItem="cdi-fB-O43" secondAttribute="leading" id="pW4-hc-C8v"/>
+                                    <constraint firstItem="AsV-US-34q" firstAttribute="height" secondItem="jTY-Z0-DfW" secondAttribute="height" id="wz1-0r-KCw"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="cdi-fB-O43"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="jTY-Z0-DfW"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="c1u-xK-xQA"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="c1u-xK-xQA" firstAttribute="bottom" secondItem="ZYd-AR-9sa" secondAttribute="bottom" id="AP9-vr-SVs"/>
+                            <constraint firstItem="c1u-xK-xQA" firstAttribute="trailing" secondItem="ZYd-AR-9sa" secondAttribute="trailing" id="PAz-Qa-VcB"/>
+                            <constraint firstItem="ZYd-AR-9sa" firstAttribute="top" secondItem="c1u-xK-xQA" secondAttribute="top" id="Y5t-Nd-kZu"/>
+                            <constraint firstItem="ZYd-AR-9sa" firstAttribute="leading" secondItem="c1u-xK-xQA" secondAttribute="leading" id="dBy-xQ-xFt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="WXy-jd-PtT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GUt-lH-8my" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-663" y="-1647"/>
+        </scene>
         <!--Favorite Movies-->
         <scene sceneID="Vhi-h1-uG5">
             <objects>
@@ -604,26 +663,29 @@
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="123"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <namedColor name="Alternative Color 1">
-            <color red="0.098039215686274508" green="0.65490196078431373" blue="0.80784313725490198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.097999997437000275" green="0.65499997138977051" blue="0.80800002813339233" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Alternative Color 3">
-            <color red="0.96470588235294119" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.9649999737739563" green="0.94499999284744263" blue="0.94499999284744263" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Alternative Color 4">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Main Color">
-            <color red="0.078431372549019607" green="0.42352941176470588" blue="0.58039215686274503" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.078000001609325409" green="0.42399999499320984" blue="0.57999998331069946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Text Color 1">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Text Color 2">
-            <color white="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color white="0.40000000596046448" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="Text Color 3">
             <color white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

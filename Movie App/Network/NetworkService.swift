@@ -60,6 +60,14 @@ class NetworkService {
         }
     }
     
+    static func getGenres(mainVC: MainPageViewController) {
+        NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getGenres(), dataType: Genres.self) { result in
+            if let genresList = result.genres {
+                mainVC.setGenresList(genres: genresList)
+            }
+        }
+    }
+    
     static func clearRequests() {
         NetworkManager.shared.cancelAllRequests()
     }

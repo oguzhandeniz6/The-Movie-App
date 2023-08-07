@@ -26,6 +26,23 @@ class Utilities {
         }
     }
     
+    static func getRandomNElement<T>(source: [T], numOfElms: Int) -> [T] {
+        if source.count <= numOfElms {
+            return source
+        } else {
+            var sourceCopy = source
+            var returnArray: [T] = []
+            for _ in 0 ..< numOfElms {
+                if let index = sourceCopy.indices.randomElement() {
+                    returnArray.append(source[index])
+                    sourceCopy.remove(at: index)
+                }
+            }
+            
+            return returnArray
+        }
+    }
+    
     static func genresArrayToStr(gen: [Genre]?) -> String{
         guard var safeGen = gen else {
             return ""
