@@ -450,12 +450,12 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="WvT-Kx-nEK">
                                 <rect key="frame" x="0.0" y="94" width="375" height="635"/>
-                                <color key="backgroundColor" name="Main Color"/>
-                                <color key="sectionIndexBackgroundColor" name="Main Color"/>
+                                <color key="backgroundColor" name="Alternative Color 3"/>
+                                <color key="sectionIndexBackgroundColor" name="Alternative Color 3"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUQ-uw-hKJ" userLabel="Search Bar View">
                                 <rect key="frame" x="0.0" y="94" width="375" height="0.0"/>
-                                <color key="backgroundColor" name="Main Color"/>
+                                <color key="backgroundColor" name="Alternative Color 3"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LOj-Ct-uHO"/>
@@ -898,7 +898,7 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Main Color">
-            <color red="0.078000001609325409" green="0.42399999499320984" blue="0.57999998331069946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.078431372549019607" green="0.42352941176470588" blue="0.58039215686274503" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Text Color 1">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
