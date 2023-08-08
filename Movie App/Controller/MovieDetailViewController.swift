@@ -18,7 +18,7 @@ class MovieDetailViewController: UIViewController {
     
     var movieID: Int = 0
     private var cast: [Cast] = []
-    private var recommendations: [Results] = []
+    private var recommendations: [Movie] = []
     private var homepageURL: URL?
     
     
@@ -44,12 +44,16 @@ class MovieDetailViewController: UIViewController {
     
     @IBOutlet weak var castCollectionView: UICollectionView! {
         didSet {
-            prepareCollectionView(collectionView: castCollectionView, cellName: ActorCell.getClassName(), width: ActorCell.actorCellWidth, height: ActorCell.actorCellHeight)
+            castCollectionView.delegate = self
+            castCollectionView.dataSource = self
+            castCollectionView.prepareCollectionView(cellName: ActorCell.getClassName(), width: ActorCell.actorCellWidth, height: ActorCell.actorCellHeight)
         }
     }
     @IBOutlet weak var recommendationsCollectionView: UICollectionView! {
         didSet {
-            prepareCollectionView(collectionView: recommendationsCollectionView, cellName: RecommendationCell.getClassName(), width: RecommendationCell.recommendationCellWidth, height: RecommendationCell.recommendationCellHeight)
+            recommendationsCollectionView.delegate = self
+            recommendationsCollectionView.dataSource = self
+            recommendationsCollectionView.prepareCollectionView(cellName: RecommendationCell.getClassName(), width: RecommendationCell.recommendationCellWidth, height: RecommendationCell.recommendationCellHeight)
         }
     }
     @IBOutlet weak var companiesTableView: UITableView!
@@ -95,19 +99,6 @@ class MovieDetailViewController: UIViewController {
 
 extension MovieDetailViewController {
     
-    func prepareCollectionView(collectionView: UICollectionView, cellName: String, width: CGFloat, height: CGFloat) {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: width, height: height)
-        flowLayout.scrollDirection = .horizontal
-        flowLayout.minimumInteritemSpacing = 0.0
-        
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(cellName: cellName)
-        collectionView.collectionViewLayout = flowLayout
-        
-    }
-    
     func preparePage(movieDetail: MovieDetail) {
         titleLabel.text = movieDetail.title
         taglineLabel.text = movieDetail.tagline
@@ -147,23 +138,10 @@ extension MovieDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
         case self.castCollectionView:
-            
-            if cast.count == 0 {
-                castCollectionView.isHidden = true
-            } else {
-                castCollectionView.isHidden = false
-            }
-            
-            return cast.count
+            return castCollectionView.getNumberOfItems(list: cast)
         case self.recommendationsCollectionView:
+            return recommendationsCollectionView.getNumberOfItems(list: recommendations)
             
-            if recommendations.count == 0 {
-                recommendationsCollectionView.isHidden = true
-            } else {
-                recommendationsCollectionView.isHidden = false
-            }
-            
-            return recommendations.count
         default:
             return 0
         }
@@ -259,7 +237,7 @@ extension MovieDetailViewController {
         self.cast = cast
     }
     
-    func setRecommendations(recommendations: [Results]) {
+    func setRecommendations(recommendations: [Movie]) {
         self.recommendations = recommendations
     }
     

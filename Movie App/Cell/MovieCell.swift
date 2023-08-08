@@ -54,7 +54,7 @@ class MovieCell: UITableViewCell {
 
 extension MovieCell {
     
-    func fillCell(_ movie: Results) {
+    func fillCell(_ movie: Movie) {
         
         self.selectionStyle = .none
         

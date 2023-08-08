@@ -9,4 +9,8 @@
 "searchTabBar" = "Search Movie";
 "popularTabBar" = "Popular Movies";
 "favoriteTabBar" = "Favorite Movies";
+"homepageTabBar" = "Home Page";
 "movieHomepage" = "Movie Homepage";
+
+"nowPlaying" = "Now Playing";
+"upcoming" = "Upcoming";

@@ -9,4 +9,8 @@
 "searchTabBar" = "Film Ara";
 "popularTabBar" = "Popüler Filmler";
 "favoriteTabBar" = "Favori Filmlerim";
+"homepageTabBar" = "Anasayfa";
 "movieHomepage" = "Film Anasayfası";
+
+"nowPlaying" = "Vizyondakiler";
+"upcoming" = "Yakındakiler";

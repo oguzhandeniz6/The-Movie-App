@@ -9,11 +9,11 @@ import Foundation
 
 struct APIResults: Codable {
     let page: Int?
-    let results: [Results]?
+    let results: [Movie]?
     let total_pages: Int?
 }
 
-struct Results: Codable {
+struct Movie: Codable {
     let id: Int?
     let title: String?
     let release_date: String?

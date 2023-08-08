@@ -12,7 +12,7 @@ class PopularMoviesViewController: UIViewController {
     private var currentPage = 1
     private var totalPages = 1
 
-    private var movies: [Results] = []
+    private var movies: [Movie] = []
     
     
     @IBOutlet weak var popularTabBar: UITabBarItem! {
@@ -113,7 +113,7 @@ extension PopularMoviesViewController: UITableViewDelegate {
 
 extension PopularMoviesViewController {
     
-    func appendMovies(newMovies: [Results]) {
+    func appendMovies(newMovies: [Movie]) {
         self.movies += newMovies
     }
     

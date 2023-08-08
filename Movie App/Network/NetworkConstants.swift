@@ -18,6 +18,9 @@ struct NetworkConstants {
     private static let popularEndpoint: String = "/movie/popular"
     private static let searchEndpoint:String = "/search/movie"
     private static let genresEndpoint: String = "/genre/movie/list"
+    private static let discoverEndpoint: String = "/discover/movie"
+    private static let nowplayingEndpoint: String = "/movie/now_playing"
+    private static let upcomingEndpoint: String = "/movie/upcoming"
     
 //    Complex endpoints
     private static let movieEndpoint: String = "/movie/"
@@ -29,6 +32,7 @@ struct NetworkConstants {
     private static let pageAddon: String = "&page="
     private static let queryAddon: String = "&query="
     private static let languageAddon: String = "&language="
+    private static let genresAddon: String = "&with_genres="
     
     
 //MARK: - GET URL Functions
@@ -69,7 +73,19 @@ struct NetworkConstants {
     }
     
     static func getGenres() -> URL {
-        return Utilities.stringToURL("\(baseURL)\(genresEndpoint)\(apiKey)")
+        return Utilities.stringToURL("\(baseURL)\(genresEndpoint)\(apiKey)\(languageAddon)\(Utilities.getLanguage())")
+    }
+    
+    static func getNowPlaying() -> URL {
+        return Utilities.stringToURL("\(baseURL)\(nowplayingEndpoint)\(apiKey)\(languageAddon)\(Utilities.getLanguage())")
+    }
+    
+    static func getUpcoming() -> URL {
+        return Utilities.stringToURL("\(baseURL)\(upcomingEndpoint)\(apiKey)\(languageAddon)\(Utilities.getLanguage())")
+    }
+    
+    static func getDiscover(genreid: Int) -> URL {
+        return Utilities.stringToURL("\(baseURL)\(discoverEndpoint)\(apiKey)\(languageAddon)\(Utilities.getLanguage())\(genresAddon)\(genreid)")
     }
     
 }

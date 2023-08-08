@@ -11,6 +11,9 @@ class RecommendationCell: UICollectionViewCell {
     
     static let recommendationCellWidth: CGFloat = 120.0
     static let recommendationCellHeight: CGFloat = 200.0
+    static let movieCellHeight: CGFloat = 180.0
+    
+    @IBOutlet weak var alignCenterY: NSLayoutConstraint!
     
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!
@@ -24,10 +27,15 @@ class RecommendationCell: UICollectionViewCell {
         return String(describing: RecommendationCell.self)
     }
     
-    func fillCell(_ movie: Results) {
+    func fillCell(_ movie: Movie) {
         movieNameLabel.text = movie.title
         
         posterImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: movie.poster_path ?? "", imageSize: PosterSize.high.rawValue))
+    }
+    
+    func setForHomepage() {
+        self.movieNameLabel.isHidden = true
+        self.alignCenterY.constant = CGFloat.zero
     }
 
 }

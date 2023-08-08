@@ -14,7 +14,7 @@ class SearchViewController: UIViewController {
     private var currentPage = 1
     private var totalPages = 1
 
-    private var movies: [Results] = []
+    private var movies: [Movie] = []
     private var searchKey: String = ""
     
     @IBOutlet weak var searchTableView: UITableView! {
@@ -143,7 +143,7 @@ extension SearchViewController: UISearchResultsUpdating {
 
 extension SearchViewController {
     
-    func appendMovies(newMovies: [Results]) {
+    func appendMovies(newMovies: [Movie]) {
         self.movies += newMovies
     }
     

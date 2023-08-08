@@ -14,4 +14,26 @@ extension UICollectionView {
         self.register(UINib(nibName: cellName, bundle: nil), forCellWithReuseIdentifier: cellName)
     }
     
+    func getNumberOfItems(list: [Any]) -> Int {
+        if list.count == 0 {
+            self.isHidden = true
+        } else {
+            self.isHidden = false
+        }
+        
+        return list.count
+    }
+    
+    func prepareCollectionView(cellName: String, width: CGFloat, height: CGFloat) {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: width, height: height)
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.minimumInteritemSpacing = 0.0
+        
+
+        self.register(cellName: cellName)
+        self.collectionViewLayout = flowLayout
+        
+    }
+    
 }

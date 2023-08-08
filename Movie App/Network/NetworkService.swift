@@ -60,13 +60,62 @@ class NetworkService {
         }
     }
     
+    static func getNowPlayingMovies(mainVC: MainPageViewController) {
+        NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getNowPlaying(), dataType: APIResults.self) { result in
+            if let nowplayingList = result.results {
+                mainVC.setNowPlayingList(movies: nowplayingList)
+                mainVC.nowPlayingCollectionView.reloadData()
+            }
+        }
+    }
+    
+    static func getUpcomingMovies(mainVC: MainPageViewController) {
+        NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getUpcoming(), dataType: APIResults.self) { result in
+            if let upcomingList = result.results {
+                mainVC.setUpcomingList(movies: upcomingList)
+                mainVC.upcomingCollectionView.reloadData()
+            }
+        }
+    }
+    
     static func getGenres(mainVC: MainPageViewController) {
         NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getGenres(), dataType: Genres.self) { result in
             if let genresList = result.genres {
                 mainVC.setGenresList(genres: genresList)
-                mainVC.setChosenGenres(genres: Utilities.getRandomNElement(source: genresList, numOfElms: 3))
+                
+                let randomGenresList = Utilities.getRandomNElement(source: genresList, numOfElms: 3)
+                mainVC.setChosenGenres(genres: randomGenresList)
+                
+                NetworkService.getGenreMovies(mainVC: mainVC, genresList: randomGenresList)
             }
         }
+    }
+    
+    static func getGenreMovies(mainVC: MainPageViewController, genresList: [Genre]) {
+        
+        for i in 0 ..< genresList.count {
+            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getDiscover(genreid: genresList[i].id ?? 0), dataType: APIResults.self) { result in
+                if let genreMovieList = result.results {
+                    switch i {
+                    case 0:
+                        mainVC.genre1Label.text = genresList[i].name ?? ""
+                        mainVC.setGenre1List(movies: genreMovieList)
+                        mainVC.genre1CollectionView.reloadData()
+                    case 1:
+                        mainVC.genre2Label.text = genresList[i].name ?? ""
+                        mainVC.setGenre2List(movies: genreMovieList)
+                        mainVC.genre2CollectionView.reloadData()
+                    case 2:
+                        mainVC.genre3Label.text = genresList[i].name ?? ""
+                        mainVC.setGenre3List(movies: genreMovieList)
+                        mainVC.genre3CollectionView.reloadData()
+                    default:
+                        break
+                    }
+                }
+            }
+        }
+        
     }
     
     static func clearRequests() {

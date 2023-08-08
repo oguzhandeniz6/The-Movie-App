@@ -34,7 +34,7 @@ class Utilities {
             var returnArray: [T] = []
             for _ in 0 ..< numOfElms {
                 if let index = sourceCopy.indices.randomElement() {
-                    returnArray.append(source[index])
+                    returnArray.append(sourceCopy[index])
                     sourceCopy.remove(at: index)
                 }
             }
