@@ -19,12 +19,14 @@ class MovieDetailViewController: UIViewController {
     var movieID: Int = 0
     private var cast: [Cast] = []
     private var recommendations: [Movie] = []
+    private var companies: [ProductionCompany] = []
     private var homepageURL: URL?
     
     
     //    IBOutlets
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var orgTitleLabel: UILabel!
     @IBOutlet weak var taglineLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var genresLabel: UILabel!
@@ -56,7 +58,12 @@ class MovieDetailViewController: UIViewController {
             recommendationsCollectionView.prepareCollectionView(cellName: RecommendationCell.getClassName(), width: RecommendationCell.recommendationCellWidth, height: RecommendationCell.recommendationCellHeight)
         }
     }
-    @IBOutlet weak var companiesTableView: UITableView!
+    @IBOutlet weak var companiesTableView: UITableView! {
+        didSet {
+            companiesTableView.dataSource = self
+            companiesTableView.register(cellName: CompanyTableViewCell.getClassName())
+        }
+    }
     @IBOutlet weak var detailsView: UIView! {
         didSet {
             detailsView.layer.cornerRadius = 30
@@ -101,6 +108,7 @@ extension MovieDetailViewController {
     
     func preparePage(movieDetail: MovieDetail) {
         titleLabel.text = movieDetail.title
+        orgTitleLabel.text = movieDetail.original_title
         taglineLabel.text = movieDetail.tagline
         genresLabel.text = Utilities.genresArrayToStr(gen: movieDetail.genres)
         runtimeLabel.text = "\(movieDetail.runtime ?? 0) min"
@@ -114,6 +122,9 @@ extension MovieDetailViewController {
         if let posterPath = movieDetail.poster_path {
             posterImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath, imageSize: PosterSize.original.rawValue))
         }
+        
+        companies = movieDetail.production_companies ?? []
+        
 //        Favorite System
         
         posterPath = movieDetail.poster_path ?? ""
@@ -127,6 +138,8 @@ extension MovieDetailViewController {
             self.favoriteIcon.image = UIImage(systemName: UIConstants.unfavoriteIcon)
             self.isFavorite = false
         }
+        
+        companiesTableView.reloadData()
         
     }
     
@@ -207,6 +220,27 @@ extension MovieDetailViewController: UICollectionViewDelegate {
         }
         
     }
+    
+}
+
+//MARK: - UITableViewDataSource
+
+extension MovieDetailViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return companies.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let companyCell = tableView.dequeueReusableCell(withIdentifier: CompanyTableViewCell.getClassName(), for: indexPath) as? CompanyTableViewCell else {
+            return CompanyTableViewCell()
+        }
+        
+        let company = companies[indexPath.row]
+        companyCell.fillCell(company)
+        
+        return companyCell
+    }
+    
     
 }
 
