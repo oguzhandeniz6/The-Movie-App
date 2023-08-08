@@ -17,6 +17,8 @@ class SearchViewController: UIViewController {
     private var movies: [Movie] = []
     private var searchKey: String = ""
     
+    private var lastAppended: [Movie] = []
+    
     @IBOutlet weak var searchTableView: UITableView! {
         didSet {
             prepareTableView()
@@ -38,14 +40,17 @@ class SearchViewController: UIViewController {
     
     @objc func loadData() {
 //        Make network call
-        NetworkService.getSearchResults(pageNumber: currentPage, searchKey: self.searchKey.percentEncode(), searchVC: self)
         currentPage += 1
+        
+        NetworkService.getSearchResults(pageNumber: currentPage, searchKey: self.searchKey.percentEncode(), searchVC: self)
         
         searchTableView.reloadData()
         searchTableView.refreshControl?.endRefreshing()
     }
     
     @objc func networkCall() {
+        currentPage = 1
+        
         NetworkService.getSearchResults(pageNumber: currentPage, searchKey: self.searchKey.percentEncode(), searchVC: self)
         
         searchTableView.reloadData()
@@ -124,16 +129,17 @@ extension SearchViewController: UISearchResultsUpdating {
         
         if text == searchKey {
             return
-        }
-        
-        NetworkService.clearRequests()
-        movies = []
-        
-        currentPage = 1
-        
-        searchKey = text
+        } else if text == "" {
+            movies.removeAll()
+            searchTableView.reloadData()
+        } else {
+            NetworkService.clearRequests()
+            movies.removeAll()
+            
+            searchKey = text
 
-        Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(networkCall), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(networkCall), userInfo: nil, repeats: false)
+        }
         
     }
     
@@ -144,7 +150,11 @@ extension SearchViewController: UISearchResultsUpdating {
 extension SearchViewController {
     
     func appendMovies(newMovies: [Movie]) {
+        if self.lastAppended == newMovies {
+            return
+        }
         self.movies += newMovies
+        self.lastAppended = newMovies
     }
     
     func setTotalPages(maxPage: Int) {

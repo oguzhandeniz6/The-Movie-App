@@ -430,10 +430,10 @@
                         <color key="selectedImageTintColor" name="Alternative Color 4"/>
                     </tabBar>
                     <connections>
-                        <segue destination="2y3-gd-5jK" kind="relationship" relationship="viewControllers" id="fcI-DE-v2O"/>
-                        <segue destination="ZaN-l6-orB" kind="relationship" relationship="viewControllers" id="Dof-j3-TLx"/>
-                        <segue destination="hiQ-0h-KDy" kind="relationship" relationship="viewControllers" id="GLM-lf-x2o"/>
-                        <segue destination="81k-Im-R9q" kind="relationship" relationship="viewControllers" id="0lI-gg-Tyc"/>
+                        <segue destination="81k-Im-R9q" kind="relationship" relationship="viewControllers" id="UcG-7Z-4v3"/>
+                        <segue destination="2y3-gd-5jK" kind="relationship" relationship="viewControllers" id="8KZ-Yq-Xoc"/>
+                        <segue destination="ZaN-l6-orB" kind="relationship" relationship="viewControllers" id="ARY-sK-4kT"/>
+                        <segue destination="hiQ-0h-KDy" kind="relationship" relationship="viewControllers" id="YfP-7d-nSs"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rIp-se-o8m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
