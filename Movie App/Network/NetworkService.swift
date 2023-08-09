@@ -60,19 +60,21 @@ class NetworkService {
         }
     }
     
-    static func getNowPlayingMovies(mainVC: MainPageViewController) {
-        NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getNowPlaying(), dataType: APIResults.self) { result in
+    static func getNowPlayingMovies(pageNumber:Int, mainVC: MainPageViewController) {
+        NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getNowPlaying(pageNumber: pageNumber), dataType: APIResults.self) { result in
             if let nowplayingList = result.results {
-                mainVC.setNowPlayingList(movies: nowplayingList)
+                mainVC.appendNowPlayingList(movies: nowplayingList)
+                mainVC.setNpMaxPage(maxPage: result.total_pages ?? 0)
                 mainVC.nowPlayingCollectionView.reloadData()
             }
         }
     }
     
-    static func getUpcomingMovies(mainVC: MainPageViewController) {
-        NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getUpcoming(), dataType: APIResults.self) { result in
+    static func getUpcomingMovies(pageNumber: Int, mainVC: MainPageViewController) {
+        NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getUpcoming(pageNumber: pageNumber), dataType: APIResults.self) { result in
             if let upcomingList = result.results {
-                mainVC.setUpcomingList(movies: upcomingList)
+                mainVC.appendUpcomingList(movies: upcomingList)
+                mainVC.setUpMaxPage(maxPage: result.total_pages ?? 0)
                 mainVC.upcomingCollectionView.reloadData()
             }
         }
@@ -86,36 +88,55 @@ class NetworkService {
                 let randomGenresList = Utilities.getRandomNElement(source: genresList, numOfElms: 3)
                 mainVC.setChosenGenres(genres: randomGenresList)
                 
-                NetworkService.getGenreMovies(mainVC: mainVC, genresList: randomGenresList)
-            }
-        }
-    }
-    
-    static func getGenreMovies(mainVC: MainPageViewController, genresList: [Genre]) {
-        
-        for i in 0 ..< genresList.count {
-            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getDiscover(genreid: genresList[i].id ?? 0), dataType: APIResults.self) { result in
-                if let genreMovieList = result.results {
-                    switch i {
-                    case 0:
-                        mainVC.genre1Label.text = genresList[i].name ?? ""
-                        mainVC.setGenre1List(movies: genreMovieList)
-                        mainVC.genre1CollectionView.reloadData()
-                    case 1:
-                        mainVC.genre2Label.text = genresList[i].name ?? ""
-                        mainVC.setGenre2List(movies: genreMovieList)
-                        mainVC.genre2CollectionView.reloadData()
-                    case 2:
-                        mainVC.genre3Label.text = genresList[i].name ?? ""
-                        mainVC.setGenre3List(movies: genreMovieList)
-                        mainVC.genre3CollectionView.reloadData()
-                    default:
-                        break
+                for i in 0 ..< randomGenresList.count {
+                    NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getDiscover(pageNumber: 1, genreid: randomGenresList[i].id ?? 0), dataType: APIResults.self) { result in
+                        if let genreMovieList = result.results {
+                            switch i {
+                            case 0:
+                                mainVC.genre1Label.text = randomGenresList[i].name ?? ""
+                                mainVC.appendGenre1List(movies: genreMovieList)
+                                mainVC.setG1MaxPage(maxPage: result.total_pages ?? 0)
+                                mainVC.genre1CollectionView.reloadData()
+                            case 1:
+                                mainVC.genre2Label.text = randomGenresList[i].name ?? ""
+                                mainVC.appendGenre2List(movies: genreMovieList)
+                                mainVC.setG2MaxPage(maxPage: result.total_pages ?? 0)
+                                mainVC.genre2CollectionView.reloadData()
+                            case 2:
+                                mainVC.genre3Label.text = randomGenresList[i].name ?? ""
+                                mainVC.appendGenre3List(movies: genreMovieList)
+                                mainVC.setG3MaxPage(maxPage: result.total_pages ?? 0)
+                                mainVC.genre3CollectionView.reloadData()
+                            default:
+                                break
+                            }
+                        }
                     }
                 }
             }
         }
+    }
+    
+    static func getGenreMovies(pageNumber: Int, mainVC: MainPageViewController, genre: Genre) {
         
+        NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getDiscover(pageNumber: pageNumber, genreid: genre.id ?? 0), dataType: APIResults.self) { result in
+            
+            if let genreMovieList = result.results {
+                switch genre {
+                case mainVC.getChosenGenres()[0]:
+                    mainVC.appendGenre1List(movies: genreMovieList)
+                    mainVC.genre1CollectionView.reloadData()
+                case mainVC.getChosenGenres()[1]:
+                    mainVC.appendGenre2List(movies: genreMovieList)
+                    mainVC.genre2CollectionView.reloadData()
+                case mainVC.getChosenGenres()[2]:
+                    mainVC.appendGenre3List(movies: genreMovieList)
+                    mainVC.genre3CollectionView.reloadData()
+                default:
+                    break
+                }
+            }
+        }
     }
     
     static func clearRequests() {

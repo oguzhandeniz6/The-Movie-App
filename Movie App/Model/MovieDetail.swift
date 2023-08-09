@@ -35,6 +35,12 @@ struct Genre: Codable {
     
 }
 
+extension Genre: Equatable {
+    static func == (lhs: Genre, rhs: Genre) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
+
 struct ProductionCompany: Codable {
     
     let id: Int?

@@ -18,6 +18,18 @@ class MainPageViewController: UIViewController {
     private var genre2List: [Movie] = []
     private var genre3List: [Movie] = []
     
+    private var npCurrentPage: Int = 1
+    private var upCurrentPage: Int = 1
+    private var g1CurrentPage: Int = 1
+    private var g2CurrentPage: Int = 1
+    private var g3CurrentPage: Int = 1
+    
+    private var npMaxPage: Int = 1
+    private var upMaxPage: Int = 1
+    private var g1MaxPage: Int = 1
+    private var g2MaxPage: Int = 1
+    private var g3MaxPage: Int = 1
+    
     
     @IBOutlet weak var homepageTabBar: UITabBarItem! {
         didSet {
@@ -86,10 +98,35 @@ class MainPageViewController: UIViewController {
         networkCalls()
     }
     
-    func networkCalls() {
-        NetworkService.getNowPlayingMovies(mainVC: self)
-        NetworkService.getUpcomingMovies(mainVC: self)
-        NetworkService.getGenres(mainVC: self)
+    @objc func networkCalls(mode: Int = -1) {
+        switch mode {
+        case 0:
+            NetworkService.getNowPlayingMovies(pageNumber: npCurrentPage, mainVC: self)
+            npCurrentPage += 1
+        case 1:
+            NetworkService.getUpcomingMovies(pageNumber: upCurrentPage, mainVC: self)
+            upCurrentPage += 1
+        case 2:
+            NetworkService.getGenreMovies(pageNumber: g1CurrentPage, mainVC: self, genre: chosenGenres[0])
+            g1CurrentPage += 1
+        case 3:
+            NetworkService.getGenreMovies(pageNumber: g2CurrentPage, mainVC: self, genre: chosenGenres[1])
+            g2CurrentPage += 1
+        case 4:
+            NetworkService.getGenreMovies(pageNumber: g3CurrentPage, mainVC: self, genre: chosenGenres[2])
+            g3CurrentPage += 1
+        default:
+            NetworkService.getNowPlayingMovies(pageNumber: npCurrentPage, mainVC: self)
+            NetworkService.getUpcomingMovies(pageNumber: upCurrentPage, mainVC: self)
+            NetworkService.getGenres(mainVC: self)
+            
+            npCurrentPage += 1
+            upCurrentPage += 1
+            g1CurrentPage += 1
+            g2CurrentPage += 1
+            g3CurrentPage += 1
+
+        }
     }
 
 }
@@ -157,6 +194,41 @@ extension MainPageViewController: UICollectionViewDataSource {
 
 extension MainPageViewController: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        switch collectionView {
+        case self.nowPlayingCollectionView:
+            if indexPath.row == nowPlayingList.count - 1, npCurrentPage < npMaxPage {
+                networkCalls(mode: 0)
+            }
+
+        case self.upcomingCollectionView:
+            if indexPath.row == upcomingList.count - 1, upCurrentPage < upMaxPage {
+                networkCalls(mode: 1)
+            }
+        
+        case self.genre1CollectionView:
+            if indexPath.row == genre1List.count - 1, g1CurrentPage < g1MaxPage {
+                networkCalls(mode: 2)
+            }
+            
+        case self.genre2CollectionView:
+            if indexPath.row == genre2List.count - 1, g2CurrentPage < g2MaxPage {
+                networkCalls(mode: 3)
+            }
+            
+        case self.genre3CollectionView:
+            if indexPath.row == genre3List.count - 1, g3CurrentPage < g3MaxPage {
+                networkCalls(mode: 4)
+            }
+            
+        default:
+            if indexPath.row == nowPlayingList.count - 1, npCurrentPage < npMaxPage {
+                networkCalls(mode: 0)
+            }
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         guard let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: MovieDetailViewController.self)) as? MovieDetailViewController else {
@@ -197,6 +269,26 @@ extension MainPageViewController {
         return chosenGenres
     }
     
+    func setNpMaxPage(maxPage: Int) {
+        self.npMaxPage = maxPage
+    }
+    
+    func setUpMaxPage(maxPage: Int) {
+        self.upMaxPage = maxPage
+    }
+    
+    func setG1MaxPage(maxPage: Int) {
+        self.g1MaxPage = maxPage
+    }
+    
+    func setG2MaxPage(maxPage: Int) {
+        self.g2MaxPage = maxPage
+    }
+    
+    func setG3MaxPage(maxPage: Int) {
+        self.g3MaxPage = maxPage
+    }
+    
     func setGenresList(genres: [Genre]) {
         self.genresList = genres
     }
@@ -205,23 +297,23 @@ extension MainPageViewController {
         self.chosenGenres = genres
     }
     
-    func setNowPlayingList(movies: [Movie]) {
-        self.nowPlayingList = movies
+    func appendNowPlayingList(movies: [Movie]) {
+        self.nowPlayingList += movies
     }
     
-    func setUpcomingList(movies: [Movie]) {
-        self.upcomingList = movies
+    func appendUpcomingList(movies: [Movie]) {
+        self.upcomingList += movies
     }
     
-    func setGenre1List(movies: [Movie]) {
-        self.genre1List = movies
+    func appendGenre1List(movies: [Movie]) {
+        self.genre1List += movies
     }
     
-    func setGenre2List(movies: [Movie]) {
-        self.genre2List = movies
+    func appendGenre2List(movies: [Movie]) {
+        self.genre2List += movies
     }
     
-    func setGenre3List(movies: [Movie]) {
-        self.genre3List = movies
+    func appendGenre3List(movies: [Movie]) {
+        self.genre3List += movies
     }
 }

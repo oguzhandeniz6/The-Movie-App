@@ -76,16 +76,16 @@ struct NetworkConstants {
         return Utilities.stringToURL("\(baseURL)\(genresEndpoint)\(apiKey)\(languageAddon)\(Utilities.getLanguage())")
     }
     
-    static func getNowPlaying() -> URL {
-        return Utilities.stringToURL("\(baseURL)\(nowplayingEndpoint)\(apiKey)\(languageAddon)\(Utilities.getLanguage())")
+    static func getNowPlaying(pageNumber: Int) -> URL {
+        return Utilities.stringToURL("\(baseURL)\(nowplayingEndpoint)\(apiKey)\(languageAddon)\(Utilities.getLanguage())\(pageAddon)\(pageNumber)")
     }
     
-    static func getUpcoming() -> URL {
-        return Utilities.stringToURL("\(baseURL)\(upcomingEndpoint)\(apiKey)\(languageAddon)\(Utilities.getLanguage())")
+    static func getUpcoming(pageNumber: Int) -> URL {
+        return Utilities.stringToURL("\(baseURL)\(upcomingEndpoint)\(apiKey)\(languageAddon)\(Utilities.getLanguage())\(pageAddon)\(pageNumber)")
     }
     
-    static func getDiscover(genreid: Int) -> URL {
-        return Utilities.stringToURL("\(baseURL)\(discoverEndpoint)\(apiKey)\(languageAddon)\(Utilities.getLanguage())\(genresAddon)\(genreid)")
+    static func getDiscover(pageNumber: Int, genreid: Int) -> URL {
+        return Utilities.stringToURL("\(baseURL)\(discoverEndpoint)\(apiKey)\(languageAddon)\(Utilities.getLanguage())\(genresAddon)\(genreid)\(pageAddon)\(pageNumber)")
     }
     
 }
