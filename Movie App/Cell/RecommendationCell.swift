@@ -6,9 +6,9 @@
 //
 
 import UIKit
-
+// ismini refactor et
 class RecommendationCell: UICollectionViewCell {
-    
+//    gösteren ekrana taşınabilir
     static let recommendationCellWidth: CGFloat = 120.0
     static let recommendationCellHeight: CGFloat = 200.0
     static let movieCellHeight: CGFloat = 180.0

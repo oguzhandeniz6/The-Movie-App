@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class Utilities {
+//    utilities parçala
     
     static func getLanguage() -> String{
         if NSLocale.current.languageCode == "tr" {
@@ -19,6 +20,7 @@ class Utilities {
     }
     
     static func stringToURL(_ str: String) -> URL {
+//        string extension olarak yaz - URLComponents
         if let url = URL(string: str.replacingOccurrences(of: " ", with: "+")) {
             return url
         } else {
@@ -27,6 +29,7 @@ class Utilities {
     }
     
     static func getRandomNElement<T>(source: [T], numOfElms: Int) -> [T] {
+//        collection extension
         if source.count <= numOfElms {
             return source
         } else {

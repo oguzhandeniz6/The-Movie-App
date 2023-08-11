@@ -8,7 +8,7 @@
 import Foundation
 
 class NetworkService {
-    
+//    closure kullanarak viewcontroller ile coupling i azaltılabilir
     static func getPopularMovies(pageNumber: Int, popularVC: PopularMoviesViewController) {
         NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getPopularMoviesURL(pageNumber: pageNumber), dataType: APIResults.self) { result in
             if let fetchedMovies = result.results, let maxPage = result.total_pages {
@@ -32,6 +32,7 @@ class NetworkService {
     
     static func getMovie(movieID: Int, mdetailVC: MovieDetailViewController) {
         NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getMovieURL(movieID: movieID), dataType: MovieDetail.self) { result in
+            print(result.homepage)
             mdetailVC.preparePage(movieDetail: result)
         }
     }

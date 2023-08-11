@@ -17,7 +17,8 @@ class PopularMoviesViewController: UIViewController {
     
     @IBOutlet weak var popularTabBar: UITabBarItem! {
         didSet {
-            popularTabBar.title = "popularTabBar".localizeString(lang: NSLocale.current.languageCode ?? "en")
+//            parametreyi almasına gerek yok
+            popularTabBar.title = "popularTabBar".localizeString()
         }
     }
     
@@ -44,7 +45,7 @@ class PopularMoviesViewController: UIViewController {
     @objc func loadData() {
 //        Make network call
         NetworkService.getPopularMovies(pageNumber: currentPage, popularVC: self)
-        
+//        istekten yanıt gelmesini beklemeden refreshi kapatıyor
         moviesTableView.refreshControl?.endRefreshing()
     }
 

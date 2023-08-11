@@ -39,7 +39,7 @@ class MovieDetailViewController: UIViewController {
     
     @IBOutlet weak var movieHomepage: UIButton! {
         didSet {
-            movieHomepage.titleLabel?.text = "movieHomepage".localizeString(lang: NSLocale.current.languageCode ?? "en")
+            movieHomepage.setTitle("movieHomepage".localizeString(), for: .normal)
         }
     }
     
@@ -89,6 +89,7 @@ class MovieDetailViewController: UIViewController {
     
     @IBAction func homepageButtonPressed(_ sender: UIButton) {
         if let url = homepageURL {
+            print(url)
             UIApplication.shared.open(url)
         }
     }
@@ -118,6 +119,8 @@ extension MovieDetailViewController {
         revenueLabel.setTitle(Utilities.moneyFormatChanger(amount: movieDetail.revenue ?? 0), for: .normal)
         releaseDateLabel.text = Utilities.dateFormatChanger(str: movieDetail.release_date ?? "")
         homepageURL = Utilities.stringToURL(movieDetail.homepage ?? "")
+        print(movieDetail.homepage)
+        print(homepageURL)
         
         if let posterPath = movieDetail.poster_path {
             posterImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath, imageSize: PosterSize.original.rawValue))
@@ -252,6 +255,7 @@ extension MovieDetailViewController: UIGestureRecognizerDelegate {
         
         if isFavorite {
             CoreDataFunctions.deleteMovie(id: self.movieID)
+//            bu 2 liyi düzenle (didset ya da function)
             isFavorite = false
             favoriteIcon.image = UIImage(systemName: UIConstants.unfavoriteIcon)
         } else {

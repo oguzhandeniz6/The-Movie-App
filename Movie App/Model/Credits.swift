@@ -15,7 +15,7 @@ struct Credits: Codable {
 }
 
 struct Cast: Codable {
-    
+//    coding keys ile camelcase e çevir
     let id: Int?
     let original_name: String?
     let character: String?

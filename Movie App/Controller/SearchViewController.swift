@@ -27,7 +27,7 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var searchTabBar: UITabBarItem! {
         didSet {
-            searchTabBar.title = "searchTabBar".localizeString(lang: NSLocale.current.languageCode ?? "en")
+            searchTabBar.title = "searchTabBar".localizeString()
         }
     }
     
@@ -47,7 +47,7 @@ class SearchViewController: UIViewController {
         searchTableView.reloadData()
         searchTableView.refreshControl?.endRefreshing()
     }
-    
+//    load data ve network call nerdeyse aynı, isimlere tekrar bak
     @objc func networkCall() {
         currentPage = 1
         

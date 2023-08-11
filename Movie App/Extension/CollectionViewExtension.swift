@@ -15,6 +15,7 @@ extension UICollectionView {
     }
     
     func getNumberOfItems(list: [Any]) -> Int {
+//        hidden ı başka yere al ya da ismini değiştir
         if list.count == 0 {
             self.isHidden = true
         } else {
@@ -25,6 +26,7 @@ extension UICollectionView {
     }
     
     func prepareCollectionView(cellName: String, width: CGFloat, height: CGFloat) {
+//        scroll direction ve item spacing i parametre olarak al default ver
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: width, height: height)
         flowLayout.scrollDirection = .horizontal

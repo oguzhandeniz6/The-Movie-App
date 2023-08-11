@@ -30,8 +30,9 @@ class MovieCell: UITableViewCell {
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieRatingLabel: UILabel!
     @IBOutlet weak var movieDateLabel: UILabel!
-    
+//    getclassname protocole yazılabilir
     static func getClassName() -> String {
+//        Self.self e bak
         return String(describing: MovieCell.self)
     }
     
@@ -80,8 +81,10 @@ extension MovieCell {
             self.score = movie.vote_average ?? 0.0
         }
     }
-    
+//    nsmanagedobject e gerek yok
     func fillCell(_ movie: NSManagedObject) {
+        
+//        let m = Movie(id: <#T##Int?#>, title: <#T##String?#>, release_date: <#T##String?#>, poster_path: <#T##String?#>, vote_average: <#T##Double?#>)
         
         self.selectionStyle = .none
         

@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 class FavoriteMoviesViewController: UIViewController {
-    
+//    coredataya bağımlı yine
     var movies: [NSManagedObject] = []
     
     @IBOutlet weak var favoriteTableView: UITableView! {
@@ -23,7 +23,7 @@ class FavoriteMoviesViewController: UIViewController {
     
     @IBOutlet weak var favoriteTabBar: UITabBarItem! {
         didSet {
-            favoriteTabBar.title = "favoriteTabBar".localizeString(lang: NSLocale.current.languageCode ?? "en")
+            favoriteTabBar.title = "favoriteTabBar".localizeString()
         }
     }
     

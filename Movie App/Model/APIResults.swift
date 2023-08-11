@@ -19,6 +19,7 @@ struct Movie: Codable {
     let release_date: String?
     let poster_path: String?
     let vote_average: Double?
+    
 }
 
 extension Movie: Equatable {

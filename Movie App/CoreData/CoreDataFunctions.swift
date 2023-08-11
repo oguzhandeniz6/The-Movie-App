@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class CoreDataFunctions {
-    
+//    parametre olarak movie alabilir
     static func saveMovie(id: Int, score: Double, title: String, poster_path: String, releaseDate: String) {
         
         let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
@@ -19,7 +19,7 @@ class CoreDataFunctions {
             return
         }
         let mov = NSManagedObject(entity: entity, insertInto: managedContext)
-//        let mov = MovieEntity(context: managedContext)
+//        let mov = MovieEntity(context: managedContext) // bunu kullanabilirim
         
         mov.setValue(id, forKey: CoreDataConstants.idKeyPath)
         mov.setValue(title, forKey: CoreDataConstants.titleKeyPath)

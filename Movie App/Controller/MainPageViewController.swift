@@ -33,14 +33,14 @@ class MainPageViewController: UIViewController {
     
     @IBOutlet weak var homepageTabBar: UITabBarItem! {
         didSet {
-            homepageTabBar.title = "homepageTabBar".localizeString(lang: NSLocale.current.languageCode ?? "en")
+            homepageTabBar.title = "homepageTabBar".localizeString()
         }
     }
     
     
     @IBOutlet weak var nowPlayingLabel: UILabel! {
         didSet {
-            nowPlayingLabel.text = "nowPlaying".localizeString(lang: NSLocale.current.languageCode ?? "en")
+            nowPlayingLabel.text = "nowPlaying".localizeString()
         }
     }
     @IBOutlet weak var nowPlayingCollectionView: UICollectionView! {
@@ -53,7 +53,7 @@ class MainPageViewController: UIViewController {
     
     @IBOutlet weak var upcomingLabel: UILabel! {
         didSet {
-            upcomingLabel.text = "upcoming".localizeString(lang: NSLocale.current.languageCode ?? "en")
+            upcomingLabel.text = "upcoming".localizeString()
         }
     }
     @IBOutlet weak var upcomingCollectionView: UICollectionView! {
@@ -97,7 +97,7 @@ class MainPageViewController: UIViewController {
         
         networkCalls()
     }
-    
+//    enum kullanımı
     @objc func networkCalls(mode: Int = -1) {
         switch mode {
         case 0:

@@ -11,6 +11,7 @@ import UIKit
 extension UITableView {
     
     func register(cellName: String) {
+//        string yerine cell alınabilir
         self.register(UINib(nibName: cellName, bundle: nil), forCellReuseIdentifier: cellName)
     }
     
