@@ -34,10 +34,10 @@ class CastViewController: UIViewController {
     
     func preparePage(actor: Actor) {
         actorNameLabel.text = actor.name
-        birthdayLabel.text = Utilities.dateFormatChanger(str: actor.birthday ?? "")
+        birthdayLabel.text = FormatChangers.dateFormatChanger(str: actor.birthday ?? "")
         
         if actor.deathday != nil {
-            deathdayLabel.text = Utilities.dateFormatChanger(str: actor.deathday ?? "")
+            deathdayLabel.text = FormatChangers.dateFormatChanger(str: actor.deathday ?? "")
         } else {
             deathdayLabel.text = ""
         }

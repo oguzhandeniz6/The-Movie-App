@@ -48,20 +48,20 @@ class MovieDetailViewController: UIViewController {
         didSet {
             castCollectionView.delegate = self
             castCollectionView.dataSource = self
-            castCollectionView.prepareCollectionView(cellName: ActorCell.getClassName(), width: ActorCell.actorCellWidth, height: ActorCell.actorCellHeight)
+            castCollectionView.prepareCollectionView(cell: ActorCell.self, width: ActorCell.actorCellWidth, height: ActorCell.actorCellHeight)
         }
     }
     @IBOutlet weak var recommendationsCollectionView: UICollectionView! {
         didSet {
             recommendationsCollectionView.delegate = self
             recommendationsCollectionView.dataSource = self
-            recommendationsCollectionView.prepareCollectionView(cellName: RecommendationCell.getClassName(), width: RecommendationCell.recommendationCellWidth, height: RecommendationCell.recommendationCellHeight)
+            recommendationsCollectionView.prepareCollectionView(cell: MoviePosterCell.self, width: MoviePosterCell.recommendationCellWidth, height: MoviePosterCell.recommendationCellHeight)
         }
     }
     @IBOutlet weak var companiesTableView: UITableView! {
         didSet {
             companiesTableView.dataSource = self
-            companiesTableView.register(cellName: CompanyTableViewCell.getClassName())
+            companiesTableView.register(cell: CompanyTableViewCell.self)
         }
     }
     @IBOutlet weak var detailsView: UIView! {
@@ -111,16 +111,14 @@ extension MovieDetailViewController {
         titleLabel.text = movieDetail.title
         orgTitleLabel.text = movieDetail.original_title
         taglineLabel.text = movieDetail.tagline
-        genresLabel.text = Utilities.genresArrayToStr(gen: movieDetail.genres)
+        genresLabel.text = FormatChangers.genresFormatToStr(gen: movieDetail.genres)
         runtimeLabel.text = "\(movieDetail.runtime ?? 0) min"
         scoreLabel.text = String(format: "%.1f" , movieDetail.vote_average ?? 0.0)
         overviewLabel.text = movieDetail.overview
-        budgetLabel.setTitle(Utilities.moneyFormatChanger(amount: movieDetail.budget ?? 0), for: .normal)
-        revenueLabel.setTitle(Utilities.moneyFormatChanger(amount: movieDetail.revenue ?? 0), for: .normal)
-        releaseDateLabel.text = Utilities.dateFormatChanger(str: movieDetail.release_date ?? "")
-        homepageURL = Utilities.stringToURL(movieDetail.homepage ?? "")
-        print(movieDetail.homepage)
-        print(homepageURL)
+        budgetLabel.setTitle(FormatChangers.moneyFormatChanger(amount: movieDetail.budget ?? 0), for: .normal)
+        revenueLabel.setTitle(FormatChangers.moneyFormatChanger(amount: movieDetail.revenue ?? 0), for: .normal)
+        releaseDateLabel.text = FormatChangers.dateFormatChanger(str: movieDetail.release_date ?? "")
+        homepageURL = NetworkConstants.getHomepage(homepage: movieDetail.homepage)
         
         if let posterPath = movieDetail.poster_path {
             posterImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath, imageSize: PosterSize.original.rawValue))
@@ -154,9 +152,9 @@ extension MovieDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
         case self.castCollectionView:
-            return castCollectionView.getNumberOfItems(list: cast)
+            return castCollectionView.updateVisibilityAndGetItemCount(list: cast)
         case self.recommendationsCollectionView:
-            return recommendationsCollectionView.getNumberOfItems(list: recommendations)
+            return recommendationsCollectionView.updateVisibilityAndGetItemCount(list: recommendations)
             
         default:
             return 0
@@ -178,7 +176,7 @@ extension MovieDetailViewController: UICollectionViewDataSource {
             
         case self.recommendationsCollectionView:
             
-            guard let cell = recommendationsCollectionView.dequeueReusableCell(withReuseIdentifier: RecommendationCell.getClassName(), for: indexPath) as? RecommendationCell else {
+            guard let cell = recommendationsCollectionView.dequeueReusableCell(withReuseIdentifier: MoviePosterCell.getClassName(), for: indexPath) as? MoviePosterCell else {
                 return UICollectionViewCell()
             }
             let movie = recommendations[indexPath.row]

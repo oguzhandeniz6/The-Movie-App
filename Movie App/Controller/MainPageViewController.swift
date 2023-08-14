@@ -10,7 +10,6 @@ import UIKit
 class MainPageViewController: UIViewController {
     
     private var genresList: [Genre] = []
-    private var chosenGenres: [Genre] = []
     
     private var nowPlayingList: [Movie] = []
     private var upcomingList: [Movie] = []
@@ -47,7 +46,7 @@ class MainPageViewController: UIViewController {
         didSet {
             nowPlayingCollectionView.delegate = self
             nowPlayingCollectionView.dataSource = self
-            nowPlayingCollectionView.prepareCollectionView(cellName: RecommendationCell.getClassName(), width: RecommendationCell.recommendationCellWidth, height: RecommendationCell.movieCellHeight)
+            nowPlayingCollectionView.prepareCollectionView(cell: MoviePosterCell.self, width: MoviePosterCell.recommendationCellWidth, height: MoviePosterCell.movieCellHeight)
         }
     }
     
@@ -60,7 +59,7 @@ class MainPageViewController: UIViewController {
         didSet {
             upcomingCollectionView.delegate = self
             upcomingCollectionView.dataSource = self
-            upcomingCollectionView.prepareCollectionView(cellName: RecommendationCell.getClassName(), width: RecommendationCell.recommendationCellWidth, height: RecommendationCell.movieCellHeight)
+            upcomingCollectionView.prepareCollectionView(cell: MoviePosterCell.self, width: MoviePosterCell.recommendationCellWidth, height: MoviePosterCell.movieCellHeight)
         }
     }
     
@@ -69,7 +68,7 @@ class MainPageViewController: UIViewController {
         didSet {
             genre1CollectionView.delegate = self
             genre1CollectionView.dataSource = self
-            genre1CollectionView.prepareCollectionView(cellName: RecommendationCell.getClassName(), width: RecommendationCell.recommendationCellWidth, height: RecommendationCell.movieCellHeight)
+            genre1CollectionView.prepareCollectionView(cell: MoviePosterCell.self, width: MoviePosterCell.recommendationCellWidth, height: MoviePosterCell.movieCellHeight)
         }
     }
     
@@ -78,7 +77,7 @@ class MainPageViewController: UIViewController {
         didSet {
             genre2CollectionView.delegate = self
             genre2CollectionView.dataSource = self
-            genre2CollectionView.prepareCollectionView(cellName: RecommendationCell.getClassName(), width: RecommendationCell.recommendationCellWidth, height: RecommendationCell.movieCellHeight)
+            genre2CollectionView.prepareCollectionView(cell: MoviePosterCell.self, width: MoviePosterCell.recommendationCellWidth, height: MoviePosterCell.movieCellHeight)
         }
     }
     
@@ -87,7 +86,7 @@ class MainPageViewController: UIViewController {
         didSet {
             genre3CollectionView.delegate = self
             genre3CollectionView.dataSource = self
-            genre3CollectionView.prepareCollectionView(cellName: RecommendationCell.getClassName(), width: RecommendationCell.recommendationCellWidth, height: RecommendationCell.movieCellHeight)
+            genre3CollectionView.prepareCollectionView(cell: MoviePosterCell.self, width: MoviePosterCell.recommendationCellWidth, height: MoviePosterCell.movieCellHeight)
         }
     }
     
@@ -107,13 +106,13 @@ class MainPageViewController: UIViewController {
             NetworkService.getUpcomingMovies(pageNumber: upCurrentPage, mainVC: self)
             upCurrentPage += 1
         case 2:
-            NetworkService.getGenreMovies(pageNumber: g1CurrentPage, mainVC: self, genre: chosenGenres[0])
+            NetworkService.getGenreMovies(pageNumber: g1CurrentPage, mainVC: self, genre: genresList[0])
             g1CurrentPage += 1
         case 3:
-            NetworkService.getGenreMovies(pageNumber: g2CurrentPage, mainVC: self, genre: chosenGenres[1])
+            NetworkService.getGenreMovies(pageNumber: g2CurrentPage, mainVC: self, genre: genresList[1])
             g2CurrentPage += 1
         case 4:
-            NetworkService.getGenreMovies(pageNumber: g3CurrentPage, mainVC: self, genre: chosenGenres[2])
+            NetworkService.getGenreMovies(pageNumber: g3CurrentPage, mainVC: self, genre: genresList[2])
             g3CurrentPage += 1
         default:
             NetworkService.getNowPlayingMovies(pageNumber: npCurrentPage, mainVC: self)
@@ -138,19 +137,19 @@ extension MainPageViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
         case self.nowPlayingCollectionView:
-            return nowPlayingCollectionView.getNumberOfItems(list: nowPlayingList)
+            return nowPlayingCollectionView.updateVisibilityAndGetItemCount(list: nowPlayingList)
             
         case self.upcomingCollectionView:
-            return upcomingCollectionView.getNumberOfItems(list: upcomingList)
+            return upcomingCollectionView.updateVisibilityAndGetItemCount(list: upcomingList)
             
         case self.genre1CollectionView:
-            return genre1CollectionView.getNumberOfItems(list: genre1List)
+            return genre1CollectionView.updateVisibilityAndGetItemCount(list: genre1List)
             
         case self.genre2CollectionView:
-            return genre2CollectionView.getNumberOfItems(list: genre2List)
+            return genre2CollectionView.updateVisibilityAndGetItemCount(list: genre2List)
             
         case self.genre3CollectionView:
-            return genre3CollectionView.getNumberOfItems(list: genre3List)
+            return genre3CollectionView.updateVisibilityAndGetItemCount(list: genre3List)
             
         default:
             return 0
@@ -159,7 +158,7 @@ extension MainPageViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendationCell.getClassName(), for: indexPath) as? RecommendationCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MoviePosterCell.getClassName(), for: indexPath) as? MoviePosterCell else {
             return UICollectionViewCell()
         }
         
@@ -265,8 +264,8 @@ extension MainPageViewController: UICollectionViewDelegate {
 
 extension MainPageViewController {
     
-    func getChosenGenres() -> [Genre] {
-        return chosenGenres
+    func getGenresList() -> [Genre] {
+        return self.genresList
     }
     
     func setNpMaxPage(maxPage: Int) {
@@ -291,10 +290,6 @@ extension MainPageViewController {
     
     func setGenresList(genres: [Genre]) {
         self.genresList = genres
-    }
-    
-    func setChosenGenres(genres: [Genre]) {
-        self.chosenGenres = genres
     }
     
     func appendNowPlayingList(movies: [Movie]) {

@@ -10,8 +10,8 @@ import UIKit
 
 extension UITableView {
     
-    func register(cellName: String) {
-//        string yerine cell alınabilir
+    func register(cell: UITableViewCell.Type) {
+        let cellName = String(describing: cell.self)
         self.register(UINib(nibName: cellName, bundle: nil), forCellReuseIdentifier: cellName)
     }
     

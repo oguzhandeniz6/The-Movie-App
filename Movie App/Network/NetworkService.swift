@@ -32,7 +32,6 @@ class NetworkService {
     
     static func getMovie(movieID: Int, mdetailVC: MovieDetailViewController) {
         NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getMovieURL(movieID: movieID), dataType: MovieDetail.self) { result in
-            print(result.homepage)
             mdetailVC.preparePage(movieDetail: result)
         }
     }
@@ -83,28 +82,26 @@ class NetworkService {
     
     static func getGenres(mainVC: MainPageViewController) {
         NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getGenres(), dataType: Genres.self) { result in
-            if let genresList = result.genres {
+            if var genresList = result.genres {
+                genresList.getRandomNElement(numOfElms: 3)
                 mainVC.setGenresList(genres: genresList)
                 
-                let randomGenresList = Utilities.getRandomNElement(source: genresList, numOfElms: 3)
-                mainVC.setChosenGenres(genres: randomGenresList)
-                
-                for i in 0 ..< randomGenresList.count {
-                    NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getDiscover(pageNumber: 1, genreid: randomGenresList[i].id ?? 0), dataType: APIResults.self) { result in
+                for i in 0 ..< genresList.count {
+                    NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getDiscover(pageNumber: 1, genreid: genresList[i].id ?? 0), dataType: APIResults.self) { result in
                         if let genreMovieList = result.results {
                             switch i {
                             case 0:
-                                mainVC.genre1Label.text = randomGenresList[i].name ?? ""
+                                mainVC.genre1Label.text = genresList[i].name ?? ""
                                 mainVC.appendGenre1List(movies: genreMovieList)
                                 mainVC.setG1MaxPage(maxPage: result.total_pages ?? 0)
                                 mainVC.genre1CollectionView.reloadData()
                             case 1:
-                                mainVC.genre2Label.text = randomGenresList[i].name ?? ""
+                                mainVC.genre2Label.text = genresList[i].name ?? ""
                                 mainVC.appendGenre2List(movies: genreMovieList)
                                 mainVC.setG2MaxPage(maxPage: result.total_pages ?? 0)
                                 mainVC.genre2CollectionView.reloadData()
                             case 2:
-                                mainVC.genre3Label.text = randomGenresList[i].name ?? ""
+                                mainVC.genre3Label.text = genresList[i].name ?? ""
                                 mainVC.appendGenre3List(movies: genreMovieList)
                                 mainVC.setG3MaxPage(maxPage: result.total_pages ?? 0)
                                 mainVC.genre3CollectionView.reloadData()
@@ -124,13 +121,13 @@ class NetworkService {
             
             if let genreMovieList = result.results {
                 switch genre {
-                case mainVC.getChosenGenres()[0]:
+                case mainVC.getGenresList()[0]:
                     mainVC.appendGenre1List(movies: genreMovieList)
                     mainVC.genre1CollectionView.reloadData()
-                case mainVC.getChosenGenres()[1]:
+                case mainVC.getGenresList()[1]:
                     mainVC.appendGenre2List(movies: genreMovieList)
                     mainVC.genre2CollectionView.reloadData()
-                case mainVC.getChosenGenres()[2]:
+                case mainVC.getGenresList()[2]:
                     mainVC.appendGenre3List(movies: genreMovieList)
                     mainVC.genre3CollectionView.reloadData()
                 default:

@@ -7,7 +7,7 @@
 
 import UIKit
 // ismini refactor et
-class RecommendationCell: UICollectionViewCell {
+class MoviePosterCell: UICollectionViewCell {
 //    gösteren ekrana taşınabilir
     static let recommendationCellWidth: CGFloat = 120.0
     static let recommendationCellHeight: CGFloat = 200.0
@@ -24,7 +24,7 @@ class RecommendationCell: UICollectionViewCell {
     }
     
     static func getClassName() -> String {
-        return String(describing: RecommendationCell.self)
+        return String(describing: Self.self)
     }
     
     func fillCell(_ movie: Movie) {

@@ -57,7 +57,7 @@ extension PopularMoviesViewController {
     func prepareTableView() {
         moviesTableView.dataSource = self
         moviesTableView.delegate = self
-        moviesTableView.register(cellName: MovieCell.getClassName())
+        moviesTableView.register(cell: MovieCell.self)
         
 //        Prepare Pagination
         let refreshControl = UIRefreshControl()

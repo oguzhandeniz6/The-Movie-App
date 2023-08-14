@@ -30,10 +30,9 @@ class MovieCell: UITableViewCell {
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieRatingLabel: UILabel!
     @IBOutlet weak var movieDateLabel: UILabel!
-//    getclassname protocole yazılabilir
+    
     static func getClassName() -> String {
-//        Self.self e bak
-        return String(describing: MovieCell.self)
+        return String(describing: Self.self)
     }
     
     @objc func favoriteIconTapped(tapGestureRecognizer: UITapGestureRecognizer) {
@@ -63,7 +62,7 @@ extension MovieCell {
             
             self.movieTitleLabel.text = title
             self.movieRatingLabel.text = String(format: "%.1f" ,rating)
-            self.movieDateLabel.text = Utilities.dateFormatChanger(str: releaseDate)
+            self.movieDateLabel.text = FormatChangers.dateFormatChanger(str: releaseDate)
             self.movieImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath, imageSize: PosterSize.high.rawValue))
             
 //            Favorite System
@@ -96,7 +95,7 @@ extension MovieCell {
             
             self.movieTitleLabel.text = title
             self.movieRatingLabel.text = String(format: "%.1f" ,rating)
-            self.movieDateLabel.text = Utilities.dateFormatChanger(str: releaseDate)
+            self.movieDateLabel.text = FormatChangers.dateFormatChanger(str: releaseDate)
             self.movieImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath, imageSize: PosterSize.high.rawValue))
             
 //            Favorite System

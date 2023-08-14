@@ -25,8 +25,8 @@ struct NetworkConstants {
 //    Complex endpoints
     private static let movieEndpoint: String = "/movie/"
     private static let personEndpoint: String = "/person/"
-//              credits                  /movie/{movie_id}/credits
-//              recommendations          /movie/{movie_id}/recommendations
+    private static let creditsEndpoint: String = "/credits"
+    private static let recommendationsEndpoint: String = "/recommendations"
     
 //    Add-ons
     private static let pageAddon: String = "&page="
@@ -39,54 +39,58 @@ struct NetworkConstants {
     
 //    GET Popular Movies URL
     static func getPopularMoviesURL(pageNumber num: Int) -> URL {
-//        
-        return Utilities.stringToURL("\(baseURL)\(popularEndpoint)\(apiKey)\(pageAddon)\(num)\(languageAddon)\(Utilities.getLanguage())")
+        return String("\(baseURL)\(popularEndpoint)\(apiKey)\(pageAddon)\(num)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
     }
     
 //    GET Search URL
     static func getSearchURL(searchKey key: String, pageNumber num: Int) -> URL {
-        return Utilities.stringToURL("\(baseURL)\(searchEndpoint)\(apiKey)\(queryAddon)\(key)\(pageAddon)\(num)\(languageAddon)\(Utilities.getLanguage())")
+        return String("\(baseURL)\(searchEndpoint)\(apiKey)\(queryAddon)\(key)\(pageAddon)\(num)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
     }
     
 //    GET Movie URL
     static func getMovieURL(movieID id: Int) -> URL {
-        return Utilities.stringToURL("\(baseURL)\(movieEndpoint)\(id)\(apiKey)\(languageAddon)\(Utilities.getLanguage())")
+        return String("\(baseURL)\(movieEndpoint)\(id)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
     }
     
 //    GET Movie Credits URL
     static func getMovieCreditsURL(movieID id: Int) -> URL {
-        return Utilities.stringToURL("\(baseURL)\(movieEndpoint)\(id)/credits\(apiKey)\(languageAddon)\(Utilities.getLanguage())")
+        return String("\(baseURL)\(movieEndpoint)\(id)\(creditsEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
     }
     
 //    GET Movie Recommendations URL
     static func getMovieRecommendationsURL(movieID id: Int) -> URL {
-        return Utilities.stringToURL("\(baseURL)\(movieEndpoint)\(id)/recommendations\(apiKey)\(languageAddon)\(Utilities.getLanguage())")
+        return String("\(baseURL)\(movieEndpoint)\(id)\(recommendationsEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
     }
     
 //    GET Person Details URL
     static func getPersonDetailsURL(personID id: Int) -> URL {
-        return Utilities.stringToURL("\(baseURL)\(personEndpoint)\(id)\(apiKey)\(languageAddon)\(Utilities.getLanguage())")
+        return String("\(baseURL)\(personEndpoint)\(id)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
     }
     
 //    GET Movie Poster URL
     static func getMovieImageURL(posterPath path: String, imageSize size: String) -> URL {
-        return Utilities.stringToURL("\(imageURL)\(size)\(path)")
+        return String("\(imageURL)\(size)\(path)").toURL()
     }
     
     static func getGenres() -> URL {
-        return Utilities.stringToURL("\(baseURL)\(genresEndpoint)\(apiKey)\(languageAddon)\(Utilities.getLanguage())")
+        return String("\(baseURL)\(genresEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
     }
     
     static func getNowPlaying(pageNumber: Int) -> URL {
-        return Utilities.stringToURL("\(baseURL)\(nowplayingEndpoint)\(apiKey)\(languageAddon)\(Utilities.getLanguage())\(pageAddon)\(pageNumber)")
+        return String("\(baseURL)\(nowplayingEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())\(pageAddon)\(pageNumber)").toURL()
     }
     
     static func getUpcoming(pageNumber: Int) -> URL {
-        return Utilities.stringToURL("\(baseURL)\(upcomingEndpoint)\(apiKey)\(languageAddon)\(Utilities.getLanguage())\(pageAddon)\(pageNumber)")
+        return String("\(baseURL)\(upcomingEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())\(pageAddon)\(pageNumber)").toURL()
     }
     
     static func getDiscover(pageNumber: Int, genreid: Int) -> URL {
-        return Utilities.stringToURL("\(baseURL)\(discoverEndpoint)\(apiKey)\(languageAddon)\(Utilities.getLanguage())\(genresAddon)\(genreid)\(pageAddon)\(pageNumber)")
+        return String("\(baseURL)\(discoverEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())\(genresAddon)\(genreid)\(pageAddon)\(pageNumber)").toURL()
+    }
+    
+    
+    static func getHomepage(homepage: String?) -> URL {
+        return String(homepage ?? "").toURL()
     }
     
 }

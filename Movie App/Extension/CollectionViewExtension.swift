@@ -10,12 +10,12 @@ import UIKit
 
 extension UICollectionView {
     
-    func register(cellName: String) {
+    func register(cell: UICollectionViewCell.Type) {
+        let cellName = String(describing: cell.self)
         self.register(UINib(nibName: cellName, bundle: nil), forCellWithReuseIdentifier: cellName)
     }
     
-    func getNumberOfItems(list: [Any]) -> Int {
-//        hidden ı başka yere al ya da ismini değiştir
+    func updateVisibilityAndGetItemCount(list: [Any]) -> Int {
         if list.count == 0 {
             self.isHidden = true
         } else {
@@ -25,15 +25,14 @@ extension UICollectionView {
         return list.count
     }
     
-    func prepareCollectionView(cellName: String, width: CGFloat, height: CGFloat) {
-//        scroll direction ve item spacing i parametre olarak al default ver
+    func prepareCollectionView(cell: UICollectionViewCell.Type, width: CGFloat, height: CGFloat, scrollDirection: UICollectionView.ScrollDirection = .horizontal, minItemSpacing: CGFloat = 0.0) {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: width, height: height)
-        flowLayout.scrollDirection = .horizontal
-        flowLayout.minimumInteritemSpacing = 0.0
+        flowLayout.scrollDirection = scrollDirection
+        flowLayout.minimumInteritemSpacing = minItemSpacing
         
 
-        self.register(cellName: cellName)
+        self.register(cell: cell)
         self.collectionViewLayout = flowLayout
         
     }

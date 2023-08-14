@@ -22,7 +22,7 @@ class ActorCell: UICollectionViewCell {
     }
     
     static func getClassName() -> String {
-        return String(describing: ActorCell.self)
+        return String(describing: Self.self)
     }
     
     func fillCell(_ actor: Cast) {

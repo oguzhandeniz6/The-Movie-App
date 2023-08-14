@@ -1,52 +1,15 @@
 //
-//  Utilities.swift
+//  FormatChangers.swift
 //  Movie App
 //
-//  Created by oguzhan.deniz on 25.07.2023.
+//  Created by oguzhan.deniz on 14.08.2023.
 //
 
 import Foundation
-import UIKit
 
-class Utilities {
-//    utilities parçala
+class FormatChangers{
     
-    static func getLanguage() -> String{
-        if NSLocale.current.languageCode == "tr" {
-            return "tr-TR"
-        } else {
-            return "en-US"
-        }
-    }
-    
-    static func stringToURL(_ str: String) -> URL {
-//        string extension olarak yaz - URLComponents
-        if let url = URL(string: str.replacingOccurrences(of: " ", with: "+")) {
-            return url
-        } else {
-            return URL(string: "www.google.com")!
-        }
-    }
-    
-    static func getRandomNElement<T>(source: [T], numOfElms: Int) -> [T] {
-//        collection extension
-        if source.count <= numOfElms {
-            return source
-        } else {
-            var sourceCopy = source
-            var returnArray: [T] = []
-            for _ in 0 ..< numOfElms {
-                if let index = sourceCopy.indices.randomElement() {
-                    returnArray.append(sourceCopy[index])
-                    sourceCopy.remove(at: index)
-                }
-            }
-            
-            return returnArray
-        }
-    }
-    
-    static func genresArrayToStr(gen: [Genre]?) -> String{
+    static func genresFormatToStr(gen: [Genre]?) -> String{
         guard var safeGen = gen else {
             return ""
         }
@@ -63,6 +26,7 @@ class Utilities {
             return ""
         }
     }
+
     
     static func dateFormatChanger(str: String) -> String {
         let dateFormatter = DateFormatter()
@@ -106,5 +70,4 @@ class Utilities {
             }
         }
     }
-    
 }

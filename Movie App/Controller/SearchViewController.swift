@@ -65,7 +65,7 @@ extension SearchViewController {
     func prepareTableView() {
         searchTableView.dataSource = self
         searchTableView.delegate = self
-        searchTableView.register(cellName: MovieCell.getClassName())
+        searchTableView.register(cell: MovieCell.self)
         
 //        Prepare Pagination
         let refreshControl = UIRefreshControl()

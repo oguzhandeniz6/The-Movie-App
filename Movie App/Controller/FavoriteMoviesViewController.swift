@@ -16,7 +16,7 @@ class FavoriteMoviesViewController: UIViewController {
         didSet {
             favoriteTableView.dataSource = self
             favoriteTableView.delegate = self
-            favoriteTableView.register(cellName: MovieCell.getClassName())
+            favoriteTableView.register(cell: MovieCell.self)
             favoriteTableView.reloadData()
         }
     }

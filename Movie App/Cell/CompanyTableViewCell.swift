@@ -13,7 +13,7 @@ class CompanyTableViewCell: UITableViewCell {
     @IBOutlet weak var companyOriginLabel: UILabel!
     
     static func getClassName() -> String {
-        return String(describing: CompanyTableViewCell.self)
+        return String(describing: Self.self)
     }
     
     func fillCell(_ company: ProductionCompany) {
