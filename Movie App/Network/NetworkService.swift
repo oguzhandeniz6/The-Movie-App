@@ -8,9 +8,8 @@
 import Foundation
 
 class NetworkService {
-//    closure kullanarak viewcontroller ile coupling i azaltılabilir
     
-    static func getMovieList(callType: NetworkCallType, pageNumber: Int = 0, movieId: Int = -1, genreId: Int = -1, completion: @escaping ([Movie], Int) -> Void) {
+    static func getMovieList(callType: NetworkCallType, pageNumber: Int = 0, movieId: Int = -1, searchKey: String = "", genreId: Int = -1, completion: @escaping ([Movie], Int) -> Void) {
         
         switch callType {
             
@@ -22,7 +21,11 @@ class NetworkService {
             }
             
         case .searchMovies:
-            print("b")
+            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getSearchURL(searchKey: searchKey, pageNumber: pageNumber), dataType: APIResults.self) { result in
+                if let fetchedMovies = result.results, let maxPage = result.total_pages {
+                    completion(fetchedMovies, maxPage)
+                }
+            }
             
         case .recommendationMovies:
             NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getMovieRecommendationsURL(movieID: movieId), dataType: APIResults.self) { result in
@@ -51,20 +54,9 @@ class NetworkService {
                     completion(genreList, maxPage)
                 }
             }
-
             
         default:
             break
-        }
-    }
-    
-    static func getSearchResults(pageNumber: Int, searchKey: String,searchVC: SearchViewController) {
-        NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getSearchURL(searchKey: searchKey, pageNumber: pageNumber), dataType: APIResults.self) { result in
-            if let fetchedMovies = result.results, let maxPage = result.total_pages {
-                searchVC.appendMovies(newMovies: fetchedMovies)
-                searchVC.setTotalPages(maxPage: maxPage)
-                searchVC.searchTableView.reloadData()
-            }
         }
     }
     

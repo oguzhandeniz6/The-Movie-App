@@ -39,21 +39,11 @@ class SearchViewController: UIViewController {
     }
     
     @objc func loadData() {
-//        Make network call
-        currentPage += 1
+//        Make a network call
         
-        NetworkService.getSearchResults(pageNumber: currentPage, searchKey: self.searchKey.percentEncode(), searchVC: self)
-        
-        searchTableView.reloadData()
-        searchTableView.refreshControl?.endRefreshing()
-    }
-//    load data ve network call nerdeyse aynı, isimlere tekrar bak
-    @objc func networkCall() {
-        currentPage = 1
-        
-        NetworkService.getSearchResults(pageNumber: currentPage, searchKey: self.searchKey.percentEncode(), searchVC: self)
-        
-        searchTableView.reloadData()
+        NetworkService.getMovieList(callType: .searchMovies, pageNumber: currentPage, searchKey: self.searchKey.percentEncode()) { searchList, maxPage in
+            self.searchNetworkHandle(searchList: searchList, maxPage: maxPage)
+        }
     }
 
 }
@@ -129,16 +119,13 @@ extension SearchViewController: UISearchResultsUpdating {
         
         if text == searchKey {
             return
-        } else if text == "" {
-            movies.removeAll()
-            searchTableView.reloadData()
         } else {
             NetworkService.clearRequests()
-            movies.removeAll()
+            resetTable()
             
             searchKey = text
 
-            Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(networkCall), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(loadData), userInfo: nil, repeats: false)
         }
         
     }
@@ -148,6 +135,12 @@ extension SearchViewController: UISearchResultsUpdating {
 //MARK: - SearchViewController Extension
 
 extension SearchViewController {
+    
+    func resetTable() {
+        self.movies.removeAll()
+        self.currentPage = 1
+        searchTableView.reloadData()
+    }
     
     func appendMovies(newMovies: [Movie]) {
         if self.lastAppended == newMovies {
@@ -167,6 +160,14 @@ extension SearchViewController {
     
     func incrementCurrentPage() {
         self.currentPage += 1
+    }
+    
+    func searchNetworkHandle(searchList: [Movie], maxPage: Int) {
+        self.setTotalPages(maxPage: maxPage)
+        self.appendMovies(newMovies: searchList)
+        self.incrementCurrentPage()
+        self.searchTableView.reloadData()
+        self.searchTableView.refreshControl?.endRefreshing()
     }
     
 }
