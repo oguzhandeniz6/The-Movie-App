@@ -24,16 +24,22 @@ class NetworkService {
         case .searchMovies:
             print("b")
             
+        case .nowPlaying:
+            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getNowPlaying(pageNumber: pageNumber), dataType: APIResults.self) { result in
+                if let nowplayingList = result.results, let maxPage = result.total_pages {
+                    completion(nowplayingList, maxPage)
+                }
+            }
+            
+        case .upcoming:
+            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getUpcoming(pageNumber: pageNumber), dataType: APIResults.self) { result in
+                if let upcomingList = result.results, let maxPage = result.total_pages {
+                    completion(upcomingList, maxPage)
+                }
+            }
+            
         default:
             break
-        }
-    }
-    
-    static func getPopularMovies(pageNumber: Int, completion: @escaping ([Movie], Int) -> Void) {
-        NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getPopularMoviesURL(pageNumber: pageNumber), dataType: APIResults.self) { result in
-            if let fetchedMovies = result.results, let maxPage = result.total_pages {
-                completion(fetchedMovies, maxPage)
-            }
         }
     }
     
@@ -74,26 +80,6 @@ class NetworkService {
     static func getActorDetails(actorID: Int, castVC: CastViewController) {
         NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getPersonDetailsURL(personID: actorID), dataType: Actor.self) { result in
             castVC.preparePage(actor: result)
-        }
-    }
-    
-    static func getNowPlayingMovies(pageNumber:Int, mainVC: MainPageViewController) {
-        NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getNowPlaying(pageNumber: pageNumber), dataType: APIResults.self) { result in
-            if let nowplayingList = result.results {
-                mainVC.appendNowPlayingList(movies: nowplayingList)
-                mainVC.setNpMaxPage(maxPage: result.total_pages ?? 0)
-                mainVC.nowPlayingCollectionView.reloadData()
-            }
-        }
-    }
-    
-    static func getUpcomingMovies(pageNumber: Int, mainVC: MainPageViewController) {
-        NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getUpcoming(pageNumber: pageNumber), dataType: APIResults.self) { result in
-            if let upcomingList = result.results {
-                mainVC.appendUpcomingList(movies: upcomingList)
-                mainVC.setUpMaxPage(maxPage: result.total_pages ?? 0)
-                mainVC.upcomingCollectionView.reloadData()
-            }
         }
     }
     

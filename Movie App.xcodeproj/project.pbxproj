@@ -42,6 +42,7 @@
 		FBA210C62A7B9E3300634D5E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBA210C82A7B9E3300634D5E /* Localizable.strings */; };
 		FBA210CB2A7BA17700634D5E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA210CA2A7BA17700634D5E /* StringExtension.swift */; };
 		FBA4D4402A8B925F00246BF3 /* NetworkCallType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA4D43F2A8B925F00246BF3 /* NetworkCallType.swift */; };
+		FBA4D4422A8B99F300246BF3 /* MainPageViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA4D4412A8B99F300246BF3 /* MainPageViewControllerExtension.swift */; };
 		FBB4F3F52A6FC48A001EF7EE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB4F3F42A6FC48A001EF7EE /* SearchViewController.swift */; };
 		FBB4F3F82A6FEB32001EF7EE /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB4F3F72A6FEB32001EF7EE /* TableViewExtension.swift */; };
 		FBC3875F2A73E26F00179216 /* CastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC3875E2A73E26F00179216 /* CastViewController.swift */; };
@@ -93,6 +94,7 @@
 		FBA210C92A7B9E3700634D5E /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBA210CA2A7BA17700634D5E /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		FBA4D43F2A8B925F00246BF3 /* NetworkCallType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCallType.swift; sourceTree = "<group>"; };
+		FBA4D4412A8B99F300246BF3 /* MainPageViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewControllerExtension.swift; sourceTree = "<group>"; };
 		FBB4F3F42A6FC48A001EF7EE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		FBB4F3F72A6FEB32001EF7EE /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 		FBC3875E2A73E26F00179216 /* CastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastViewController.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				FB7D58CA2A77C5B9001B00F9 /* CollectionViewExtension.swift */,
 				FBA210CA2A7BA17700634D5E /* StringExtension.swift */,
 				FB8EC8FB2A8A47E40099E947 /* ArrayExtension.swift */,
+				FBA4D4412A8B99F300246BF3 /* MainPageViewControllerExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				FB7D58C02A779794001B00F9 /* NetworkService.swift in Sources */,
 				FBC387612A73E42500179216 /* Actor.swift in Sources */,
 				FB9B86952A70F67B003C24A8 /* MovieDetail.swift in Sources */,
+				FBA4D4422A8B99F300246BF3 /* MainPageViewControllerExtension.swift in Sources */,
 				FBC72C202A7A33C300A6B09B /* MovieEntity+CoreDataClass.swift in Sources */,
 				FB6B970F2A78EC2F0093798D /* CoreDataConstants.swift in Sources */,
 			);
