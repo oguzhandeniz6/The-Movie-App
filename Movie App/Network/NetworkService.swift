@@ -83,52 +83,16 @@ class NetworkService {
         }
     }
     
-    static func getRecommendations(movieID: Int, mdetailVC: MovieDetailViewController) {
-        NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getMovieRecommendationsURL(movieID: movieID), dataType: APIResults.self) { result in
-            if let fetchedMovies = result.results {
-                mdetailVC.setRecommendations(recommendations: fetchedMovies)
-                mdetailVC.recommendationsCollectionView.reloadData()
-            }
-        }
-    }
-    
     static func getActorDetails(actorID: Int, castVC: CastViewController) {
         NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getPersonDetailsURL(personID: actorID), dataType: Actor.self) { result in
             castVC.preparePage(actor: result)
         }
     }
     
-    static func getGenres(mainVC: MainPageViewController) {
+    static func selectGenres(completion: @escaping ([Genre]) -> Void) {
         NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getGenres(), dataType: Genres.self) { result in
-            if var genresList = result.genres {
-                genresList.getRandomNElement(numOfElms: 3)
-                mainVC.setGenresList(genres: genresList)
-                
-                for i in 0 ..< genresList.count {
-                    NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getDiscover(pageNumber: 1, genreid: genresList[i].id ?? 0), dataType: APIResults.self) { result in
-                        if let genreMovieList = result.results {
-                            switch i {
-                            case 0:
-                                mainVC.genre1Label.text = genresList[i].name ?? ""
-                                mainVC.appendGenre1List(movies: genreMovieList)
-                                mainVC.setG1MaxPage(maxPage: result.total_pages ?? 0)
-                                mainVC.genre1CollectionView.reloadData()
-                            case 1:
-                                mainVC.genre2Label.text = genresList[i].name ?? ""
-                                mainVC.appendGenre2List(movies: genreMovieList)
-                                mainVC.setG2MaxPage(maxPage: result.total_pages ?? 0)
-                                mainVC.genre2CollectionView.reloadData()
-                            case 2:
-                                mainVC.genre3Label.text = genresList[i].name ?? ""
-                                mainVC.appendGenre3List(movies: genreMovieList)
-                                mainVC.setG3MaxPage(maxPage: result.total_pages ?? 0)
-                                mainVC.genre3CollectionView.reloadData()
-                            default:
-                                break
-                            }
-                        }
-                    }
-                }
+            if let genresList = result.genres {
+                completion(genresList)
             }
         }
     }

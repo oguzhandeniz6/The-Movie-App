@@ -290,6 +290,7 @@ extension MovieDetailViewController {
     
     func recommendationsNetworkHandle(recommendations: [Movie]) {
         self.setRecommendations(recommendations: recommendations)
-        self.recommendationsCollectionView.reloadData()    }
+        self.recommendationsCollectionView.reloadData()
+    }
     
 }

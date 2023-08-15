@@ -11,6 +11,21 @@ import Foundation
 
 extension MainPageViewController {
     
+    func selectGenresHandle(genresList: [Genre]) {
+        var selectedGenres = genresList
+        selectedGenres.getRandomNElement(numOfElms: 3)
+        self.setGenresList(genres: selectedGenres)
+        
+        self.setG1LabelText(text: selectedGenres[0].name ?? "")
+        self.incrementG1Current()
+        
+        self.setG2LabelText(text: selectedGenres[1].name ?? "")
+        self.incrementG2Current()
+        
+        self.setG3LabelText(text: selectedGenres[2].name ?? "")
+        self.incrementG3Current()
+    }
+    
     func nowPlayingNetworkHandle(npList: [Movie], maxPage: Int) {
         self.setNpMaxPage(maxPage: maxPage)
         self.appendNowPlayingList(movies: npList)

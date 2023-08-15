@@ -117,17 +117,17 @@ class MainPageViewController: UIViewController {
                 self.genre1NetworkHandle(g1List: g1List, maxPage: maxPage)
             }
         case .genre2:
-            NetworkService.getMovieList(callType: callType, pageNumber: g1CurrentPage, genreId: genresList[1].id ?? 0) { g2List, maxPage in
+            NetworkService.getMovieList(callType: callType, pageNumber: g2CurrentPage, genreId: genresList[1].id ?? 0) { g2List, maxPage in
                 
                 self.genre2NetworkHandle(g2List: g2List, maxPage: maxPage)
             }
         case .genre3:
-            NetworkService.getMovieList(callType: callType, pageNumber: g1CurrentPage, genreId: genresList[2].id ?? 0) { g3List, maxPage in
+            NetworkService.getMovieList(callType: callType, pageNumber: g3CurrentPage, genreId: genresList[2].id ?? 0) { g3List, maxPage in
                 
                 self.genre3NetworkHandle(g3List: g3List, maxPage: maxPage)
             }
-        default:
             
+        case .all:
             NetworkService.getMovieList(callType: .nowPlaying, pageNumber: npCurrentPage) { npList, maxPage in
                 self.nowPlayingNetworkHandle(npList: npList, maxPage: maxPage)
             }
@@ -136,14 +136,27 @@ class MainPageViewController: UIViewController {
                 self.upcomingNetworkHandle(upList: upList, maxPage: maxPage)
             }
             
-            NetworkService.getGenres(mainVC: self)
-            
-            npCurrentPage += 1
-            upCurrentPage += 1
-            g1CurrentPage += 1
-            g2CurrentPage += 1
-            g3CurrentPage += 1
+            NetworkService.selectGenres { allGenres in
+                self.selectGenresHandle(genresList: allGenres)
 
+                NetworkService.getMovieList(callType: .genre1, pageNumber: self.g1CurrentPage, genreId: self.genresList[0].id ?? 0) { g1List, maxPage in
+                    
+                    self.genre1NetworkHandle(g1List: g1List, maxPage: maxPage)
+                }
+                
+                NetworkService.getMovieList(callType: .genre2, pageNumber: self.g2CurrentPage, genreId: self.genresList[1].id ?? 0) { g2List, maxPage in
+                    
+                    self.genre2NetworkHandle(g2List: g2List, maxPage: maxPage)
+                }
+                
+                NetworkService.getMovieList(callType: .genre3, pageNumber: self.g3CurrentPage, genreId: self.genresList[2].id ?? 0) { g3List, maxPage in
+                    
+                    self.genre3NetworkHandle(g3List: g3List, maxPage: maxPage)
+                }
+            }
+            
+        default:
+            break
         }
     }
 
@@ -288,6 +301,18 @@ extension MainPageViewController {
     }
     
 //    Setters
+    
+    func setG1LabelText(text: String) {
+        self.genre1Label.text = text
+    }
+    
+    func setG2LabelText(text: String) {
+        self.genre2Label.text = text
+    }
+    
+    func setG3LabelText(text: String) {
+        self.genre3Label.text = text
+    }
     
     func setNpMaxPage(maxPage: Int) {
         self.npMaxPage = maxPage
