@@ -10,7 +10,7 @@ import Foundation
 class NetworkService {
 //    closure kullanarak viewcontroller ile coupling i azaltılabilir
     
-    static func getMovieList(callType: NetworkCallType, pageNumber: Int, completion: @escaping ([Movie], Int) -> Void) {
+    static func getMovieList(callType: NetworkCallType, pageNumber: Int = 0, movieId: Int = -1, genreId: Int = -1, completion: @escaping ([Movie], Int) -> Void) {
         
         switch callType {
             
@@ -23,6 +23,13 @@ class NetworkService {
             
         case .searchMovies:
             print("b")
+            
+        case .recommendationMovies:
+            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getMovieRecommendationsURL(movieID: movieId), dataType: APIResults.self) { result in
+                if let fetchedMovies = result.results {
+                    completion(fetchedMovies, pageNumber)
+                }
+            }
             
         case .nowPlaying:
             NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getNowPlaying(pageNumber: pageNumber), dataType: APIResults.self) { result in
@@ -37,6 +44,14 @@ class NetworkService {
                     completion(upcomingList, maxPage)
                 }
             }
+            
+        case .genre1, .genre2, .genre3:
+            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getDiscover(pageNumber: pageNumber, genreid: genreId), dataType: APIResults.self) { result in
+                if let genreList = result.results, let maxPage = result.total_pages {
+                    completion(genreList, maxPage)
+                }
+            }
+
             
         default:
             break
@@ -113,28 +128,6 @@ class NetworkService {
                             }
                         }
                     }
-                }
-            }
-        }
-    }
-    
-    static func getGenreMovies(pageNumber: Int, mainVC: MainPageViewController, genre: Genre) {
-        
-        NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getDiscover(pageNumber: pageNumber, genreid: genre.id ?? 0), dataType: APIResults.self) { result in
-            
-            if let genreMovieList = result.results {
-                switch genre {
-                case mainVC.getGenresList()[0]:
-                    mainVC.appendGenre1List(movies: genreMovieList)
-                    mainVC.genre1CollectionView.reloadData()
-                case mainVC.getGenresList()[1]:
-                    mainVC.appendGenre2List(movies: genreMovieList)
-                    mainVC.genre2CollectionView.reloadData()
-                case mainVC.getGenresList()[2]:
-                    mainVC.appendGenre3List(movies: genreMovieList)
-                    mainVC.genre3CollectionView.reloadData()
-                default:
-                    break
                 }
             }
         }

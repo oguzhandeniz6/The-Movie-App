@@ -44,8 +44,8 @@ class PopularMoviesViewController: UIViewController {
     @objc func loadData() {
 //        Make a network call
         NetworkService.getMovieList(callType: .popularMovies, pageNumber: currentPage) { movieList, maxPage in
-            self.appendMovies(newMovies: movieList)
             self.setTotalPages(maxPage: maxPage)
+            self.appendMovies(newMovies: movieList)
             self.incrementCurrentPage()
             self.moviesTableView.reloadData()
             self.moviesTableView.refreshControl?.endRefreshing()

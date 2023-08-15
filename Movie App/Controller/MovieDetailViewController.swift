@@ -10,7 +10,15 @@ import Kingfisher
 
 class MovieDetailViewController: UIViewController {
     
-    private var isFavorite: Bool = false
+    private var isFavorite: Bool = false {
+        didSet {
+            if isFavorite {
+                favoriteIcon.image = UIImage(systemName: UIConstants.favoriteIcon)
+            } else {
+                favoriteIcon.image = UIImage(systemName: UIConstants.unfavoriteIcon)
+            }
+        }
+    }
     
     private var posterPath: String = ""
     private var releaseDate: String = ""
@@ -84,7 +92,7 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        networkCalls()
+        loadData()
     }
     
     @IBAction func homepageButtonPressed(_ sender: UIButton) {
@@ -94,10 +102,13 @@ class MovieDetailViewController: UIViewController {
         }
     }
     
-    func networkCalls() {
+    func loadData() {
         NetworkService.getMovie(movieID: movieID, mdetailVC: self)
         NetworkService.getCast(movieID: movieID, mdetailVC: self)
-        NetworkService.getRecommendations(movieID: movieID, mdetailVC: self)
+        
+        NetworkService.getMovieList(callType: .recommendationMovies, movieId: movieID) { recommendationList, _ in
+            self.recommendationsNetworkHandle(recommendations: recommendationList)
+        }
     }
     
     
@@ -133,10 +144,8 @@ extension MovieDetailViewController {
         score = movieDetail.vote_average ?? 0.0
         
         if CoreDataFunctions.checkMovie(id: movieID) {
-            self.favoriteIcon.image = UIImage(systemName: UIConstants.favoriteIcon)
             self.isFavorite = true
         } else {
-            self.favoriteIcon.image = UIImage(systemName: UIConstants.unfavoriteIcon)
             self.isFavorite = false
         }
         
@@ -253,13 +262,11 @@ extension MovieDetailViewController: UIGestureRecognizerDelegate {
         
         if isFavorite {
             CoreDataFunctions.deleteMovie(id: self.movieID)
-//            bu 2 liyi düzenle (didset ya da function)
             isFavorite = false
-            favoriteIcon.image = UIImage(systemName: UIConstants.unfavoriteIcon)
+
         } else {
             CoreDataFunctions.saveMovie(id: self.movieID, score: self.score, title: self.titleLabel.text ?? "", poster_path: self.posterPath, releaseDate: self.releaseDate)
             isFavorite = true
-            favoriteIcon.image = UIImage(systemName: UIConstants.favoriteIcon)
         }
     }
 }
@@ -269,6 +276,8 @@ extension MovieDetailViewController: UIGestureRecognizerDelegate {
 
 extension MovieDetailViewController {
     
+//    Setters
+    
     func setCast(cast: [Cast]) {
         self.cast = cast
     }
@@ -276,5 +285,11 @@ extension MovieDetailViewController {
     func setRecommendations(recommendations: [Movie]) {
         self.recommendations = recommendations
     }
+    
+//    Network Handlers
+    
+    func recommendationsNetworkHandle(recommendations: [Movie]) {
+        self.setRecommendations(recommendations: recommendations)
+        self.recommendationsCollectionView.reloadData()    }
     
 }

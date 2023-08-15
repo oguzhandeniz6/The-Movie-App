@@ -11,6 +11,7 @@ import Foundation
     
     case popularMovies
     case searchMovies
+    case recommendationMovies
     case nowPlaying
     case upcoming
     case genre1

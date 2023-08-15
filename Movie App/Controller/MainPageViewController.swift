@@ -98,7 +98,9 @@ class MainPageViewController: UIViewController {
     }
     
     @objc func loadData(callType: NetworkCallType = .all) {
+        
         switch callType {
+            
         case .nowPlaying:
             NetworkService.getMovieList(callType: callType, pageNumber: npCurrentPage) { npList, maxPage in
                 
@@ -110,14 +112,20 @@ class MainPageViewController: UIViewController {
                 self.upcomingNetworkHandle(upList: upList, maxPage: maxPage)
             }
         case .genre1:
-            NetworkService.getGenreMovies(pageNumber: g1CurrentPage, mainVC: self, genre: genresList[0])
-            g1CurrentPage += 1
+            NetworkService.getMovieList(callType: callType, pageNumber: g1CurrentPage, genreId: genresList[0].id ?? 0) { g1List, maxPage in
+                
+                self.genre1NetworkHandle(g1List: g1List, maxPage: maxPage)
+            }
         case .genre2:
-            NetworkService.getGenreMovies(pageNumber: g2CurrentPage, mainVC: self, genre: genresList[1])
-            g2CurrentPage += 1
+            NetworkService.getMovieList(callType: callType, pageNumber: g1CurrentPage, genreId: genresList[1].id ?? 0) { g2List, maxPage in
+                
+                self.genre2NetworkHandle(g2List: g2List, maxPage: maxPage)
+            }
         case .genre3:
-            NetworkService.getGenreMovies(pageNumber: g3CurrentPage, mainVC: self, genre: genresList[2])
-            g3CurrentPage += 1
+            NetworkService.getMovieList(callType: callType, pageNumber: g1CurrentPage, genreId: genresList[2].id ?? 0) { g3List, maxPage in
+                
+                self.genre3NetworkHandle(g3List: g3List, maxPage: maxPage)
+            }
         default:
             
             NetworkService.getMovieList(callType: .nowPlaying, pageNumber: npCurrentPage) { npList, maxPage in
