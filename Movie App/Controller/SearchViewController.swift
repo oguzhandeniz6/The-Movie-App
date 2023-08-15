@@ -154,10 +154,6 @@ extension SearchViewController {
         self.totalPages = maxPage
     }
     
-    func setCurrrentPage(currPage: Int) {
-        self.currentPage = currPage
-    }
-    
     func incrementCurrentPage() {
         self.currentPage += 1
     }

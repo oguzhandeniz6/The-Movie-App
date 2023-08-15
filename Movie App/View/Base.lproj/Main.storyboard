@@ -734,6 +734,7 @@
                         <outlet property="budgetLabel" destination="fNv-gq-qsa" id="GF3-2H-GMa"/>
                         <outlet property="castCollectionView" destination="2XW-bF-uu7" id="cpb-4U-cjQ"/>
                         <outlet property="companiesTableView" destination="crd-iu-WFf" id="Ahf-mD-v9a"/>
+                        <outlet property="companiesTableViewHeightConstraint" destination="EZM-SS-Qjc" id="mta-gX-HcZ"/>
                         <outlet property="detailsView" destination="wu7-8U-Xjf" id="d98-F1-vuU"/>
                         <outlet property="favoriteIcon" destination="ETg-tU-qgO" id="REo-Df-AAe"/>
                         <outlet property="genresLabel" destination="dqH-bV-AMl" id="KvO-vp-Vtx"/>

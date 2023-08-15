@@ -10,7 +10,6 @@ import Foundation
 extension String {
     
     func toURL() -> URL {
-//        string extension olarak yaz - URLComponents
         if let url = URL(string: self.replacingOccurrences(of: " ", with: "+")) {
             return url
         } else {

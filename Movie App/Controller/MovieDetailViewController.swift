@@ -87,6 +87,8 @@ class MovieDetailViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var companiesTableViewHeightConstraint: NSLayoutConstraint!
+    
     
     
     override func viewDidLoad() {
@@ -243,6 +245,7 @@ extension MovieDetailViewController: UICollectionViewDelegate {
 
 extension MovieDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        companiesTableViewHeightConstraint.constant = CompanyTableViewCell.companyCellHeight * CGFloat(companies.count)
         return companies.count
     }
     

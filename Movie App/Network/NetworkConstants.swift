@@ -72,23 +72,28 @@ struct NetworkConstants {
         return String("\(imageURL)\(size)\(path)").toURL()
     }
     
+//    GET All Genres URL
     static func getGenres() -> URL {
         return String("\(baseURL)\(genresEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
     }
     
+//    GET Now Playing Movies URL
     static func getNowPlaying(pageNumber: Int) -> URL {
         return String("\(baseURL)\(nowplayingEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())\(pageAddon)\(pageNumber)").toURL()
     }
     
+//    GET Upcoming Movies URL
     static func getUpcoming(pageNumber: Int) -> URL {
         return String("\(baseURL)\(upcomingEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())\(pageAddon)\(pageNumber)").toURL()
     }
     
+//    GET Movies with Genre URL
     static func getDiscover(pageNumber: Int, genreid: Int) -> URL {
         return String("\(baseURL)\(discoverEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())\(genresAddon)\(genreid)\(pageAddon)\(pageNumber)").toURL()
     }
     
     
+//    GET Movie Homepage URL
     static func getHomepage(homepage: String?) -> URL {
         return String(homepage ?? "").toURL()
     }

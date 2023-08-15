@@ -9,6 +9,8 @@ import UIKit
 
 class CompanyTableViewCell: UITableViewCell {
     
+    static let companyCellHeight: CGFloat = 20.0
+    
     @IBOutlet weak var companyNameLabel: UILabel!
     @IBOutlet weak var companyOriginLabel: UILabel!
     
