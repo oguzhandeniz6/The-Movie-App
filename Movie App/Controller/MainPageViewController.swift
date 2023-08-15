@@ -32,14 +32,14 @@ class MainPageViewController: UIViewController {
     
     @IBOutlet weak var homepageTabBar: UITabBarItem! {
         didSet {
-            homepageTabBar.title = "homepageTabBar".localizeString()
+            homepageTabBar.title = LocalizationHelper.homepageTabBarName.localizeString()
         }
     }
     
     
     @IBOutlet weak var nowPlayingLabel: UILabel! {
         didSet {
-            nowPlayingLabel.text = "nowPlaying".localizeString()
+            nowPlayingLabel.text = LocalizationHelper.nowPlayingName.localizeString()
         }
     }
     @IBOutlet weak var nowPlayingCollectionView: UICollectionView! {
@@ -52,7 +52,7 @@ class MainPageViewController: UIViewController {
     
     @IBOutlet weak var upcomingLabel: UILabel! {
         didSet {
-            upcomingLabel.text = "upcoming".localizeString()
+            upcomingLabel.text = LocalizationHelper.upcomingName.localizeString()
         }
     }
     @IBOutlet weak var upcomingCollectionView: UICollectionView! {

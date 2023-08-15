@@ -68,24 +68,23 @@ class NetworkService {
         }
     }
     
-    static func getMovie(movieID: Int, mdetailVC: MovieDetailViewController) {
+    static func getMovie(movieID: Int, completion: @escaping (MovieDetail) -> Void) {
         NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getMovieURL(movieID: movieID), dataType: MovieDetail.self) { result in
-            mdetailVC.preparePage(movieDetail: result)
+            completion(result)
         }
     }
     
-    static func getCast(movieID: Int, mdetailVC: MovieDetailViewController) {
+    static func getCast(movieID: Int, completion: @escaping ([Cast]) -> Void) {
         NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getMovieCreditsURL(movieID: movieID), dataType: Credits.self) { result in
             if let credits = result.cast {
-                mdetailVC.setCast(cast: credits)
-                mdetailVC.castCollectionView.reloadData()
+                completion(credits)
             }
         }
     }
     
-    static func getActorDetails(actorID: Int, castVC: CastViewController) {
+    static func getActorDetails(actorID: Int, completion: @escaping (Actor) -> Void) {
         NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getPersonDetailsURL(personID: actorID), dataType: Actor.self) { result in
-            castVC.preparePage(actor: result)
+            completion(result)
         }
     }
     

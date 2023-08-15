@@ -29,7 +29,9 @@ class CastViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NetworkService.getActorDetails(actorID: actorID, castVC: self)
+        NetworkService.getActorDetails(actorID: actorID) { person in
+            self.preparePage(actor: person)
+        }
     }
     
     func preparePage(actor: Actor) {

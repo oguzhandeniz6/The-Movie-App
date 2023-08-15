@@ -23,7 +23,7 @@ class FavoriteMoviesViewController: UIViewController {
     
     @IBOutlet weak var favoriteTabBar: UITabBarItem! {
         didSet {
-            favoriteTabBar.title = "favoriteTabBar".localizeString()
+            favoriteTabBar.title = LocalizationHelper.favoriteTabBarName.localizeString()
         }
     }
     

@@ -17,7 +17,7 @@ class PopularMoviesViewController: UIViewController {
     
     @IBOutlet weak var popularTabBar: UITabBarItem! {
         didSet {
-            popularTabBar.title = "popularTabBar".localizeString()
+            popularTabBar.title = LocalizationHelper.popularTabBarName.localizeString()
         }
     }
     
@@ -29,8 +29,6 @@ class PopularMoviesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(NSLocale.current.languageCode ?? "")
-        print(Bundle.main.preferredLocalizations[0])
         
         loadData()
     }
@@ -44,11 +42,7 @@ class PopularMoviesViewController: UIViewController {
     @objc func loadData() {
 //        Make a network call
         NetworkService.getMovieList(callType: .popularMovies, pageNumber: currentPage) { movieList, maxPage in
-            self.setTotalPages(maxPage: maxPage)
-            self.appendMovies(newMovies: movieList)
-            self.incrementCurrentPage()
-            self.moviesTableView.reloadData()
-            self.moviesTableView.refreshControl?.endRefreshing()
+            self.popularNetworkHandle(popularList: movieList, maxPage: maxPage)
         }
     }
 
@@ -127,6 +121,14 @@ extension PopularMoviesViewController {
     
     func incrementCurrentPage() {
         self.currentPage += 1
+    }
+    
+    func popularNetworkHandle(popularList: [Movie], maxPage: Int) {
+        self.setTotalPages(maxPage: maxPage)
+        self.appendMovies(newMovies: popularList)
+        self.incrementCurrentPage()
+        self.moviesTableView.reloadData()
+        self.moviesTableView.refreshControl?.endRefreshing()
     }
     
 }

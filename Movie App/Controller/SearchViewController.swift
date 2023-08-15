@@ -27,7 +27,7 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var searchTabBar: UITabBarItem! {
         didSet {
-            searchTabBar.title = "searchTabBar".localizeString()
+            searchTabBar.title = LocalizationHelper.searchTabBarName.localizeString()
         }
     }
     

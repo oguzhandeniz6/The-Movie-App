@@ -47,7 +47,7 @@ class MovieDetailViewController: UIViewController {
     
     @IBOutlet weak var movieHomepage: UIButton! {
         didSet {
-            movieHomepage.setTitle("movieHomepage".localizeString(), for: .normal)
+            movieHomepage.setTitle(LocalizationHelper.movieHomepageName.localizeString(), for: .normal)
         }
     }
     
@@ -103,8 +103,14 @@ class MovieDetailViewController: UIViewController {
     }
     
     func loadData() {
-        NetworkService.getMovie(movieID: movieID, mdetailVC: self)
-        NetworkService.getCast(movieID: movieID, mdetailVC: self)
+        
+        NetworkService.getMovie(movieID: movieID) { movie in
+            self.preparePage(movieDetail: movie)
+        }
+        
+        NetworkService.getCast(movieID: movieID) { cast in
+            self.castNetworkHandle(cast: cast)
+        }
         
         NetworkService.getMovieList(callType: .recommendationMovies, movieId: movieID) { recommendationList, _ in
             self.recommendationsNetworkHandle(recommendations: recommendationList)
@@ -123,7 +129,7 @@ extension MovieDetailViewController {
         orgTitleLabel.text = movieDetail.original_title
         taglineLabel.text = movieDetail.tagline
         genresLabel.text = FormatChangers.genresFormatToStr(gen: movieDetail.genres)
-        runtimeLabel.text = "\(movieDetail.runtime ?? 0) min"
+        runtimeLabel.text = "\(movieDetail.runtime ?? 0) \(LocalizationHelper.minuteName.localizeString())"
         scoreLabel.text = String(format: "%.1f" , movieDetail.vote_average ?? 0.0)
         overviewLabel.text = movieDetail.overview
         budgetLabel.setTitle(FormatChangers.moneyFormatChanger(amount: movieDetail.budget ?? 0), for: .normal)
@@ -287,6 +293,11 @@ extension MovieDetailViewController {
     }
     
 //    Network Handlers
+    
+    func castNetworkHandle(cast: [Cast]) {
+        self.setCast(cast: cast)
+        self.castCollectionView.reloadData()
+    }
     
     func recommendationsNetworkHandle(recommendations: [Movie]) {
         self.setRecommendations(recommendations: recommendations)
