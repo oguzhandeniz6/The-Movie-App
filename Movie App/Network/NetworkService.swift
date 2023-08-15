@@ -9,13 +9,30 @@ import Foundation
 
 class NetworkService {
 //    closure kullanarak viewcontroller ile coupling i azaltılabilir
-    static func getPopularMovies(pageNumber: Int, popularVC: PopularMoviesViewController) {
+    
+    static func getMovieList(callType: NetworkCallType, pageNumber: Int, completion: @escaping ([Movie], Int) -> Void) {
+        
+        switch callType {
+            
+        case .popularMovies:
+            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getPopularMoviesURL(pageNumber: pageNumber), dataType: APIResults.self) { result in
+                if let fetchedMovies = result.results, let maxPage = result.total_pages {
+                    completion(fetchedMovies, maxPage)
+                }
+            }
+            
+        case .searchMovies:
+            print("b")
+            
+        default:
+            break
+        }
+    }
+    
+    static func getPopularMovies(pageNumber: Int, completion: @escaping ([Movie], Int) -> Void) {
         NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getPopularMoviesURL(pageNumber: pageNumber), dataType: APIResults.self) { result in
             if let fetchedMovies = result.results, let maxPage = result.total_pages {
-                popularVC.appendMovies(newMovies: fetchedMovies)
-                popularVC.setTotalPages(maxPage: maxPage)
-                popularVC.incrementCurrentPage()
-                popularVC.moviesTableView.reloadData()
+                completion(fetchedMovies, maxPage)
             }
         }
     }

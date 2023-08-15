@@ -97,21 +97,21 @@ class MainPageViewController: UIViewController {
         networkCalls()
     }
 //    enum kullanımı
-    @objc func networkCalls(mode: Int = -1) {
+    @objc func networkCalls(mode: NetworkCallType = .all) {
         switch mode {
-        case 0:
+        case .nowPlaying:
             NetworkService.getNowPlayingMovies(pageNumber: npCurrentPage, mainVC: self)
             npCurrentPage += 1
-        case 1:
+        case .upcoming:
             NetworkService.getUpcomingMovies(pageNumber: upCurrentPage, mainVC: self)
             upCurrentPage += 1
-        case 2:
+        case .genre1:
             NetworkService.getGenreMovies(pageNumber: g1CurrentPage, mainVC: self, genre: genresList[0])
             g1CurrentPage += 1
-        case 3:
+        case .genre2:
             NetworkService.getGenreMovies(pageNumber: g2CurrentPage, mainVC: self, genre: genresList[1])
             g2CurrentPage += 1
-        case 4:
+        case .genre3:
             NetworkService.getGenreMovies(pageNumber: g3CurrentPage, mainVC: self, genre: genresList[2])
             g3CurrentPage += 1
         default:
@@ -198,33 +198,31 @@ extension MainPageViewController: UICollectionViewDelegate {
         switch collectionView {
         case self.nowPlayingCollectionView:
             if indexPath.row == nowPlayingList.count - 1, npCurrentPage < npMaxPage {
-                networkCalls(mode: 0)
+                networkCalls(mode: .nowPlaying)
             }
 
         case self.upcomingCollectionView:
             if indexPath.row == upcomingList.count - 1, upCurrentPage < upMaxPage {
-                networkCalls(mode: 1)
+                networkCalls(mode: .upcoming)
             }
         
         case self.genre1CollectionView:
             if indexPath.row == genre1List.count - 1, g1CurrentPage < g1MaxPage {
-                networkCalls(mode: 2)
+                networkCalls(mode: .genre1)
             }
             
         case self.genre2CollectionView:
             if indexPath.row == genre2List.count - 1, g2CurrentPage < g2MaxPage {
-                networkCalls(mode: 3)
+                networkCalls(mode: .genre2)
             }
             
         case self.genre3CollectionView:
             if indexPath.row == genre3List.count - 1, g3CurrentPage < g3MaxPage {
-                networkCalls(mode: 4)
+                networkCalls(mode: .genre3)
             }
             
         default:
-            if indexPath.row == nowPlayingList.count - 1, npCurrentPage < npMaxPage {
-                networkCalls(mode: 0)
-            }
+            break
         }
     }
     

@@ -17,7 +17,6 @@ class PopularMoviesViewController: UIViewController {
     
     @IBOutlet weak var popularTabBar: UITabBarItem! {
         didSet {
-//            parametreyi almasına gerek yok
             popularTabBar.title = "popularTabBar".localizeString()
         }
     }
@@ -44,9 +43,23 @@ class PopularMoviesViewController: UIViewController {
     
     @objc func loadData() {
 //        Make network call
-        NetworkService.getPopularMovies(pageNumber: currentPage, popularVC: self)
-//        istekten yanıt gelmesini beklemeden refreshi kapatıyor
-        moviesTableView.refreshControl?.endRefreshing()
+        NetworkService.getPopularMovies(pageNumber: currentPage) { movieList, maxPage in
+            self.appendMovies(newMovies: movieList)
+            self.setTotalPages(maxPage: maxPage)
+            self.incrementCurrentPage()
+            self.moviesTableView.reloadData()
+            self.moviesTableView.refreshControl?.endRefreshing()
+        }
+        
+//        alternative
+        
+//        NetworkService.getMovieList(callType: .popularMovies, pageNumber: currentPage) { movieList, maxPage in
+//            self.appendMovies(newMovies: movieList)
+//            self.setTotalPages(maxPage: maxPage)
+//            self.incrementCurrentPage()
+//            self.moviesTableView.reloadData()
+//            self.moviesTableView.refreshControl?.endRefreshing()
+//        }
     }
 
 }
