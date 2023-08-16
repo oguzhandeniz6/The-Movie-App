@@ -92,6 +92,9 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let notificationCenter: NotificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(changeFavoriteStatus), name: .favoriteNotification, object: nil)
+        
         loadData()
     }
     
@@ -303,6 +306,12 @@ extension MovieDetailViewController {
     func recommendationsNetworkHandle(recommendations: [Movie]) {
         self.setRecommendations(recommendations: recommendations)
         self.recommendationsCollectionView.reloadData()
+    }
+    
+//    Favorite System
+    
+    @objc func changeFavoriteStatus() {
+        self.isFavorite = !(self.isFavorite)
     }
     
 }

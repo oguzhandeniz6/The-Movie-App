@@ -52,6 +52,8 @@ class MovieCell: UITableViewCell {
                 isFavorite = true
             }
         }
+        
+        NotificationCenter.default.post(name: .favoriteNotification, object: nil)
     }
     
 }

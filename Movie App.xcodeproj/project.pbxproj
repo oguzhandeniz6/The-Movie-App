@@ -52,6 +52,7 @@
 		FBC72C212A7A33C300A6B09B /* MovieEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC72C1F2A7A33C300A6B09B /* MovieEntity+CoreDataProperties.swift */; };
 		FBC72C232A7A949300A6B09B /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC72C222A7A949300A6B09B /* UIConstants.swift */; };
 		FBD74DD22A8CBC2F00EB2B52 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD74DD12A8CBC2F00EB2B52 /* Movie.swift */; };
+		FBD74DD42A8CDAB100EB2B52 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD74DD32A8CDAB100EB2B52 /* NotificationExtension.swift */; };
 		FBEBFC7E2A728D4B0051B8EF /* FavoriteMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEBFC7D2A728D4B0051B8EF /* FavoriteMoviesViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +106,7 @@
 		FBC72C1F2A7A33C300A6B09B /* MovieEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FBC72C222A7A949300A6B09B /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		FBD74DD12A8CBC2F00EB2B52 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		FBD74DD32A8CDAB100EB2B52 /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		FBEBFC7D2A728D4B0051B8EF /* FavoriteMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMoviesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -265,6 +267,7 @@
 				FBA210CA2A7BA17700634D5E /* StringExtension.swift */,
 				FB8EC8FB2A8A47E40099E947 /* ArrayExtension.swift */,
 				FBA4D4412A8B99F300246BF3 /* MainPageViewControllerExtension.swift */,
+				FBD74DD32A8CDAB100EB2B52 /* NotificationExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				FB709DC52A8280DF00B2F5FF /* CompanyTableViewCell.swift in Sources */,
 				FB7D58CB2A77C5B9001B00F9 /* CollectionViewExtension.swift in Sources */,
 				FB6B970D2A78EBC70093798D /* CoreDataFunctions.swift in Sources */,
+				FBD74DD42A8CDAB100EB2B52 /* NotificationExtension.swift in Sources */,
 				FBB4F3F52A6FC48A001EF7EE /* SearchViewController.swift in Sources */,
 				FB63740F2A80E12800A89769 /* Genres.swift in Sources */,
 				FB8EC8FC2A8A47E40099E947 /* ArrayExtension.swift in Sources */,
