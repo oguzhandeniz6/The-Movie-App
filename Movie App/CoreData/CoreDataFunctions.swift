@@ -10,33 +10,29 @@ import UIKit
 import CoreData
 
 class CoreDataFunctions {
-//    parametre olarak movie alabilir
-    static func saveMovie(id: Int, score: Double, title: String, poster_path: String, releaseDate: String) {
+    static func saveMovie(movie: Movie) {
         
         let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
         
-        guard let entity = NSEntityDescription.entity(forEntityName: CoreDataConstants.entityName, in: managedContext) else {
-            return
-        }
-        let mov = NSManagedObject(entity: entity, insertInto: managedContext)
-//        let mov = MovieEntity(context: managedContext) // bunu kullanabilirim
+        let mov = MovieEntity(context: managedContext)
         
-        mov.setValue(id, forKey: CoreDataConstants.idKeyPath)
-        mov.setValue(title, forKey: CoreDataConstants.titleKeyPath)
-        mov.setValue(poster_path, forKey: CoreDataConstants.posterPathKeyPath)
-        mov.setValue(score, forKey: CoreDataConstants.scoreKeyPath)
-        mov.setValue(releaseDate, forKey: CoreDataConstants.releaseDateKeyPath)
+        mov.id = Int64(movie.id ?? 0)
+        mov.title = movie.title ?? ""
+        mov.posterPath = movie.posterPath ?? ""
+        mov.score = movie.voteAverage ?? 0.0
+        mov.releaseDate = movie.releaseDate ?? ""
         
         AppDelegate.sharedAppDelegate.coreDataStack.saveContext()
     }
     
-    static func loadMovies() -> [NSManagedObject] {
+    static func loadMovies() -> [Movie] {
         
         let movieFetch: NSFetchRequest<MovieEntity> = MovieEntity.fetchRequest()
         
         do {
             let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
-            return try managedContext.fetch(movieFetch)
+            let movieEntities = try managedContext.fetch(movieFetch)
+            return movieEntities.map { Movie.init(movieEntity: $0) }
             
         } catch let error as NSError {
             print("Fetch error: \(error) description: \(error.userInfo)")

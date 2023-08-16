@@ -9,8 +9,8 @@ import UIKit
 import CoreData
 
 class FavoriteMoviesViewController: UIViewController {
-//    coredataya bağımlı yine
-    var movies: [NSManagedObject] = []
+    
+    var movies: [Movie] = []
     
     @IBOutlet weak var favoriteTableView: UITableView! {
         didSet {
@@ -70,9 +70,7 @@ extension FavoriteMoviesViewController: UITableViewDelegate {
         
         if let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: MovieDetailViewController.self)) as? MovieDetailViewController {
             
-            if let movId = movies[indexPath.row].value(forKey: CoreDataConstants.idKeyPath) as? Int {
-                nextVC.movieID = movId
-            }
+            nextVC.movieID = movies[indexPath.row].id ?? 0
             
             self.navigationController?.pushViewController(nextVC, animated: true)
         }

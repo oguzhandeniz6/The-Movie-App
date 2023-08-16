@@ -38,6 +38,12 @@ class SearchViewController: UIViewController {
         searchController.searchResultsUpdater = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        searchTableView.reloadData()
+    }
+    
     @objc func loadData() {
 //        Make a network call
         

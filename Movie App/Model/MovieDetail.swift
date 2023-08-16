@@ -47,19 +47,6 @@ struct MovieDetail: Codable {
     
 }
 
-struct Genre: Codable {
-    
-    let id: Int?
-    let name: String?
-    
-}
-
-extension Genre: Equatable {
-    static func == (lhs: Genre, rhs: Genre) -> Bool {
-        return lhs.id == rhs.id
-    }
-}
-
 struct ProductionCompany: Codable {
     
     let id: Int?

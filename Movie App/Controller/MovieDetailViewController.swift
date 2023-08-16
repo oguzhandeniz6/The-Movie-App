@@ -10,6 +10,8 @@ import Kingfisher
 
 class MovieDetailViewController: UIViewController {
     
+    private var rawMovie: Movie?
+    
     private var isFavorite: Bool = false {
         didSet {
             if isFavorite {
@@ -19,10 +21,6 @@ class MovieDetailViewController: UIViewController {
             }
         }
     }
-    
-    private var posterPath: String = ""
-    private var releaseDate: String = ""
-    private var score: Double = 0.0
     
     var movieID: Int = 0
     private var cast: [Cast] = []
@@ -147,9 +145,7 @@ extension MovieDetailViewController {
         
 //        Favorite System
         
-        posterPath = movieDetail.posterPath ?? ""
-        releaseDate = movieDetail.releaseDate ?? ""
-        score = movieDetail.voteAverage ?? 0.0
+        self.rawMovie = Movie(id: self.movieID, title: movieDetail.title, releaseDate: movieDetail.releaseDate, posterPath: movieDetail.posterPath, voteAverage: movieDetail.voteAverage)
         
         if CoreDataFunctions.checkMovie(id: movieID) {
             self.isFavorite = true
@@ -269,13 +265,15 @@ extension MovieDetailViewController: UIGestureRecognizerDelegate {
     
     @objc func favoriteIconTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         
-        if isFavorite {
-            CoreDataFunctions.deleteMovie(id: self.movieID)
-            isFavorite = false
+        if let mov = self.rawMovie {
+            if isFavorite {
+                CoreDataFunctions.deleteMovie(id: self.movieID)
+                isFavorite = false
 
-        } else {
-            CoreDataFunctions.saveMovie(id: self.movieID, score: self.score, title: self.titleLabel.text ?? "", poster_path: self.posterPath, releaseDate: self.releaseDate)
-            isFavorite = true
+            } else {
+                CoreDataFunctions.saveMovie(movie: mov)
+                isFavorite = true
+            }
         }
     }
 }
