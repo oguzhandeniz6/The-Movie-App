@@ -9,7 +9,7 @@ import Foundation
 
 class NetworkService {
     
-    static func getMovieList(callType: NetworkCallType, pageNumber: Int = 0, movieId: Int = -1, searchKey: String = "", genreId: Int = -1, completion: @escaping ([Movie], Int) -> Void) {
+    static func getMovieList(callType: NetworkCallType, pageNumber: Int = 0, movieId: Int = -1, searchKey: String = "", personId: Int = -1, genreId: Int = -1, completion: @escaping ([Movie], Int) -> Void) {
         
         switch callType {
             
@@ -30,6 +30,13 @@ class NetworkService {
         case .recommendationMovies:
             NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getMovieRecommendationsURL(movieID: movieId), dataType: APIResults.self) { result in
                 if let fetchedMovies = result.results {
+                    completion(fetchedMovies, pageNumber)
+                }
+            }
+            
+        case .movieCredits:
+            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getMovieCredits(personID: personId), dataType: RelatedMovies.self) { result in
+                if let fetchedMovies = result.cast {
                     completion(fetchedMovies, pageNumber)
                 }
             }

@@ -27,6 +27,7 @@ struct NetworkConstants {
     private static let personEndpoint: String = "/person/"
     private static let creditsEndpoint: String = "/credits"
     private static let recommendationsEndpoint: String = "/recommendations"
+    private static let movieCreditsEndpoint: String = "/movie_credits"
     
 //    Add-ons
     private static let pageAddon: String = "&page="
@@ -67,6 +68,11 @@ struct NetworkConstants {
         return String("\(baseURL)\(personEndpoint)\(id)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
     }
     
+    //    GET Movie Credits of an Actor URL
+        static func getMovieCredits(personID id: Int) -> URL {
+            return String("\(baseURL)\(personEndpoint)\(id)\(movieCreditsEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
+    }
+    
 //    GET Movie Poster URL
     static func getMovieImageURL(posterPath path: String, imageSize size: String) -> URL {
         return String("\(imageURL)\(size)\(path)").toURL()
@@ -91,6 +97,7 @@ struct NetworkConstants {
     static func getDiscover(pageNumber: Int, genreid: Int) -> URL {
         return String("\(baseURL)\(discoverEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())\(genresAddon)\(genreid)\(pageAddon)\(pageNumber)").toURL()
     }
+
     
     
 //    GET Movie Homepage URL
