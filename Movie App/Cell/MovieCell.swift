@@ -58,7 +58,7 @@ extension MovieCell {
         
         self.selectionStyle = .none
         
-        if let id = movie.id, let title = movie.title, let rating = movie.vote_average, let releaseDate = movie.release_date, let posterPath = movie.poster_path {
+        if let id = movie.id, let title = movie.title, let rating = movie.voteAverage, let releaseDate = movie.releaseDate, let posterPath = movie.posterPath {
             
             self.movieTitleLabel.text = title
             self.movieRatingLabel.text = String(format: "%.1f" ,rating)
@@ -75,9 +75,9 @@ extension MovieCell {
             }
             
             self.movieID = movie.id ?? 0
-            self.posterPath = movie.poster_path ?? ""
-            self.releaseDate = movie.release_date ?? ""
-            self.score = movie.vote_average ?? 0.0
+            self.posterPath = movie.posterPath ?? ""
+            self.releaseDate = movie.releaseDate ?? ""
+            self.score = movie.voteAverage ?? 0.0
         }
     }
 //    nsmanagedobject e gerek yok

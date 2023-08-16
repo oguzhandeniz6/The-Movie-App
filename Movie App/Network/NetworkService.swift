@@ -15,14 +15,14 @@ class NetworkService {
             
         case .popularMovies:
             NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getPopularMoviesURL(pageNumber: pageNumber), dataType: APIResults.self) { result in
-                if let fetchedMovies = result.results, let maxPage = result.total_pages {
+                if let fetchedMovies = result.results, let maxPage = result.totalPages {
                     completion(fetchedMovies, maxPage)
                 }
             }
             
         case .searchMovies:
             NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getSearchURL(searchKey: searchKey, pageNumber: pageNumber), dataType: APIResults.self) { result in
-                if let fetchedMovies = result.results, let maxPage = result.total_pages {
+                if let fetchedMovies = result.results, let maxPage = result.totalPages {
                     completion(fetchedMovies, maxPage)
                 }
             }
@@ -36,21 +36,21 @@ class NetworkService {
             
         case .nowPlaying:
             NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getNowPlaying(pageNumber: pageNumber), dataType: APIResults.self) { result in
-                if let nowplayingList = result.results, let maxPage = result.total_pages {
+                if let nowplayingList = result.results, let maxPage = result.totalPages {
                     completion(nowplayingList, maxPage)
                 }
             }
             
         case .upcoming:
             NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getUpcoming(pageNumber: pageNumber), dataType: APIResults.self) { result in
-                if let upcomingList = result.results, let maxPage = result.total_pages {
+                if let upcomingList = result.results, let maxPage = result.totalPages {
                     completion(upcomingList, maxPage)
                 }
             }
             
         case .genre1, .genre2, .genre3:
             NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getDiscover(pageNumber: pageNumber, genreid: genreId), dataType: APIResults.self) { result in
-                if let genreList = result.results, let maxPage = result.total_pages {
+                if let genreList = result.results, let maxPage = result.totalPages {
                     completion(genreList, maxPage)
                 }
             }

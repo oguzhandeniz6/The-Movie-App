@@ -12,7 +12,17 @@ struct Actor : Codable {
     let name: String?
     let birthday: String?
     let deathday: String?
-    let place_of_birth: String?
+    let placeOfBirth: String?
     let biography: String?
-    let profile_path: String?
+    let profilePath: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case birthday
+        case deathday
+        case biography
+        case placeOfBirth = "place_of_birth"
+        case profilePath = "profile_path"
+    }
 }

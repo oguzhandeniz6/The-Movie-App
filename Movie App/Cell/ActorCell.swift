@@ -26,10 +26,10 @@ class ActorCell: UICollectionViewCell {
     }
     
     func fillCell(_ actor: Cast) {
-        personName.text = actor.original_name
+        personName.text = actor.originalName
         characterName.text = actor.character
         
-        personImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: actor.profile_path ?? "", imageSize: ProfileSize.high.rawValue))
+        personImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: actor.profilePath ?? "", imageSize: ProfileSize.high.rawValue))
     }
 
 }

@@ -20,7 +20,7 @@ class CompanyTableViewCell: UITableViewCell {
     
     func fillCell(_ company: ProductionCompany) {
         self.companyNameLabel.text = company.name ?? ""
-        self.companyOriginLabel.text = company.origin_country ?? ""
+        self.companyOriginLabel.text = company.originCountry ?? ""
     }
     
 }

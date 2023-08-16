@@ -15,10 +15,16 @@ struct Credits: Codable {
 }
 
 struct Cast: Codable {
-//    coding keys ile camelcase e çevir
-    let id: Int?
-    let original_name: String?
-    let character: String?
-    let profile_path: String?
     
+    let id: Int?
+    let originalName: String?
+    let character: String?
+    let profilePath: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case character
+        case originalName = "original_name"
+        case profilePath = "profile_path"
+    }
 }

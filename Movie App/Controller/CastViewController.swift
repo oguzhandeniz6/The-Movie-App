@@ -44,8 +44,8 @@ class CastViewController: UIViewController {
             deathdayLabel.text = ""
         }
         
-        birthPlaceLabel.text = actor.place_of_birth
+        birthPlaceLabel.text = actor.placeOfBirth
         bioLabel.text = "\n\(actor.biography ?? "")"
-        actorPhotoImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: actor.profile_path ?? "", imageSize: ProfileSize.original.rawValue))
+        actorPhotoImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: actor.profilePath ?? "", imageSize: ProfileSize.original.rawValue))
     }
 }

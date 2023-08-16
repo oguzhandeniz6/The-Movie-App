@@ -128,28 +128,28 @@ extension MovieDetailViewController {
     
     func preparePage(movieDetail: MovieDetail) {
         titleLabel.text = movieDetail.title
-        orgTitleLabel.text = movieDetail.original_title
+        orgTitleLabel.text = movieDetail.originalTitle
         taglineLabel.text = movieDetail.tagline
         genresLabel.text = FormatChangers.genresFormatToStr(gen: movieDetail.genres)
         runtimeLabel.text = "\(movieDetail.runtime ?? 0) \(LocalizationHelper.minuteName.localizeString())"
-        scoreLabel.text = String(format: "%.1f" , movieDetail.vote_average ?? 0.0)
+        scoreLabel.text = String(format: "%.1f" , movieDetail.voteAverage ?? 0.0)
         overviewLabel.text = movieDetail.overview
         budgetLabel.setTitle(FormatChangers.moneyFormatChanger(amount: movieDetail.budget ?? 0), for: .normal)
         revenueLabel.setTitle(FormatChangers.moneyFormatChanger(amount: movieDetail.revenue ?? 0), for: .normal)
-        releaseDateLabel.text = FormatChangers.dateFormatChanger(str: movieDetail.release_date ?? "")
+        releaseDateLabel.text = FormatChangers.dateFormatChanger(str: movieDetail.releaseDate ?? "")
         homepageURL = NetworkConstants.getHomepage(homepage: movieDetail.homepage)
         
-        if let posterPath = movieDetail.poster_path {
+        if let posterPath = movieDetail.posterPath {
             posterImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath, imageSize: PosterSize.original.rawValue))
         }
         
-        companies = movieDetail.production_companies ?? []
+        companies = movieDetail.productionCompanies ?? []
         
 //        Favorite System
         
-        posterPath = movieDetail.poster_path ?? ""
-        releaseDate = movieDetail.release_date ?? ""
-        score = movieDetail.vote_average ?? 0.0
+        posterPath = movieDetail.posterPath ?? ""
+        releaseDate = movieDetail.releaseDate ?? ""
+        score = movieDetail.voteAverage ?? 0.0
         
         if CoreDataFunctions.checkMovie(id: movieID) {
             self.isFavorite = true

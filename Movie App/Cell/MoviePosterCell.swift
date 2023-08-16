@@ -29,7 +29,7 @@ class MoviePosterCell: UICollectionViewCell {
     func fillCell(_ movie: Movie) {
         movieNameLabel.text = movie.title
         
-        posterImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: movie.poster_path ?? "", imageSize: PosterSize.high.rawValue))
+        posterImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: movie.posterPath ?? "", imageSize: PosterSize.high.rawValue))
     }
     
     func setForHomepage() {

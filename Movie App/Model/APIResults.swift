@@ -10,15 +10,29 @@ import Foundation
 struct APIResults: Codable {
     let page: Int?
     let results: [Movie]?
-    let total_pages: Int?
+    let totalPages: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case page
+        case results
+        case totalPages = "total_pages"
+    }
 }
 
 struct Movie: Codable {
     let id: Int?
     let title: String?
-    let release_date: String?
-    let poster_path: String?
-    let vote_average: Double?
+    let releaseDate: String?
+    let posterPath: String?
+    let voteAverage: Double?
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case releaseDate = "release_date"
+        case posterPath = "poster_path"
+        case voteAverage = "vote_average"
+    }
     
 }
 
