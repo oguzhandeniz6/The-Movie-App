@@ -6,11 +6,13 @@
   
 */
 
-"searchTabBar" = "Film Ara";
+"searchTabBar" = "Ara";
 "popularTabBar" = "Popüler Filmler";
 "favoriteTabBar" = "Favori Filmlerim";
 "homepageTabBar" = "Anasayfa";
 "movieHomepage" = "Film Anasayfası";
+"searchMovie" = "Film Ara";
+"searchPerson" = "Kişi Ara";
 
 "nowPlaying" = "Vizyondakiler";
 "upcoming" = "Yakındakiler";

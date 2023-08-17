@@ -8,9 +8,21 @@
 import Foundation
 import CoreData
 
-struct APIResults: Codable {
+struct APIMovieResults: Codable {
     let page: Int?
     let results: [Movie]?
+    let totalPages: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case page
+        case results
+        case totalPages = "total_pages"
+    }
+}
+
+struct APIPersonResults: Codable {
+    let page: Int?
+    let results: [Person]?
     let totalPages: Int?
     
     enum CodingKeys: String, CodingKey {

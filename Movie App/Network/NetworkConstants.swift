@@ -16,11 +16,12 @@ struct NetworkConstants {
     
 //    Basic endpoints
     private static let popularEndpoint: String = "/movie/popular"
-    private static let searchEndpoint:String = "/search/movie"
+    private static let searchMovieEndpoint: String = "/search/movie"
     private static let genresEndpoint: String = "/genre/movie/list"
     private static let discoverEndpoint: String = "/discover/movie"
     private static let nowplayingEndpoint: String = "/movie/now_playing"
     private static let upcomingEndpoint: String = "/movie/upcoming"
+    private static let searchPersonEndpoint: String = "/search/person"
     
 //    Complex endpoints
     private static let movieEndpoint: String = "/movie/"
@@ -43,9 +44,9 @@ struct NetworkConstants {
         return String("\(baseURL)\(popularEndpoint)\(apiKey)\(pageAddon)\(num)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
     }
     
-//    GET Search URL
-    static func getSearchURL(searchKey key: String, pageNumber num: Int) -> URL {
-        return String("\(baseURL)\(searchEndpoint)\(apiKey)\(queryAddon)\(key)\(pageAddon)\(num)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
+//    GET Search Movie URL
+    static func getSearchMovieURL(searchKey key: String, pageNumber num: Int) -> URL {
+        return String("\(baseURL)\(searchMovieEndpoint)\(apiKey)\(queryAddon)\(key)\(pageAddon)\(num)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
     }
     
 //    GET Movie URL
@@ -97,7 +98,11 @@ struct NetworkConstants {
     static func getDiscover(pageNumber: Int, genreid: Int) -> URL {
         return String("\(baseURL)\(discoverEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())\(genresAddon)\(genreid)\(pageAddon)\(pageNumber)").toURL()
     }
-
+    
+//    GET Search Actor URL
+    static func getSearchPersonURL(searchKey key: String, pageNumber num: Int) -> URL {
+        return String("\(baseURL)\(searchPersonEndpoint)\(apiKey)\(queryAddon)\(key)\(pageAddon)\(num)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
+    }
     
     
 //    GET Movie Homepage URL

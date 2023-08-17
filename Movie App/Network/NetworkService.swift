@@ -14,21 +14,21 @@ class NetworkService {
         switch callType {
             
         case .popularMovies:
-            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getPopularMoviesURL(pageNumber: pageNumber), dataType: APIResults.self) { result in
+            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getPopularMoviesURL(pageNumber: pageNumber), dataType: APIMovieResults.self) { result in
                 if let fetchedMovies = result.results, let maxPage = result.totalPages {
                     completion(fetchedMovies, maxPage)
                 }
             }
             
         case .searchMovies:
-            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getSearchURL(searchKey: searchKey, pageNumber: pageNumber), dataType: APIResults.self) { result in
+            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getSearchMovieURL(searchKey: searchKey, pageNumber: pageNumber), dataType: APIMovieResults.self) { result in
                 if let fetchedMovies = result.results, let maxPage = result.totalPages {
                     completion(fetchedMovies, maxPage)
                 }
             }
             
         case .recommendationMovies:
-            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getMovieRecommendationsURL(movieID: movieId), dataType: APIResults.self) { result in
+            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getMovieRecommendationsURL(movieID: movieId), dataType: APIMovieResults.self) { result in
                 if let fetchedMovies = result.results {
                     completion(fetchedMovies, pageNumber)
                 }
@@ -42,21 +42,21 @@ class NetworkService {
             }
             
         case .nowPlaying:
-            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getNowPlaying(pageNumber: pageNumber), dataType: APIResults.self) { result in
+            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getNowPlaying(pageNumber: pageNumber), dataType: APIMovieResults.self) { result in
                 if let nowplayingList = result.results, let maxPage = result.totalPages {
                     completion(nowplayingList, maxPage)
                 }
             }
             
         case .upcoming:
-            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getUpcoming(pageNumber: pageNumber), dataType: APIResults.self) { result in
+            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getUpcoming(pageNumber: pageNumber), dataType: APIMovieResults.self) { result in
                 if let upcomingList = result.results, let maxPage = result.totalPages {
                     completion(upcomingList, maxPage)
                 }
             }
             
         case .genre1, .genre2, .genre3:
-            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getDiscover(pageNumber: pageNumber, genreid: genreId), dataType: APIResults.self) { result in
+            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getDiscover(pageNumber: pageNumber, genreid: genreId), dataType: APIMovieResults.self) { result in
                 if let genreList = result.results, let maxPage = result.totalPages {
                     completion(genreList, maxPage)
                 }
@@ -64,6 +64,14 @@ class NetworkService {
             
         default:
             break
+        }
+    }
+    
+    static func getPersonList(searchKey: String, pageNumber: Int, completion: @escaping ([Person], Int) -> Void) {
+        NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getSearchPersonURL(searchKey: searchKey, pageNumber: pageNumber), dataType: APIPersonResults.self) { result in
+            if let fetchedPersons = result.results, let maxPage = result.totalPages {
+                completion(fetchedPersons, maxPage)
+            }
         }
     }
     

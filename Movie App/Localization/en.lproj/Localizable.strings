@@ -6,11 +6,13 @@
   
 */
 
-"searchTabBar" = "Search Movie";
+"searchTabBar" = "Search";
 "popularTabBar" = "Popular Movies";
 "favoriteTabBar" = "Favorite Movies";
 "homepageTabBar" = "Home Page";
 "movieHomepage" = "Movie Homepage";
+"searchMovie" = "Search Movie";
+"searchPerson" = "Search Person";
 
 "nowPlaying" = "Now Playing";
 "upcoming" = "Upcoming";

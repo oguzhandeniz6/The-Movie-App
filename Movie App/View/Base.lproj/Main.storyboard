@@ -448,34 +448,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Kzm-ui-kf1" userLabel="Movie, Actor Segmented Control">
+                                <rect key="frame" x="0.0" y="94" width="375" height="32"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="ik5-Wz-DaZ" eventType="valueChanged" id="T4i-Lx-sBD"/>
+                                </connections>
+                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="WvT-Kx-nEK">
-                                <rect key="frame" x="0.0" y="94" width="375" height="635"/>
+                                <rect key="frame" x="0.0" y="125" width="375" height="604"/>
                                 <color key="backgroundColor" name="Alternative Color 3"/>
                                 <color key="sectionIndexBackgroundColor" name="Alternative Color 3"/>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUQ-uw-hKJ" userLabel="Search Bar View">
-                                <rect key="frame" x="0.0" y="94" width="375" height="0.0"/>
-                                <color key="backgroundColor" name="Alternative Color 3"/>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LOj-Ct-uHO"/>
                         <color key="backgroundColor" name="Main Color"/>
                         <constraints>
-                            <constraint firstItem="WvT-Kx-nEK" firstAttribute="top" secondItem="UUQ-uw-hKJ" secondAttribute="bottom" id="YFz-I5-uvs"/>
-                            <constraint firstItem="UUQ-uw-hKJ" firstAttribute="top" secondItem="LOj-Ct-uHO" secondAttribute="top" id="c2C-6W-krc"/>
+                            <constraint firstItem="Kzm-ui-kf1" firstAttribute="leading" secondItem="LOj-Ct-uHO" secondAttribute="leading" id="Bax-A5-v1v"/>
+                            <constraint firstItem="WvT-Kx-nEK" firstAttribute="top" secondItem="Kzm-ui-kf1" secondAttribute="bottom" id="GZO-I4-ccp"/>
+                            <constraint firstItem="LOj-Ct-uHO" firstAttribute="trailing" secondItem="Kzm-ui-kf1" secondAttribute="trailing" id="RBR-TE-DHV"/>
+                            <constraint firstItem="Kzm-ui-kf1" firstAttribute="top" secondItem="LOj-Ct-uHO" secondAttribute="top" id="Z7G-DY-4YM"/>
                             <constraint firstItem="LOj-Ct-uHO" firstAttribute="bottom" secondItem="WvT-Kx-nEK" secondAttribute="bottom" id="ehG-yM-yCD"/>
                             <constraint firstItem="WvT-Kx-nEK" firstAttribute="leading" secondItem="LOj-Ct-uHO" secondAttribute="leading" id="h1z-6S-2kI"/>
-                            <constraint firstItem="LOj-Ct-uHO" firstAttribute="trailing" secondItem="UUQ-uw-hKJ" secondAttribute="trailing" id="j2N-me-b2n"/>
-                            <constraint firstItem="WvT-Kx-nEK" firstAttribute="top" secondItem="LOj-Ct-uHO" secondAttribute="top" id="nB8-Nw-op0"/>
                             <constraint firstItem="LOj-Ct-uHO" firstAttribute="trailing" secondItem="WvT-Kx-nEK" secondAttribute="trailing" id="oB9-5b-QvX"/>
-                            <constraint firstItem="UUQ-uw-hKJ" firstAttribute="leading" secondItem="LOj-Ct-uHO" secondAttribute="leading" id="vxR-Rn-1kR"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search Movie" image="magnifyingglass.circle.fill" catalog="system" id="a0h-yg-9Ha"/>
-                    <navigationItem key="navigationItem" id="xYW-zh-2IA"/>
+                    <navigationItem key="navigationItem" id="xYW-zh-2IA">
+                        <nil key="title"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchTabBar" destination="a0h-yg-9Ha" id="dSP-5N-69T"/>
                         <outlet property="searchTableView" destination="WvT-Kx-nEK" id="MUs-9R-ynf"/>
+                        <outlet property="searchTypeSegmentedControl" destination="Kzm-ui-kf1" id="Kmr-uj-v4Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8me-zf-rbs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -19,6 +19,8 @@ class LocalizationHelper {
     static let nowPlayingName: String = "nowPlaying"
     static let upcomingName: String = "upcoming"
     static let movieHomepageName: String = "movieHomepage"
+    static let searchMovieSegmentName: String = "searchMovie"
+    static let searchActorSegmentName: String = "searchPerson"
 
 //    Other Names
     static let minuteName: String = "minute"

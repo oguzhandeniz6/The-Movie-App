@@ -11,6 +11,7 @@ import Foundation
     
     case popularMovies
     case searchMovies
+    case searchPersons
     case recommendationMovies
     case movieCredits
     case nowPlaying
