@@ -11,6 +11,8 @@
 "favoriteTabBar" = "Favorite Movies";
 "homepageTabBar" = "Home Page";
 "movieHomepage" = "Movie Homepage";
+"popularMovies" = "Popular Movies";
+"topRatedMovies" = "Top Rated Movies";
 "searchMovie" = "Search Movie";
 "searchPerson" = "Search Person";
 

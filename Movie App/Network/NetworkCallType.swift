@@ -10,6 +10,7 @@ import Foundation
 @objc enum NetworkCallType: Int {
     
     case popularMovies
+    case topRatedMovies
     case searchMovies
     case searchPersons
     case recommendationMovies

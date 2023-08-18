@@ -20,6 +20,13 @@ class NetworkService {
                 }
             }
             
+        case .topRatedMovies:
+            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getTopRatedMoviesURL(pageNumber: pageNumber), dataType: APIMovieResults.self) { result in
+                if let fetchedMovies = result.results, let maxPage = result.totalPages {
+                    completion(fetchedMovies, maxPage)
+                }
+            }
+            
         case .searchMovies:
             NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getSearchMovieURL(searchKey: searchKey, pageNumber: pageNumber), dataType: APIMovieResults.self) { result in
                 if let fetchedMovies = result.results, let maxPage = result.totalPages {

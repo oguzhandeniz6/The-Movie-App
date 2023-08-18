@@ -14,11 +14,7 @@ class CastViewController: UIViewController {
     var actorID: Int = 0
     
     @IBOutlet weak var actorNameLabel: UILabel!
-    @IBOutlet weak var actorPhotoImageView: UIImageView! {
-        didSet {
-            actorPhotoImageView.image = UIConstants.noImage
-        }
-    }
+    @IBOutlet weak var actorPhotoImageView: UIImageView!
     @IBOutlet weak var birthdayLabel: UILabel!
     @IBOutlet weak var deathdayLabel: UILabel!
     @IBOutlet weak var birthPlaceLabel: UILabel!

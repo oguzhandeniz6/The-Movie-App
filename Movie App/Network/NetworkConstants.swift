@@ -16,6 +16,7 @@ struct NetworkConstants {
     
 //    Basic endpoints
     private static let popularEndpoint: String = "/movie/popular"
+    private static let topRatedEndpoint: String = "/movie/top_rated"
     private static let searchMovieEndpoint: String = "/search/movie"
     private static let genresEndpoint: String = "/genre/movie/list"
     private static let discoverEndpoint: String = "/discover/movie"
@@ -43,6 +44,11 @@ struct NetworkConstants {
     static func getPopularMoviesURL(pageNumber num: Int) -> URL {
         return String("\(baseURL)\(popularEndpoint)\(apiKey)\(pageAddon)\(num)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
     }
+    
+//    GET Top Rated Movies URL
+        static func getTopRatedMoviesURL(pageNumber num: Int) -> URL {
+            return String("\(baseURL)\(topRatedEndpoint)\(apiKey)\(pageAddon)\(num)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
+        }
     
 //    GET Search Movie URL
     static func getSearchMovieURL(searchKey key: String, pageNumber num: Int) -> URL {

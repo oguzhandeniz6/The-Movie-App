@@ -28,7 +28,7 @@
                                     <constraint firstAttribute="height" constant="115" id="cNS-4C-DKy"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBV-Ye-hCa" userLabel="Person Name Label">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBV-Ye-hCa" userLabel="Person Name Label">
                                 <rect key="frame" x="102" y="0.0" width="209" height="118"/>
                                 <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="22"/>
                                 <color key="textColor" name="Text Color 4"/>

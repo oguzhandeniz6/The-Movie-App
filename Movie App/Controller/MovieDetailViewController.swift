@@ -34,11 +34,7 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var orgTitleLabel: UILabel!
     @IBOutlet weak var taglineLabel: UILabel!
-    @IBOutlet weak var posterImageView: UIImageView! {
-        didSet {
-            posterImageView.image = UIConstants.noImage
-        }
-    }
+    @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var genresLabel: UILabel!
     @IBOutlet weak var runtimeLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!

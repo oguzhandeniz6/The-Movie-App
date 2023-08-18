@@ -11,6 +11,8 @@
 "favoriteTabBar" = "Favori Filmlerim";
 "homepageTabBar" = "Anasayfa";
 "movieHomepage" = "Film Anasayfası";
+"popularMovies" = "Popüler Filmler";
+"topRatedMovies" = "En İyi Filmler";
 "searchMovie" = "Film Ara";
 "searchPerson" = "Kişi Ara";
 

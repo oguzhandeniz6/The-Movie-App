@@ -218,7 +218,7 @@ extension SearchViewController: UISearchResultsUpdating {
 
 extension SearchViewController {
     
-    func resetTable() {
+    private func resetTable() {
         self.movies.removeAll()
         self.persons.removeAll()
         self.currentPage = 1

@@ -392,8 +392,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="kql-ch-o6V" userLabel="Popular, Top Rated Segmented Control">
+                                <rect key="frame" x="0.0" y="94" width="375" height="32"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="6zW-ye-NgH"/>
+                                </connections>
+                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8p9-Yu-Whf">
-                                <rect key="frame" x="0.0" y="94" width="375" height="635"/>
+                                <rect key="frame" x="0.0" y="125" width="375" height="604"/>
                                 <color key="backgroundColor" name="Main Color"/>
                                 <color key="sectionIndexBackgroundColor" name="Main Color"/>
                             </tableView>
@@ -402,21 +412,25 @@
                         <color key="backgroundColor" name="Main Color"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8p9-Yu-Whf" secondAttribute="bottom" id="2FK-Ij-0xq"/>
+                            <constraint firstItem="kql-ch-o6V" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="AKn-G1-fuA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kql-ch-o6V" secondAttribute="trailing" id="BTF-6J-klr"/>
+                            <constraint firstItem="8p9-Yu-Whf" firstAttribute="top" secondItem="kql-ch-o6V" secondAttribute="bottom" id="TDS-wl-Rbs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="kql-ch-o6V" secondAttribute="top" id="YJB-zg-Cfe"/>
                             <constraint firstItem="8p9-Yu-Whf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YcS-2H-br7"/>
-                            <constraint firstItem="8p9-Yu-Whf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="e5X-M7-IbQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8p9-Yu-Whf" secondAttribute="trailing" id="pwA-B8-UaY"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Popular Movies" image="star.fill" catalog="system" id="MKm-ec-TTP"/>
                     <navigationItem key="navigationItem" id="vZJ-gm-5pe"/>
                     <connections>
+                        <outlet property="movieListSegmentedControl" destination="kql-ch-o6V" id="0kq-Ka-UFI"/>
                         <outlet property="moviesTableView" destination="8p9-Yu-Whf" id="HHX-P2-WY7"/>
                         <outlet property="popularTabBar" destination="MKm-ec-TTP" id="hJq-aT-trc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-663" y="-18"/>
+            <point key="canvasLocation" x="-663.20000000000005" y="-18.472906403940886"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="DWL-8P-Bfr">

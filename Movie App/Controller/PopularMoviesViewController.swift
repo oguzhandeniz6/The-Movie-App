@@ -9,6 +9,8 @@ import UIKit
 
 class PopularMoviesViewController: UIViewController {
     
+    private var movieListCallType: NetworkCallType = .popularMovies
+    
     private var currentPage = 1
     private var totalPages = 1
 
@@ -27,6 +29,14 @@ class PopularMoviesViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var movieListSegmentedControl: UISegmentedControl! {
+        didSet {
+            movieListSegmentedControl.setTitle(LocalizationHelper.popularMoviesSegmentName.localizeString(), forSegmentAt: 0)
+            movieListSegmentedControl.setTitle(LocalizationHelper.topRatedMoviesSegmentName.localizeString(), forSegmentAt: 1)
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,10 +51,27 @@ class PopularMoviesViewController: UIViewController {
     
     @objc func loadData() {
 //        Make a network call
-        NetworkService.getMovieList(callType: .popularMovies, pageNumber: currentPage) { movieList, maxPage in
+        NetworkService.getMovieList(callType: movieListCallType, pageNumber: currentPage) { movieList, maxPage in
             self.popularNetworkHandle(popularList: movieList, maxPage: maxPage)
         }
     }
+    
+    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+        
+        resetTable()
+        
+        switch movieListSegmentedControl.selectedSegmentIndex {
+        case 0:
+            movieListCallType = .popularMovies
+        case 1:
+            movieListCallType = .topRatedMovies
+        default:
+            break
+        }
+        
+        loadData()
+    }
+    
 
 }
 
@@ -110,6 +137,12 @@ extension PopularMoviesViewController: UITableViewDelegate {
 //MARK: - PopularMoviesViewController Extension
 
 extension PopularMoviesViewController {
+    
+    private func resetTable() {
+        self.movies.removeAll()
+        self.currentPage = 1
+        moviesTableView.reloadData()
+    }
     
     func appendMovies(newMovies: [Movie]) {
         self.movies += newMovies
