@@ -110,14 +110,6 @@ class MovieDetailViewController: UIViewController {
         NetworkService.getMovie(movieID: movieID) { movie in
             self.preparePage(movieDetail: movie)
         }
-        
-        NetworkService.getCast(movieID: movieID) { cast in
-            self.castNetworkHandle(cast: cast)
-        }
-        
-        NetworkService.getMovieList(callType: .recommendationMovies, movieId: movieID) { recommendationList, _ in
-            self.recommendationsNetworkHandle(recommendations: recommendationList)
-        }
     }
     
     
@@ -128,25 +120,34 @@ class MovieDetailViewController: UIViewController {
 extension MovieDetailViewController {
     
     func preparePage(movieDetail: MovieDetail) {
-        titleLabel.text = movieDetail.title
-        orgTitleLabel.text = movieDetail.originalTitle
-        taglineLabel.text = movieDetail.tagline
-        genresLabel.text = FormatChangers.genresFormatToStr(gen: movieDetail.genres)
-        runtimeLabel.text = "\(movieDetail.runtime ?? 0) \(LocalizationHelper.minuteName.localizeString())"
-        scoreLabel.text = String(format: "%.1f" , movieDetail.voteAverage ?? 0.0)
-        overviewLabel.text = movieDetail.overview
-        budgetLabel.setTitle(FormatChangers.moneyFormatChanger(amount: movieDetail.budget ?? 0), for: .normal)
-        revenueLabel.setTitle(FormatChangers.moneyFormatChanger(amount: movieDetail.revenue ?? 0), for: .normal)
-        releaseDateLabel.text = FormatChangers.dateFormatChanger(str: movieDetail.releaseDate ?? "")
-        homepageURL = NetworkConstants.getHomepage(homepage: movieDetail.homepage)
+        
+//        Prepare Details
+        
+        self.detailsNetworkHandle(movieDetail: movieDetail)
+        
+//        Prepare Poster Image
         
         if let posterPath = movieDetail.posterPath {
             posterImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath, imageSize: PosterSize.original.rawValue))
         }
         
-        companies = movieDetail.productionCompanies ?? []
+//        Prepare Cast and Recommendations
         
-//        Favorite System
+        if let credits = movieDetail.credits, let cast = credits.cast {
+            self.castNetworkHandle(cast: cast)
+        }
+        
+        if let recommendationResults = movieDetail.recommendations, let recommendations = recommendationResults.results {
+            self.recommendationsNetworkHandle(recommendations: recommendations)
+        }
+        
+//        Prepare Production Companies
+        
+        if let productionCompanies = movieDetail.productionCompanies {
+            self.companiesNetworkHandle(companies: productionCompanies)
+        }
+        
+//        Prepare Favorite System
         
         self.rawMovie = Movie(id: self.movieID, title: movieDetail.title, releaseDate: movieDetail.releaseDate, posterPath: movieDetail.posterPath, voteAverage: movieDetail.voteAverage)
         
@@ -155,8 +156,6 @@ extension MovieDetailViewController {
         } else {
             self.isFavorite = false
         }
-        
-        companiesTableView.reloadData()
         
     }
     
@@ -298,19 +297,38 @@ extension MovieDetailViewController {
     
 //    Network Handlers
     
-    func castNetworkHandle(cast: [Cast]) {
+    private func detailsNetworkHandle(movieDetail: MovieDetail) {
+        titleLabel.text = movieDetail.title
+        orgTitleLabel.text = movieDetail.originalTitle
+        taglineLabel.text = movieDetail.tagline
+        genresLabel.text = FormatChangers.genresFormatToStr(gen: movieDetail.genres)
+        runtimeLabel.text = "\(movieDetail.runtime ?? 0) \(LocalizationHelper.minuteName.localizeString())"
+        scoreLabel.text = String(format: "%.1f" , movieDetail.voteAverage ?? 0.0)
+        overviewLabel.text = movieDetail.overview
+        budgetLabel.setTitle(FormatChangers.moneyFormatChanger(amount: movieDetail.budget ?? 0), for: .normal)
+        revenueLabel.setTitle(FormatChangers.moneyFormatChanger(amount: movieDetail.revenue ?? 0), for: .normal)
+        releaseDateLabel.text = FormatChangers.dateFormatChanger(str: movieDetail.releaseDate ?? "")
+        homepageURL = NetworkConstants.getHomepage(homepage: movieDetail.homepage)
+    }
+    
+    private func castNetworkHandle(cast: [Cast]) {
         self.setCast(cast: cast)
         self.castCollectionView.reloadData()
     }
     
-    func recommendationsNetworkHandle(recommendations: [Movie]) {
+    private func recommendationsNetworkHandle(recommendations: [Movie]) {
         self.setRecommendations(recommendations: recommendations)
         self.recommendationsCollectionView.reloadData()
     }
     
+    private func companiesNetworkHandle(companies: [ProductionCompany]) {
+        self.companies = companies
+        self.companiesTableView.reloadData()
+    }
+    
 //    Favorite System
     
-    @objc func changeFavoriteStatus() {
+    @objc private func changeFavoriteStatus() {
         self.isFavorite = !(self.isFavorite)
     }
     

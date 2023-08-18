@@ -56,7 +56,6 @@
 		FBC72C232A7A949300A6B09B /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC72C222A7A949300A6B09B /* UIConstants.swift */; };
 		FBD74DD22A8CBC2F00EB2B52 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD74DD12A8CBC2F00EB2B52 /* Movie.swift */; };
 		FBD74DD42A8CDAB100EB2B52 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD74DD32A8CDAB100EB2B52 /* NotificationExtension.swift */; };
-		FBD74DD62A8CEAD400EB2B52 /* RelatedMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD74DD52A8CEAD400EB2B52 /* RelatedMovies.swift */; };
 		FBEBFC7E2A728D4B0051B8EF /* FavoriteMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEBFC7D2A728D4B0051B8EF /* FavoriteMoviesViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -114,7 +113,6 @@
 		FBC72C222A7A949300A6B09B /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		FBD74DD12A8CBC2F00EB2B52 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		FBD74DD32A8CDAB100EB2B52 /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
-		FBD74DD52A8CEAD400EB2B52 /* RelatedMovies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedMovies.swift; sourceTree = "<group>"; };
 		FBEBFC7D2A728D4B0051B8EF /* FavoriteMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMoviesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -199,7 +197,6 @@
 				FBC387602A73E42500179216 /* Actor.swift */,
 				FB63740E2A80E12800A89769 /* Genres.swift */,
 				FBD74DD12A8CBC2F00EB2B52 /* Movie.swift */,
-				FBD74DD52A8CEAD400EB2B52 /* RelatedMovies.swift */,
 				FBBA30012A8E1ED000E60FB7 /* Person.swift */,
 			);
 			path = Model;
@@ -372,7 +369,6 @@
 			files = (
 				FBC72C232A7A949300A6B09B /* UIConstants.swift in Sources */,
 				FBB4F3F82A6FEB32001EF7EE /* TableViewExtension.swift in Sources */,
-				FBD74DD62A8CEAD400EB2B52 /* RelatedMovies.swift in Sources */,
 				FBD74DD22A8CBC2F00EB2B52 /* Movie.swift in Sources */,
 				FB7F1F512A6E642000F04E41 /* NetworkConstants.swift in Sources */,
 				FB8EC8FA2A8A3FED0099E947 /* FormatChangers.swift in Sources */,

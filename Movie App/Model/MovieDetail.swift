@@ -22,6 +22,8 @@ struct MovieDetail: Codable {
     let runtime: Int?
     let productionCompanies: [ProductionCompany]?
     let homepage: String?
+    let credits: Credits?
+    let recommendations: APIMovieResults?
     
     let voteAverage: Double?
     let tagline: String?
@@ -36,6 +38,8 @@ struct MovieDetail: Codable {
         case runtime
         case homepage
         case tagline
+        case credits
+        case recommendations
         
         case originalTitle = "original_title"
         case posterPath = "poster_path"

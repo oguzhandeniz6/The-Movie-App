@@ -42,27 +42,24 @@ class CastViewController: UIViewController {
         NetworkService.getActorDetails(actorID: actorID) { person in
             self.preparePage(actor: person)
         }
-        
-        NetworkService.getMovieList(callType: .movieCredits, personId: actorID) { movieList, _ in
-            self.relatedMoviesNetworkHandle(relatedMovies: movieList)
-        }
     }
     
     func preparePage(actor: Actor) {
-        actorNameLabel.text = actor.name
-        birthdayLabel.text = FormatChangers.dateFormatChanger(str: actor.birthday ?? "")
         
-        if actor.deathday != nil {
-            deathdayLabel.text = FormatChangers.dateFormatChanger(str: actor.deathday ?? "")
-        } else {
-            deathdayLabel.text = ""
-        }
+//        Prepare Details
+
+        self.detailsNetworkHandle(actor: actor)
         
-        birthPlaceLabel.text = actor.placeOfBirth
-        bioLabel.text = "\n\(actor.biography ?? "")\n"
+//        Prepare Poster Image
         
         if let posterPath = actor.profilePath {
             actorPhotoImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath, imageSize: ProfileSize.original.rawValue))
+        }
+        
+//        Prepare Related Movies
+        
+        if let relatedMovies = actor.relatedMovies, let movies = relatedMovies.cast {
+            self.relatedMoviesNetworkHandle(relatedMovies: movies)
         }
     }
 }
@@ -110,7 +107,21 @@ extension CastViewController {
         self.relatedMovies = movies
     }
     
-    func relatedMoviesNetworkHandle(relatedMovies: [Movie]) {
+    private func detailsNetworkHandle(actor: Actor) {
+        actorNameLabel.text = actor.name
+        birthdayLabel.text = FormatChangers.dateFormatChanger(str: actor.birthday ?? "")
+        
+        if actor.deathday != nil {
+            deathdayLabel.text = FormatChangers.dateFormatChanger(str: actor.deathday ?? "")
+        } else {
+            deathdayLabel.text = ""
+        }
+        
+        birthPlaceLabel.text = actor.placeOfBirth
+        bioLabel.text = "\n\(actor.biography ?? "")\n"
+    }
+    
+    private func relatedMoviesNetworkHandle(relatedMovies: [Movie]) {
         self.setRelatedMovies(movies: relatedMovies)
         self.relatedMoviesCollectionView.reloadData()
     }

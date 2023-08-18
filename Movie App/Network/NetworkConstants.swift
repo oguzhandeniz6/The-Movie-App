@@ -14,24 +14,28 @@ struct NetworkConstants {
     private static let imageURL: String = "https://image.tmdb.org/t/p/"
     private static let apiKey: String = "?api_key=98dab9c655a73de7bfb04ab425a53fe2"
     
-//    Basic endpoints
-    private static let popularEndpoint: String = "/movie/popular"
-    private static let topRatedEndpoint: String = "/movie/top_rated"
-    private static let searchMovieEndpoint: String = "/search/movie"
-    private static let genresEndpoint: String = "/genre/movie/list"
-    private static let discoverEndpoint: String = "/discover/movie"
-    private static let nowplayingEndpoint: String = "/movie/now_playing"
-    private static let upcomingEndpoint: String = "/movie/upcoming"
-    private static let searchPersonEndpoint: String = "/search/person"
+//    Namespaces
+    private static let movieNamespace: String = "/movie"
+    private static let searchNamespace: String = "/search"
+    private static let discoverNamespace: String = "/discover"
+    private static let genresNamespace: String = "/genre"
     
-//    Complex endpoints
-    private static let movieEndpoint: String = "/movie/"
-    private static let personEndpoint: String = "/person/"
-    private static let creditsEndpoint: String = "/credits"
-    private static let recommendationsEndpoint: String = "/recommendations"
-    private static let movieCreditsEndpoint: String = "/movie_credits"
+//    Endpoints
+    private static let popularEndpoint: String = "/popular"
+    private static let topRatedEndpoint: String = "/top_rated"
+    private static let movieEndpoint: String = "/movie"
+    private static let personEndpoint: String = "/person"
+    private static let nowPlayingEndpoint: String = "/now_playing"
+    private static let upcomingEndpoint: String = "/upcoming"
+    private static let listEndpoint: String = "/list"
+    
+//    Appended endpoints
+    private static let creditsEndpoint: String = "credits"
+    private static let recommendationsEndpoint: String = "recommendations"
+    private static let movieCreditsEndpoint: String = "movie_credits"
     
 //    Add-ons
+    private static let appendToResponseAddon: String = "&append_to_response="
     private static let pageAddon: String = "&page="
     private static let queryAddon: String = "&query="
     private static let languageAddon: String = "&language="
@@ -42,42 +46,32 @@ struct NetworkConstants {
     
 //    GET Popular Movies URL
     static func getPopularMoviesURL(pageNumber num: Int) -> URL {
-        return String("\(baseURL)\(popularEndpoint)\(apiKey)\(pageAddon)\(num)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
+        return String("\(baseURL)\(movieNamespace)\(popularEndpoint)\(apiKey)\(pageAddon)\(num)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
     }
     
 //    GET Top Rated Movies URL
         static func getTopRatedMoviesURL(pageNumber num: Int) -> URL {
-            return String("\(baseURL)\(topRatedEndpoint)\(apiKey)\(pageAddon)\(num)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
+            return String("\(baseURL)\(movieNamespace)\(topRatedEndpoint)\(apiKey)\(pageAddon)\(num)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
         }
     
 //    GET Search Movie URL
     static func getSearchMovieURL(searchKey key: String, pageNumber num: Int) -> URL {
-        return String("\(baseURL)\(searchMovieEndpoint)\(apiKey)\(queryAddon)\(key)\(pageAddon)\(num)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
+        return String("\(baseURL)\(searchNamespace)\(movieEndpoint)\(apiKey)\(queryAddon)\(key)\(pageAddon)\(num)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
     }
     
-//    GET Movie URL
-    static func getMovieURL(movieID id: Int) -> URL {
-        return String("\(baseURL)\(movieEndpoint)\(id)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
+//    GET Search Actor URL
+    static func getSearchPersonURL(searchKey key: String, pageNumber num: Int) -> URL {
+        return String("\(baseURL)\(searchNamespace)\(personEndpoint)\(apiKey)\(queryAddon)\(key)\(pageAddon)\(num)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
     }
     
-//    GET Movie Credits URL
-    static func getMovieCreditsURL(movieID id: Int) -> URL {
-        return String("\(baseURL)\(movieEndpoint)\(id)\(creditsEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
-    }
-    
-//    GET Movie Recommendations URL
-    static func getMovieRecommendationsURL(movieID id: Int) -> URL {
-        return String("\(baseURL)\(movieEndpoint)\(id)\(recommendationsEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
+//    GET Movie With Credits and Recommendations URL
+    static func getMovieWithCreditsAndRecommendationsURL(movieID id: Int) -> URL {
+        return String("\(baseURL)\(movieNamespace)/\(id)\(apiKey)\(appendToResponseAddon)\(creditsEndpoint),\(recommendationsEndpoint)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
     }
     
 //    GET Person Details URL
-    static func getPersonDetailsURL(personID id: Int) -> URL {
-        return String("\(baseURL)\(personEndpoint)\(id)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
-    }
-    
-    //    GET Movie Credits of an Actor URL
-        static func getMovieCredits(personID id: Int) -> URL {
-            return String("\(baseURL)\(personEndpoint)\(id)\(movieCreditsEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
+    static func getPersonDetailsWithMovieCreditsURL(personID id: Int) -> URL {
+        return String("\(baseURL)\(personEndpoint)/\(id)\(apiKey)\(appendToResponseAddon)\(movieCreditsEndpoint)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
     }
     
 //    GET Movie Poster URL
@@ -87,27 +81,22 @@ struct NetworkConstants {
     
 //    GET All Genres URL
     static func getGenres() -> URL {
-        return String("\(baseURL)\(genresEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
+        return String("\(baseURL)\(genresNamespace)\(movieEndpoint)\(listEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
     }
     
 //    GET Now Playing Movies URL
     static func getNowPlaying(pageNumber: Int) -> URL {
-        return String("\(baseURL)\(nowplayingEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())\(pageAddon)\(pageNumber)").toURL()
+        return String("\(baseURL)\(movieNamespace)\(nowPlayingEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())\(pageAddon)\(pageNumber)").toURL()
     }
     
 //    GET Upcoming Movies URL
     static func getUpcoming(pageNumber: Int) -> URL {
-        return String("\(baseURL)\(upcomingEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())\(pageAddon)\(pageNumber)").toURL()
+        return String("\(baseURL)\(movieNamespace)\(upcomingEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())\(pageAddon)\(pageNumber)").toURL()
     }
     
 //    GET Movies with Genre URL
-    static func getDiscover(pageNumber: Int, genreid: Int) -> URL {
-        return String("\(baseURL)\(discoverEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())\(genresAddon)\(genreid)\(pageAddon)\(pageNumber)").toURL()
-    }
-    
-//    GET Search Actor URL
-    static func getSearchPersonURL(searchKey key: String, pageNumber num: Int) -> URL {
-        return String("\(baseURL)\(searchPersonEndpoint)\(apiKey)\(queryAddon)\(key)\(pageAddon)\(num)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
+    static func getMoviesWithGenre(pageNumber: Int, genreid: Int) -> URL {
+        return String("\(baseURL)\(discoverNamespace)\(movieEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())\(genresAddon)\(genreid)\(pageAddon)\(pageNumber)").toURL()
     }
     
     

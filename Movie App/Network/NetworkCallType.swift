@@ -13,8 +13,6 @@ import Foundation
     case topRatedMovies
     case searchMovies
     case searchPersons
-    case recommendationMovies
-    case movieCredits
     case nowPlaying
     case upcoming
     case genre1

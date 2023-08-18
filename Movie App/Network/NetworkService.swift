@@ -34,20 +34,6 @@ class NetworkService {
                 }
             }
             
-        case .recommendationMovies:
-            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getMovieRecommendationsURL(movieID: movieId), dataType: APIMovieResults.self) { result in
-                if let fetchedMovies = result.results {
-                    completion(fetchedMovies, pageNumber)
-                }
-            }
-            
-        case .movieCredits:
-            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getMovieCredits(personID: personId), dataType: RelatedMovies.self) { result in
-                if let fetchedMovies = result.cast {
-                    completion(fetchedMovies, pageNumber)
-                }
-            }
-            
         case .nowPlaying:
             NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getNowPlaying(pageNumber: pageNumber), dataType: APIMovieResults.self) { result in
                 if let nowplayingList = result.results, let maxPage = result.totalPages {
@@ -63,7 +49,7 @@ class NetworkService {
             }
             
         case .genre1, .genre2, .genre3:
-            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getDiscover(pageNumber: pageNumber, genreid: genreId), dataType: APIMovieResults.self) { result in
+            NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getMoviesWithGenre(pageNumber: pageNumber, genreid: genreId), dataType: APIMovieResults.self) { result in
                 if let genreList = result.results, let maxPage = result.totalPages {
                     completion(genreList, maxPage)
                 }
@@ -83,21 +69,13 @@ class NetworkService {
     }
     
     static func getMovie(movieID: Int, completion: @escaping (MovieDetail) -> Void) {
-        NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getMovieURL(movieID: movieID), dataType: MovieDetail.self) { result in
+        NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getMovieWithCreditsAndRecommendationsURL(movieID: movieID), dataType: MovieDetail.self) { result in
             completion(result)
         }
     }
     
-    static func getCast(movieID: Int, completion: @escaping ([Cast]) -> Void) {
-        NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getMovieCreditsURL(movieID: movieID), dataType: Credits.self) { result in
-            if let credits = result.cast {
-                completion(credits)
-            }
-        }
-    }
-    
     static func getActorDetails(actorID: Int, completion: @escaping (Actor) -> Void) {
-        NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getPersonDetailsURL(personID: actorID), dataType: Actor.self) { result in
+        NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getPersonDetailsWithMovieCreditsURL(personID: actorID), dataType: Actor.self) { result in
             completion(result)
         }
     }

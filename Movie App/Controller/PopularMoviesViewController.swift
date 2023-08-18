@@ -156,7 +156,7 @@ extension PopularMoviesViewController {
         self.currentPage += 1
     }
     
-    func popularNetworkHandle(popularList: [Movie], maxPage: Int) {
+    private func popularNetworkHandle(popularList: [Movie], maxPage: Int) {
         self.setTotalPages(maxPage: maxPage)
         self.appendMovies(newMovies: popularList)
         self.incrementCurrentPage()

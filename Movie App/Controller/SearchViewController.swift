@@ -249,7 +249,7 @@ extension SearchViewController {
         self.currentPage += 1
     }
     
-    func searchMovieNetworkHandle(searchList: [Movie], maxPage: Int) {
+    private func searchMovieNetworkHandle(searchList: [Movie], maxPage: Int) {
         self.setTotalPages(maxPage: maxPage)
         self.appendMovies(newMovies: searchList)
         self.incrementCurrentPage()
@@ -257,7 +257,7 @@ extension SearchViewController {
         self.searchTableView.refreshControl?.endRefreshing()
     }
     
-    func searchPersonNetworkHandle(searchList: [Person], maxPage: Int) {
+    private func searchPersonNetworkHandle(searchList: [Person], maxPage: Int) {
         self.setTotalPages(maxPage: maxPage)
         self.appendPersons(newPersons: searchList)
         self.incrementCurrentPage()

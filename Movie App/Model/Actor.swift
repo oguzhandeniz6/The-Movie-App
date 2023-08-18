@@ -16,6 +16,8 @@ struct Actor : Codable {
     let biography: String?
     let profilePath: String?
     
+    let relatedMovies: RelatedMovies?
+    
     enum CodingKeys: String, CodingKey {
         case id
         case name
@@ -24,5 +26,10 @@ struct Actor : Codable {
         case biography
         case placeOfBirth = "place_of_birth"
         case profilePath = "profile_path"
+        case relatedMovies = "movie_credits"
     }
+}
+
+struct RelatedMovies: Codable {
+    let cast: [Movie]?
 }
