@@ -10,6 +10,8 @@ import UIKit
 
 struct UIConstants {
     
+    static let scrollViewTopInset: CGFloat = 570.0
+    
     static let noImage = UIImage(named: "NoImage")
     
     static let mainColor = UIColor(named: "Main")

@@ -34,7 +34,11 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var orgTitleLabel: UILabel!
     @IBOutlet weak var taglineLabel: UILabel!
-    @IBOutlet weak var posterImageView: UIImageView!
+    @IBOutlet weak var posterImageView: UIImageView! {
+        didSet {
+            posterImageView.superview?.sendSubviewToBack(posterImageView)
+        }
+    }
     @IBOutlet weak var genresLabel: UILabel!
     @IBOutlet weak var runtimeLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -49,6 +53,12 @@ class MovieDetailViewController: UIViewController {
         }
     }
     
+    
+    @IBOutlet weak var movieDetailScrollView: UIScrollView! {
+        didSet {
+            movieDetailScrollView.contentInset = UIEdgeInsets(top: UIConstants.scrollViewTopInset, left: 0.0, bottom: 0.0, right: 0.0)
+        }
+    }
     
     @IBOutlet weak var castCollectionView: UICollectionView! {
         didSet {

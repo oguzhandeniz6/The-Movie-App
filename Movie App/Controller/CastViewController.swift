@@ -14,7 +14,11 @@ class CastViewController: UIViewController {
     var actorID: Int = 0
     
     @IBOutlet weak var actorNameLabel: UILabel!
-    @IBOutlet weak var actorPhotoImageView: UIImageView!
+    @IBOutlet weak var actorPhotoImageView: UIImageView! {
+        didSet {
+            actorPhotoImageView.superview?.sendSubviewToBack(actorPhotoImageView)
+        }
+    }
     @IBOutlet weak var birthdayLabel: UILabel!
     @IBOutlet weak var deathdayLabel: UILabel!
     @IBOutlet weak var birthPlaceLabel: UILabel!
@@ -24,6 +28,12 @@ class CastViewController: UIViewController {
     @IBOutlet weak var bioView: UIView! {
         didSet {
             bioView.layer.cornerRadius = 30
+        }
+    }
+    
+    @IBOutlet weak var castScrollView: UIScrollView! {
+        didSet {
+            castScrollView.contentInset = UIEdgeInsets(top: UIConstants.scrollViewTopInset, left: 0.0, bottom: 0.0, right: 0.0)
         }
     }
     
