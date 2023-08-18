@@ -12,38 +12,40 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" restorationIdentifier="PersonCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="PersonCell" rowHeight="134" id="KGk-i7-Jjw" customClass="PersonCell" customModule="Movie_App" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="325" height="134"/>
+            <rect key="frame" x="0.0" y="0.0" width="327" height="134"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="325" height="134"/>
+                <rect key="frame" x="0.0" y="0.0" width="327" height="134"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aaP-YH-mBa" userLabel="Person Image View">
-                        <rect key="frame" x="8" y="8" width="70" height="115"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="CYc-TP-bgi">
+                        <rect key="frame" x="8" y="8" width="311" height="118"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aaP-YH-mBa" userLabel="Person Image View">
+                                <rect key="frame" x="0.0" y="0.0" width="70" height="115"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="4Vc-nz-9Vz"/>
+                                    <constraint firstAttribute="height" constant="115" id="cNS-4C-DKy"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBV-Ye-hCa" userLabel="Person Name Label">
+                                <rect key="frame" x="102" y="0.0" width="209" height="118"/>
+                                <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="22"/>
+                                <color key="textColor" name="Text Color 4"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <constraints>
-                            <constraint firstAttribute="width" constant="70" id="4Vc-nz-9Vz"/>
-                            <constraint firstAttribute="height" constant="115" id="cNS-4C-DKy"/>
+                            <constraint firstItem="fBV-Ye-hCa" firstAttribute="centerY" secondItem="CYc-TP-bgi" secondAttribute="centerY" id="Rty-0W-0eB"/>
                         </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBV-Ye-hCa" userLabel="Person Name Label">
-                        <rect key="frame" x="110" y="8" width="207" height="115"/>
-                        <constraints>
-                            <constraint firstAttribute="height" priority="999" constant="115" id="plZ-Fp-keo"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="22"/>
-                        <color key="textColor" name="Text Color 4"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    </stackView>
                 </subviews>
                 <color key="backgroundColor" name="Alternative Color 2"/>
                 <constraints>
-                    <constraint firstItem="aaP-YH-mBa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="WgV-YB-Rpc"/>
-                    <constraint firstItem="fBV-Ye-hCa" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ZD3-VH-kqw"/>
-                    <constraint firstAttribute="bottom" secondItem="aaP-YH-mBa" secondAttribute="bottom" constant="8" id="owf-ZP-sQk"/>
-                    <constraint firstItem="fBV-Ye-hCa" firstAttribute="leading" secondItem="aaP-YH-mBa" secondAttribute="trailing" constant="32" id="u1b-qk-vyM"/>
-                    <constraint firstItem="aaP-YH-mBa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="u4Q-4y-wTj"/>
-                    <constraint firstAttribute="trailing" secondItem="fBV-Ye-hCa" secondAttribute="trailing" constant="8" id="v2l-35-uEC"/>
-                    <constraint firstItem="fBV-Ye-hCa" firstAttribute="top" secondItem="aaP-YH-mBa" secondAttribute="top" id="zIE-mI-QhD"/>
+                    <constraint firstAttribute="trailing" secondItem="CYc-TP-bgi" secondAttribute="trailing" constant="8" id="7S1-a1-qpO"/>
+                    <constraint firstAttribute="bottom" secondItem="CYc-TP-bgi" secondAttribute="bottom" constant="8" id="8zw-A7-iDc"/>
+                    <constraint firstItem="CYc-TP-bgi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="A4b-uG-idp"/>
+                    <constraint firstItem="CYc-TP-bgi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="lFJ-f9-mLS"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -51,7 +53,7 @@
                 <outlet property="personImageView" destination="aaP-YH-mBa" id="Yef-6M-loQ"/>
                 <outlet property="personNameLabel" destination="fBV-Ye-hCa" id="jBE-aQ-eZa"/>
             </connections>
-            <point key="canvasLocation" x="-31.297709923664122" y="51.408450704225352"/>
+            <point key="canvasLocation" x="-29.770992366412212" y="51.408450704225352"/>
         </tableViewCell>
     </objects>
     <resources>

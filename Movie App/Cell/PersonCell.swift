@@ -9,11 +9,22 @@ import UIKit
 
 class PersonCell: UITableViewCell {
     
-    @IBOutlet weak var personImageView: UIImageView!
+    @IBOutlet weak var personImageView: UIImageView! {
+        didSet {
+            personImageView.image = UIConstants.noImage
+        }
+    }
+    
     @IBOutlet weak var personNameLabel: UILabel!
     
     static func getClassName() -> String {
         return String(describing: Self.self)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        personImageView.image = UIConstants.noImage
     }
     
     func fillCell(_ person: Person) {
@@ -21,8 +32,9 @@ class PersonCell: UITableViewCell {
         self.selectionStyle = .none
         
         self.personNameLabel.text = person.name ?? ""
-        if let imagePath = person.profilePath {
-            self.personImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: imagePath, imageSize: PosterSize.high.rawValue))
+        
+        if let posterPath = person.profilePath {
+            self.personImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath, imageSize: PosterSize.high.rawValue))
         }
     }
     

@@ -10,6 +10,8 @@ import UIKit
 
 struct UIConstants {
     
+    static let noImage = UIImage(named: "NoImage")
+    
     static let mainColor = UIColor(named: "Main")
     static let alternativeColor1 = UIColor(named: "Alternative Color 1")
     static let alternativeColor2 = UIColor(named: "Alternative Color 2")

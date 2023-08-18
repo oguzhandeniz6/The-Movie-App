@@ -14,22 +14,29 @@ class MoviePosterCell: UICollectionViewCell {
     
     @IBOutlet weak var alignCenterY: NSLayoutConstraint!
     
-    @IBOutlet weak var posterImageView: UIImageView!
-    @IBOutlet weak var movieNameLabel: UILabel!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var posterImageView: UIImageView! {
+        didSet {
+            posterImageView.image = UIConstants.noImage
+        }
     }
+    @IBOutlet weak var movieNameLabel: UILabel!
     
     static func getClassName() -> String {
         return String(describing: Self.self)
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        posterImageView.image = UIConstants.noImage
+    }
+    
     func fillCell(_ movie: Movie) {
         movieNameLabel.text = movie.title
         
-        posterImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: movie.posterPath ?? "", imageSize: PosterSize.high.rawValue))
+        if let posterPath = movie.posterPath {
+            posterImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath, imageSize: PosterSize.high.rawValue))
+        }
     }
     
     func setForHomepage() {

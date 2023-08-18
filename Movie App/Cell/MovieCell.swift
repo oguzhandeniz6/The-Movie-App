@@ -32,13 +32,23 @@ class MovieCell: UITableViewCell {
         }
     }
     
-    @IBOutlet weak var movieImageView: UIImageView!
+    @IBOutlet weak var movieImageView: UIImageView! {
+        didSet {
+            movieImageView.image = UIConstants.noImage
+        }
+    }
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieRatingLabel: UILabel!
     @IBOutlet weak var movieDateLabel: UILabel!
     
     static func getClassName() -> String {
         return String(describing: Self.self)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        movieImageView.image = UIConstants.noImage
     }
     
     @objc func favoriteIconTapped(tapGestureRecognizer: UITapGestureRecognizer) {
@@ -67,12 +77,11 @@ extension MovieCell {
         self.selectionStyle = .none
         self.rawMovie = movie
         
-        if let id = movie.id, let title = movie.title, let rating = movie.voteAverage, let releaseDate = movie.releaseDate, let posterPath = movie.posterPath {
+        if let id = movie.id, let title = movie.title, let rating = movie.voteAverage, let releaseDate = movie.releaseDate {
             
             self.movieTitleLabel.text = title
             self.movieRatingLabel.text = String(format: "%.1f" ,rating)
             self.movieDateLabel.text = FormatChangers.dateFormatChanger(str: releaseDate)
-            self.movieImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath, imageSize: PosterSize.high.rawValue))
             
 //            Favorite System
             if CoreDataFunctions.checkMovie(id: id) {
@@ -82,6 +91,10 @@ extension MovieCell {
                 self.favoriteIcon.image = UIImage(systemName: UIConstants.unfavoriteIcon)
                 self.isFavorite = false
             }
+        }
+        
+        if let posterPath = movie.posterPath, posterPath != "" {
+            self.movieImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath, imageSize: PosterSize.high.rawValue))
         }
     }
     

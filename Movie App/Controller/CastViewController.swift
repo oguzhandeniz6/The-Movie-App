@@ -14,7 +14,11 @@ class CastViewController: UIViewController {
     var actorID: Int = 0
     
     @IBOutlet weak var actorNameLabel: UILabel!
-    @IBOutlet weak var actorPhotoImageView: UIImageView!
+    @IBOutlet weak var actorPhotoImageView: UIImageView! {
+        didSet {
+            actorPhotoImageView.image = UIConstants.noImage
+        }
+    }
     @IBOutlet weak var birthdayLabel: UILabel!
     @IBOutlet weak var deathdayLabel: UILabel!
     @IBOutlet weak var birthPlaceLabel: UILabel!
@@ -60,7 +64,10 @@ class CastViewController: UIViewController {
         
         birthPlaceLabel.text = actor.placeOfBirth
         bioLabel.text = "\n\(actor.biography ?? "")\n"
-        actorPhotoImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: actor.profilePath ?? "", imageSize: ProfileSize.original.rawValue))
+        
+        if let posterPath = actor.profilePath {
+            actorPhotoImageView.kf.setImage(with: NetworkConstants.getMovieImageURL(posterPath: posterPath, imageSize: ProfileSize.original.rawValue))
+        }
     }
 }
 
