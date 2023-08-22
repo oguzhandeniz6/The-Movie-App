@@ -384,6 +384,50 @@
             </objects>
             <point key="canvasLocation" x="-663" y="-862"/>
         </scene>
+        <!--Movie Reviews View Controller-->
+        <scene sceneID="28k-Ca-ASD">
+            <objects>
+                <viewController storyboardIdentifier="MovieReviewsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mnd-zV-y28" customClass="MovieReviewsViewController" customModule="Movie_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zR2-Wp-KIG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLj-7D-mcB" userLabel="BackButton">
+                                <rect key="frame" x="8" y="54" width="359" height="14"/>
+                                <color key="backgroundColor" name="Alternative Color 3"/>
+                                <color key="tintColor" name="Text Color 4"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="Mnd-zV-y28" eventType="touchUpInside" id="9JV-7c-ckl"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PKI-sN-CtC" userLabel="Review Table View">
+                                <rect key="frame" x="0.0" y="72" width="375" height="740"/>
+                                <color key="backgroundColor" name="Alternative Color 3"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="T4i-k4-u8o"/>
+                        <color key="backgroundColor" name="Alternative Color 3"/>
+                        <constraints>
+                            <constraint firstItem="PKI-sN-CtC" firstAttribute="top" secondItem="XLj-7D-mcB" secondAttribute="bottom" constant="4" id="4Mk-CB-y5W"/>
+                            <constraint firstAttribute="bottom" secondItem="PKI-sN-CtC" secondAttribute="bottom" id="P13-bU-cFW"/>
+                            <constraint firstItem="T4i-k4-u8o" firstAttribute="trailing" secondItem="PKI-sN-CtC" secondAttribute="trailing" id="ZEZ-aS-3J7"/>
+                            <constraint firstItem="XLj-7D-mcB" firstAttribute="top" secondItem="T4i-k4-u8o" secondAttribute="top" constant="4" id="gDM-wc-DYh"/>
+                            <constraint firstItem="T4i-k4-u8o" firstAttribute="trailing" secondItem="XLj-7D-mcB" secondAttribute="trailing" constant="8" id="jFB-E8-Lhm"/>
+                            <constraint firstItem="XLj-7D-mcB" firstAttribute="leading" secondItem="T4i-k4-u8o" secondAttribute="leading" constant="8" id="oqL-4z-aMh"/>
+                            <constraint firstItem="PKI-sN-CtC" firstAttribute="leading" secondItem="T4i-k4-u8o" secondAttribute="leading" id="yzh-Yb-iU6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="XLj-7D-mcB" id="2mH-Cu-qT1"/>
+                        <outlet property="reviewsTableView" destination="PKI-sN-CtC" id="nUO-qg-03W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="irw-Vd-9Im" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2176.8000000000002" y="-18.472906403940886"/>
+        </scene>
         <!--Popular Movies-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -516,10 +560,10 @@
                                 <rect key="frame" x="0.0" y="50" width="375" height="728"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wu7-8U-Xjf" userLabel="Details View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="741"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="777"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zie-wT-2ZY" userLabel="Details Stack View">
-                                                <rect key="frame" x="20" y="10" width="335" height="721"/>
+                                                <rect key="frame" x="20" y="10" width="335" height="757"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypG-sn-S7z">
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="45"/>
@@ -675,8 +719,19 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9c-hj-HkC" userLabel="ReviewButton">
+                                                        <rect key="frame" x="0.0" y="461" width="335" height="26"/>
+                                                        <color key="backgroundColor" name="Alternative Color 1"/>
+                                                        <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="17"/>
+                                                        <color key="tintColor" name="Text Color 1"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" image="text.bubble" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="reviewButtonPressed:" destination="y0c-B6-he6" eventType="touchUpInside" id="igD-wV-gD3"/>
+                                                        </connections>
+                                                    </button>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eix-gt-0iF" userLabel="Recommendations Collection View">
-                                                        <rect key="frame" x="0.0" y="461" width="335" height="200"/>
+                                                        <rect key="frame" x="0.0" y="497" width="335" height="200"/>
                                                         <color key="backgroundColor" name="Alternative Color 3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="200" id="lV2-xA-9h8"/>
@@ -690,7 +745,7 @@
                                                         <cells/>
                                                     </collectionView>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="crd-iu-WFf" userLabel="Companies Table View">
-                                                        <rect key="frame" x="0.0" y="671" width="335" height="50"/>
+                                                        <rect key="frame" x="0.0" y="707" width="335" height="50"/>
                                                         <color key="backgroundColor" name="Alternative Color 3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="EZM-SS-Qjc"/>
@@ -756,6 +811,7 @@
                         <outlet property="recommendationsCollectionView" destination="eix-gt-0iF" id="oJW-oz-s8f"/>
                         <outlet property="releaseDateLabel" destination="QWR-U5-ef5" id="rFf-Su-7zl"/>
                         <outlet property="revenueLabel" destination="tIZ-VE-8f9" id="58U-32-O58"/>
+                        <outlet property="reviewsPage" destination="R9c-hj-HkC" id="pMW-sY-vrU"/>
                         <outlet property="runtimeLabel" destination="Eec-uO-JbU" id="oJG-Ue-oNc"/>
                         <outlet property="scoreLabel" destination="fmq-8y-Fbk" id="hXv-6D-2Ao"/>
                         <outlet property="taglineLabel" destination="E8B-kp-Qs8" id="J6b-S2-H4e"/>
@@ -914,6 +970,7 @@
         <image name="link" catalog="system" width="128" height="124"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="123"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
+        <image name="text.bubble" catalog="system" width="128" height="110"/>
         <namedColor name="Alternative Color 1">
             <color red="0.097999997437000275" green="0.65499997138977051" blue="0.80800002813339233" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -934,6 +991,9 @@
         </namedColor>
         <namedColor name="Text Color 3">
             <color white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="Text Color 4">
+            <color red="0.078000001609325409" green="0.42399999499320984" blue="0.57999998331069946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -52,6 +52,16 @@ class MovieDetailViewController: UIViewController {
             movieHomepage.setTitle(LocalizationHelper.movieHomepageName.localizeString(), for: .normal)
         }
     }
+    @IBOutlet weak var reviewsPage: UIButton! {
+        didSet {
+            let insetAmount = 25.0;
+            reviewsPage.setTitle(LocalizationHelper.reviewPageName.localizeString(), for: .normal)
+            
+            reviewsPage.imageEdgeInsets = UIEdgeInsets(top: 0, left: -insetAmount, bottom: 0, right: insetAmount)
+            reviewsPage.layer.cornerRadius = UIConstants.buttonCornerRadius
+        }
+    }
+    
     
     
     @IBOutlet weak var movieDetailScrollView: UIScrollView! {
@@ -110,10 +120,19 @@ class MovieDetailViewController: UIViewController {
     
     @IBAction func homepageButtonPressed(_ sender: UIButton) {
         if let url = homepageURL {
-            print(url)
             UIApplication.shared.open(url)
         }
     }
+    
+    @IBAction func reviewButtonPressed(_ sender: UIButton) {
+        
+        if let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: MovieReviewsViewController.self)) as? MovieReviewsViewController {
+            
+            nextVC.movieID = self.movieID
+            self.present(nextVC, animated: true)
+        }
+    }
+    
     
     func loadData() {
         

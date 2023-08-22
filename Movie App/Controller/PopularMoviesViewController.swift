@@ -78,7 +78,7 @@ class PopularMoviesViewController: UIViewController {
 //MARK: - Prepare Extensions
 
 extension PopularMoviesViewController {
-    func prepareTableView() {
+    private func prepareTableView() {
         moviesTableView.dataSource = self
         moviesTableView.delegate = self
         moviesTableView.register(cell: MovieCell.self)

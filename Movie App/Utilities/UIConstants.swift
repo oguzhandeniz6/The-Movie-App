@@ -11,6 +11,7 @@ import UIKit
 struct UIConstants {
     
     static let scrollViewTopInset: CGFloat = 570.0
+    static let buttonCornerRadius: CGFloat = 10.0
     
     static let noImage = UIImage(named: "NoImage")
     

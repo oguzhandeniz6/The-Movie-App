@@ -28,9 +28,9 @@ class FormatChangers{
     }
 
     
-    static func dateFormatChanger(str: String) -> String {
+    static func dateFormatChanger(str: String, inputDateFormat: String = "yy-MM-dd") -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yy-MM-dd"
+        dateFormatter.dateFormat = inputDateFormat
         
         guard let date = dateFormatter.date(from: str) else {
             dateFormatter.dateFormat = "MMM d, yyyy"

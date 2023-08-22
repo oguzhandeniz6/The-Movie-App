@@ -33,6 +33,7 @@ struct NetworkConstants {
     private static let creditsEndpoint: String = "credits"
     private static let recommendationsEndpoint: String = "recommendations"
     private static let movieCreditsEndpoint: String = "movie_credits"
+    private static let reviewsEndpoint: String = "reviews"
     
 //    Add-ons
     private static let appendToResponseAddon: String = "&append_to_response="
@@ -53,6 +54,16 @@ struct NetworkConstants {
         static func getTopRatedMoviesURL(pageNumber num: Int) -> URL {
             return String("\(baseURL)\(movieNamespace)\(topRatedEndpoint)\(apiKey)\(pageAddon)\(num)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
         }
+    
+//    GET Now Playing Movies URL
+    static func getNowPlaying(pageNumber: Int) -> URL {
+        return String("\(baseURL)\(movieNamespace)\(nowPlayingEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())\(pageAddon)\(pageNumber)").toURL()
+    }
+    
+//    GET Upcoming Movies URL
+    static func getUpcoming(pageNumber: Int) -> URL {
+        return String("\(baseURL)\(movieNamespace)\(upcomingEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())\(pageAddon)\(pageNumber)").toURL()
+    }
     
 //    GET Search Movie URL
     static func getSearchMovieURL(searchKey key: String, pageNumber num: Int) -> URL {
@@ -84,19 +95,13 @@ struct NetworkConstants {
         return String("\(baseURL)\(genresNamespace)\(movieEndpoint)\(listEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
     }
     
-//    GET Now Playing Movies URL
-    static func getNowPlaying(pageNumber: Int) -> URL {
-        return String("\(baseURL)\(movieNamespace)\(nowPlayingEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())\(pageAddon)\(pageNumber)").toURL()
-    }
-    
-//    GET Upcoming Movies URL
-    static func getUpcoming(pageNumber: Int) -> URL {
-        return String("\(baseURL)\(movieNamespace)\(upcomingEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())\(pageAddon)\(pageNumber)").toURL()
-    }
-    
 //    GET Movies with Genre URL
     static func getMoviesWithGenre(pageNumber: Int, genreid: Int) -> URL {
         return String("\(baseURL)\(discoverNamespace)\(movieEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())\(genresAddon)\(genreid)\(pageAddon)\(pageNumber)").toURL()
+    }
+    
+    static func getMovieReviews(movieId: Int, pageNumber: Int) -> URL{
+        return String("\(baseURL)\(movieNamespace)/\(movieId)/\(reviewsEndpoint)\(apiKey)\(pageAddon)\(pageNumber)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
     }
     
     

@@ -11,6 +11,7 @@
 "favoriteTabBar" = "Favori Filmlerim";
 "homepageTabBar" = "Anasayfa";
 "movieHomepage" = "Film Anasayfası";
+"reviewPage" = "Yorumlar";
 "popularMovies" = "Popüler Filmler";
 "topRatedMovies" = "En İyi Filmler";
 "searchMovie" = "Film Ara";
@@ -19,4 +20,5 @@
 "nowPlaying" = "Vizyondakiler";
 "upcoming" = "Yakındakiler";
 
+"back" = "Geri";
 "minute" = "dk";

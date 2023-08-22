@@ -88,6 +88,14 @@ class NetworkService {
         }
     }
     
+    static func getMovieReviews(movieID: Int, pageNumber: Int, completion: @escaping ([Review], Int) -> Void) {
+        NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getMovieReviews(movieId: movieID, pageNumber: pageNumber), dataType: APIReviewResults.self) { result in
+            if let reviewsList = result.results, let maxPage = result.totalPages {
+                completion(reviewsList, maxPage)
+            }
+        }
+    }
+    
     static func clearRequests() {
         NetworkManager.shared.cancelAllRequests()
     }
