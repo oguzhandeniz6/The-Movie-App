@@ -101,7 +101,7 @@ struct NetworkConstants {
     }
     
     static func getMovieReviews(movieId: Int, pageNumber: Int) -> URL{
-        return String("\(baseURL)\(movieNamespace)/\(movieId)/\(reviewsEndpoint)\(apiKey)\(pageAddon)\(pageNumber)\(languageAddon)\(LocalizationHelper.getLanguage())").toURL()
+        return String("\(baseURL)\(movieNamespace)/\(movieId)/\(reviewsEndpoint)\(apiKey)\(pageAddon)\(pageNumber)").toURL()
     }
     
     

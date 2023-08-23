@@ -24,10 +24,17 @@ class LocalizationHelper {
     static let topRatedMoviesSegmentName: String = "topRatedMovies"
     static let searchMovieSegmentName: String = "searchMovie"
     static let searchActorSegmentName: String = "searchPerson"
+    
+//    Alert Names
+    
+    static let sorryName: String = "sorry"
+    static let noResultName: String = "noResult"
+    static let noReviewName: String = "noReview"
 
 //    Other Names
     static let backName: String = "back"
     static let minuteName: String = "minute"
+    static let okName: String = "ok"
     
     
 //    Functions

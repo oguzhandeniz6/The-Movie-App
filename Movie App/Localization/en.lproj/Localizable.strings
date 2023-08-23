@@ -17,8 +17,13 @@
 "searchMovie" = "Search Movie";
 "searchPerson" = "Search Person";
 
+"sorry" = "Sorry!";
+"noResult" = "There is no result for given name";
+"noReview" = "It seems that there are no reviews for this movie.";
+
 "nowPlaying" = "Now Playing";
 "upcoming" = "Upcoming";
 
 "back" = "Back";
 "minute" = "min";
+"ok" = "OK";

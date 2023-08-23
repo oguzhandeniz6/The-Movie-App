@@ -250,19 +250,29 @@ extension SearchViewController {
     }
     
     private func searchMovieNetworkHandle(searchList: [Movie], maxPage: Int) {
-        self.setTotalPages(maxPage: maxPage)
-        self.appendMovies(newMovies: searchList)
-        self.incrementCurrentPage()
-        self.searchTableView.reloadData()
-        self.searchTableView.refreshControl?.endRefreshing()
+        
+        if searchList.isEmpty {
+            self.present(Alerts.createAlertWithAction(title: LocalizationHelper.sorryName.localizeString(), message: LocalizationHelper.noResultName.localizeString()), animated: true)
+        } else {
+            self.setTotalPages(maxPage: maxPage)
+            self.appendMovies(newMovies: searchList)
+            self.incrementCurrentPage()
+            self.searchTableView.reloadData()
+            self.searchTableView.refreshControl?.endRefreshing()
+        }
     }
     
     private func searchPersonNetworkHandle(searchList: [Person], maxPage: Int) {
-        self.setTotalPages(maxPage: maxPage)
-        self.appendPersons(newPersons: searchList)
-        self.incrementCurrentPage()
-        self.searchTableView.reloadData()
-        self.searchTableView.refreshControl?.endRefreshing()
+        
+        if searchList.isEmpty {
+            self.present(Alerts.createAlertWithAction(title: LocalizationHelper.sorryName.localizeString(), message: LocalizationHelper.noResultName.localizeString()), animated: true)
+        } else {
+            self.setTotalPages(maxPage: maxPage)
+            self.appendPersons(newPersons: searchList)
+            self.incrementCurrentPage()
+            self.searchTableView.reloadData()
+            self.searchTableView.refreshControl?.endRefreshing()
+        }
     }
     
 }

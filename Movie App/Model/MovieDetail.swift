@@ -45,7 +45,7 @@ struct MovieDetail: Codable {
         case posterPath = "poster_path"
         case originalLanguage = "original_language"
         case releaseDate = "release_date"
-        case productionCompanies
+        case productionCompanies = "production_companies"
         case voteAverage = "vote_average"
     }
     

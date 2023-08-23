@@ -17,8 +17,13 @@
 "searchMovie" = "Film Ara";
 "searchPerson" = "Kişi Ara";
 
+"sorry" = "Üzgünüz!";
+"noResult" = "Bu isimle herhangi bir sonuç bulunamadı";
+"noReview" = "Bu film için herhangi bir yorum yapılmamış gibi görünüyor";
+
 "nowPlaying" = "Vizyondakiler";
 "upcoming" = "Yakındakiler";
 
 "back" = "Geri";
 "minute" = "dk";
+"ok" = "Tamam";

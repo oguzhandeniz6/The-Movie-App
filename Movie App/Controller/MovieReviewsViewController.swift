@@ -114,11 +114,16 @@ extension MovieReviewsViewController {
     }
     
     private func reviewsNetworkHandle(reviews: [Review], maxPage: Int) {
-        self.setTotalPages(maxPage: maxPage)
-        self.appendMovies(newMovies: reviews)
-        self.incrementCurrentPage()
-        self.reviewsTableView.reloadData()
-        self.reviewsTableView.refreshControl?.endRefreshing()
+        
+        if reviews.isEmpty {
+            self.present(Alerts.createAlertWithAction(title: LocalizationHelper.sorryName.localizeString(), message: LocalizationHelper.noReviewName.localizeString()), animated: true)
+        } else {
+            self.setTotalPages(maxPage: maxPage)
+            self.appendMovies(newMovies: reviews)
+            self.incrementCurrentPage()
+            self.reviewsTableView.reloadData()
+            self.reviewsTableView.refreshControl?.endRefreshing()
+        }
     }
 
 }
