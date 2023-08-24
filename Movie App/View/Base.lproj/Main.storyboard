@@ -428,6 +428,21 @@
             </objects>
             <point key="canvasLocation" x="2176.8000000000002" y="-18.472906403940886"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="168-pI-IfL">
+            <objects>
+                <viewController id="qjj-Yb-wDS" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ndl-Ba-Pyp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="DFQ-Ge-KyF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nfW-zG-Oj7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3121" y="-18"/>
+        </scene>
         <!--Popular Movies-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -995,6 +1010,9 @@
         <namedColor name="Text Color 4">
             <color red="0.078000001609325409" green="0.42399999499320984" blue="0.57999998331069946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
