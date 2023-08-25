@@ -34,6 +34,7 @@
 		FB7F1F4E2A6E5E0400F04E41 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FB7F1F4D2A6E5E0400F04E41 /* Alamofire */; };
 		FB7F1F512A6E642000F04E41 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7F1F502A6E642000F04E41 /* NetworkConstants.swift */; };
 		FB7F1F532A6E6C7F00F04E41 /* APIResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7F1F522A6E6C7F00F04E41 /* APIResults.swift */; };
+		FB86C0E32A98CBBE00676D93 /* DiscoverFiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB86C0E22A98CBBE00676D93 /* DiscoverFiltersViewController.swift */; };
 		FB8EC8FA2A8A3FED0099E947 /* FormatChangers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8EC8F92A8A3FED0099E947 /* FormatChangers.swift */; };
 		FB8EC8FC2A8A47E40099E947 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8EC8FB2A8A47E40099E947 /* ArrayExtension.swift */; };
 		FB8EC8FE2A8A514B0099E947 /* LocalizationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8EC8FD2A8A514B0099E947 /* LocalizationHelper.swift */; };
@@ -92,6 +93,7 @@
 		FB7F1F4A2A6E5DDC00F04E41 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		FB7F1F502A6E642000F04E41 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		FB7F1F522A6E6C7F00F04E41 /* APIResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResults.swift; sourceTree = "<group>"; };
+		FB86C0E22A98CBBE00676D93 /* DiscoverFiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverFiltersViewController.swift; sourceTree = "<group>"; };
 		FB8EC8F92A8A3FED0099E947 /* FormatChangers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatChangers.swift; sourceTree = "<group>"; };
 		FB8EC8FB2A8A47E40099E947 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		FB8EC8FD2A8A514B0099E947 /* LocalizationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationHelper.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				FBC3875E2A73E26F00179216 /* CastViewController.swift */,
 				FB6374102A80E94300A89769 /* MainPageViewController.swift */,
 				FBB214A72A94C37400CDE837 /* MovieReviewsViewController.swift */,
+				FB86C0E22A98CBBE00676D93 /* DiscoverFiltersViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				FB9B86992A710301003C24A8 /* MovieDetailViewController.swift in Sources */,
 				FB7D58C82A77C396001B00F9 /* MoviePosterCell.swift in Sources */,
 				FB8EC8FE2A8A514B0099E947 /* LocalizationHelper.swift in Sources */,
+				FB86C0E32A98CBBE00676D93 /* DiscoverFiltersViewController.swift in Sources */,
 				FBB214A62A94C1B300CDE837 /* Review.swift in Sources */,
 				FB7F1F2E2A6E508600F04E41 /* AppDelegate.swift in Sources */,
 				FBB214A32A94BFC300CDE837 /* ReviewCell.swift in Sources */,
