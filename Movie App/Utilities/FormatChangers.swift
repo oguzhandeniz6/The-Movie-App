@@ -9,7 +9,7 @@ import Foundation
 
 class FormatChangers{
     
-    static func genresFormatToStr(gen: [Genre]?) -> String{
+    static func genresFormatToStr(gen: [Genre]?, space: String = " ") -> String{
         guard var safeGen = gen else {
             return ""
         }
@@ -18,7 +18,7 @@ class FormatChangers{
             safeGen.removeFirst()
             
             for item in safeGen {
-                returnStr += ", \(item.name ?? "")"
+                returnStr += ",\(space)\(item.name ?? "")"
             }
             
             return returnStr

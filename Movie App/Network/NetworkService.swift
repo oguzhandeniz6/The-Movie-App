@@ -80,7 +80,7 @@ class NetworkService {
         }
     }
     
-    static func selectGenres(completion: @escaping ([Genre]) -> Void) {
+    static func getAllGenres(completion: @escaping ([Genre]) -> Void) {
         NetworkManager.shared.fetchDataObject(urlString: NetworkConstants.getGenres(), dataType: Genres.self) { result in
             if let genresList = result.genres {
                 completion(genresList)

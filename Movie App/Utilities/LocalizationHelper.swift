@@ -24,12 +24,26 @@ class LocalizationHelper {
     static let topRatedMoviesSegmentName: String = "topRatedMovies"
     static let searchMovieSegmentName: String = "searchMovie"
     static let searchActorSegmentName: String = "searchPerson"
+    static let discoverButtonName: String = "discover"
     
 //    Alert Names
     
     static let sorryName: String = "sorry"
     static let noResultName: String = "noResult"
     static let noReviewName: String = "noReview"
+    
+//    Sort Names
+    
+    static let popularityAscName: String = "popularityAsc"
+    static let popularityDescName: String = "popularityDesc"
+    static let revenueAscName: String = "revenueAsc"
+    static let revenueDescName: String = "revenueDesc"
+    static let releaseDateAscName: String = "releaseDateAsc"
+    static let releaseDateDescName: String = "releaseDateDesc"
+    static let voteAvgAscName: String = "voteAvgAsc"
+    static let voteAvgDescName: String = "voteAvgDesc"
+    static let voteCountAscName: String = "voteCountAsc"
+    static let voteCountDescName: String = "voteCountDesc"
 
 //    Other Names
     static let backName: String = "back"

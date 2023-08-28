@@ -16,10 +16,22 @@
 "topRatedMovies" = "Top Rated Movies";
 "searchMovie" = "Search Movie";
 "searchPerson" = "Search Person";
+"discover" = "Discover";
 
 "sorry" = "Sorry!";
 "noResult" = "There is no result for given name";
 "noReview" = "It seems that there are no reviews for this movie.";
+
+"popularityAsc" = "Popularity Ascending";
+"popularityDesc" = "Popularity Descending";
+"revenueAsc" = "Revenue Ascending";
+"revenueDesc" = "Revenue Descending";
+"releaseDateAsc" = "Release Date Ascending";
+"releaseDateDesc" = "Release Date Descending";
+"voteAvgAsc" = "Vote Average Ascending";
+"voteAvgDesc" = "Vote Average Descending";
+"voteCountAsc" = "Vote Count Ascending";
+"voteCountDesc" = "Vote Count Descending";
 
 "nowPlaying" = "Now Playing";
 "upcoming" = "Upcoming";

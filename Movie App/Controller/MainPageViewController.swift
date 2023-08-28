@@ -136,7 +136,7 @@ class MainPageViewController: UIViewController {
                 self.upcomingNetworkHandle(upList: upList, maxPage: maxPage)
             }
             
-            NetworkService.selectGenres { allGenres in
+            NetworkService.getAllGenres { allGenres in
                 self.selectGenresHandle(genresList: allGenres)
 
                 NetworkService.getMovieList(callType: .genre1, pageNumber: self.g1CurrentPage, genreId: self.genresList[0].id ?? 0) { g1List, maxPage in

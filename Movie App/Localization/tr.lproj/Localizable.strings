@@ -16,10 +16,22 @@
 "topRatedMovies" = "En İyi Filmler";
 "searchMovie" = "Film Ara";
 "searchPerson" = "Kişi Ara";
+"discover" = "Keşfet";
 
 "sorry" = "Üzgünüz!";
 "noResult" = "Bu isimle herhangi bir sonuç bulunamadı";
 "noReview" = "Bu film için herhangi bir yorum yapılmamış gibi görünüyor";
+
+"popularityAsc" = "Artan Popülerlik";
+"popularityDesc" = "Azalan Popülerlik";
+"revenueAsc" = "Artan Hasılat";
+"revenueDesc" = "Azalan Hasılat";
+"releaseDateAsc" = "Artan Çıkış Tarihi";
+"releaseDateDesc" = "Azalan Çıkış Tarihi";
+"voteAvgAsc" = "Artan Ortalama Puan";
+"voteAvgDesc" = "Azalan Ortalama Puan";
+"voteCountAsc" = "Artan Değerlendirme Sayısı";
+"voteCountDesc" = "Azalan Değerlendirme Sayısı";
 
 "nowPlaying" = "Vizyondakiler";
 "upcoming" = "Yakındakiler";

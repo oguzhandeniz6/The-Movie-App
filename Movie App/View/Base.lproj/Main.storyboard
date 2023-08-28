@@ -436,74 +436,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Y7t-kV-zYG">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Y7t-kV-zYG">
                                 <rect key="frame" x="-8" y="54" width="391" height="679"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="30" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="BeZ-D4-3Sl">
-                                        <rect key="frame" x="0.0" y="0.0" width="391" height="313"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="GenreCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GenreCell" rowHeight="30" id="OQq-9P-Ctd">
-                                                <rect key="frame" x="0.0" y="50" width="391" height="30"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OQq-9P-Ctd" id="8y7-k0-95T">
-                                                    <rect key="frame" x="0.0" y="0.0" width="391" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ZS-Kj-Rcg" userLabel="GenreName Label">
-                                                            <rect key="frame" x="195.66666666666666" y="0.0" width="0.0" height="30"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="rVf-Pd-Zgx"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="16"/>
-                                                            <color key="textColor" name="Text Color 1"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="9ZS-Kj-Rcg" firstAttribute="centerX" secondItem="8y7-k0-95T" secondAttribute="centerX" id="cgg-uf-SRg"/>
-                                                        <constraint firstItem="9ZS-Kj-Rcg" firstAttribute="centerY" secondItem="8y7-k0-95T" secondAttribute="centerY" id="dY9-KZ-5Ah"/>
-                                                    </constraints>
-                                                </tableViewCellContentView>
-                                            </tableViewCell>
-                                        </prototypes>
+                                        <rect key="frame" x="0.0" y="0.0" width="391" height="297"/>
+                                        <color key="backgroundColor" name="Alternative Color 3"/>
                                     </tableView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="0xy-Zl-enK" userLabel="Vote Stack View">
-                                        <rect key="frame" x="0.0" y="317" width="391" height="100"/>
-                                        <subviews>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2fd-gA-DxD" userLabel="Least Vote">
-                                                <rect key="frame" x="0.0" y="0.0" width="195.66666666666666" height="100"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="ago-JD-9IJ"/>
-                                                </constraints>
-                                            </pickerView>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2d4-MQ-hlF" userLabel="Greatest Vote">
-                                                <rect key="frame" x="195.66666666666663" y="0.0" width="195.33333333333337" height="100"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="QkS-Bi-a5a"/>
-                                                </constraints>
-                                            </pickerView>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="9uy-y4-YXX" userLabel="Year Stack View">
-                                        <rect key="frame" x="0.0" y="421" width="391" height="100"/>
-                                        <subviews>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A4X-tG-5se" userLabel="Least Year">
-                                                <rect key="frame" x="0.0" y="0.0" width="195.66666666666666" height="100"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="Lgn-Eq-FvC"/>
-                                                </constraints>
-                                            </pickerView>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ta5-70-dkF" userLabel="Greatest Year">
-                                                <rect key="frame" x="195.66666666666663" y="0.0" width="195.33333333333337" height="100"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="Uk1-bc-SWB"/>
-                                                </constraints>
-                                            </pickerView>
-                                        </subviews>
-                                    </stackView>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2fd-gA-DxD" userLabel="Vote Picker">
+                                        <rect key="frame" x="35.666666666666686" y="305" width="320" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="ago-JD-9IJ"/>
+                                        </constraints>
+                                    </pickerView>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A4X-tG-5se" userLabel="Year Picker">
+                                        <rect key="frame" x="35.666666666666686" y="413" width="320" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="Lgn-Eq-FvC"/>
+                                        </constraints>
+                                    </pickerView>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HYe-7V-sOQ" userLabel="Sort Picker">
-                                        <rect key="frame" x="0.0" y="525" width="391" height="100"/>
+                                        <rect key="frame" x="0.0" y="521" width="391" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="gpe-0A-1ze"/>
                                         </constraints>
@@ -545,11 +498,9 @@
                     <connections>
                         <outlet property="discoverButton" destination="9Kz-v1-iWt" id="ARS-Vk-6jZ"/>
                         <outlet property="genresTableView" destination="BeZ-D4-3Sl" id="Zky-dX-F94"/>
-                        <outlet property="higherLimitVotePicker" destination="2d4-MQ-hlF" id="ExT-YR-HpX"/>
-                        <outlet property="higherLimitYearPicker" destination="Ta5-70-dkF" id="Xfk-cM-ei8"/>
-                        <outlet property="lowerLimitVotePicker" destination="2fd-gA-DxD" id="14a-NP-rIE"/>
-                        <outlet property="lowerLimitYearPicker" destination="A4X-tG-5se" id="mjP-BA-gDg"/>
                         <outlet property="sortPicker" destination="HYe-7V-sOQ" id="4dI-Ex-k8p"/>
+                        <outlet property="votePicker" destination="2fd-gA-DxD" id="xXL-ke-0E5"/>
+                        <outlet property="yearPicker" destination="A4X-tG-5se" id="Wsp-ul-hIg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nfW-zG-Oj7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1124,9 +1075,6 @@
         <namedColor name="Text Color 4">
             <color red="0.078000001609325409" green="0.42399999499320984" blue="0.57999998331069946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
