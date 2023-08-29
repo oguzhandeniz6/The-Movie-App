@@ -17,6 +17,9 @@
 "searchMovie" = "Film Ara";
 "searchPerson" = "Kişi Ara";
 "discover" = "Keşfet";
+"voteLabel" = "En Az - En Fazla Ortalama Puan";
+"yearLabel" = "En Az - En Fazla Çıkış Tarihi";
+"sortLabel" = "Sıralama Tipi";
 
 "sorry" = "Üzgünüz!";
 "noResult" = "Bu isimle herhangi bir sonuç bulunamadı";

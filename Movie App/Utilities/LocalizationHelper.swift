@@ -25,6 +25,9 @@ class LocalizationHelper {
     static let searchMovieSegmentName: String = "searchMovie"
     static let searchActorSegmentName: String = "searchPerson"
     static let discoverButtonName: String = "discover"
+    static let voteLabelName: String = "voteLabel"
+    static let yearLabelName: String = "yearLabel"
+    static let sortLabelName: String = "sortLabel"
     
 //    Alert Names
     

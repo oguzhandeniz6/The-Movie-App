@@ -25,6 +25,22 @@ class DiscoverFiltersViewController: UIViewController {
     private var selectedGenres: [Genre] = []
     
     
+    @IBOutlet weak var voteLabel: UILabel! {
+        didSet {
+            voteLabel.text = LocalizationHelper.voteLabelName.localizeString()
+        }
+    }
+    @IBOutlet weak var yearLabel: UILabel! {
+        didSet {
+            yearLabel.text = LocalizationHelper.yearLabelName.localizeString()
+        }
+    }
+    @IBOutlet weak var sortLabel: UILabel! {
+        didSet {
+            sortLabel.text = LocalizationHelper.sortLabelName.localizeString()
+        }
+    }
+    
     
     @IBOutlet weak var genresTableView: UITableView!
     

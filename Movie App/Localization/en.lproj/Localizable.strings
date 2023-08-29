@@ -17,6 +17,9 @@
 "searchMovie" = "Search Movie";
 "searchPerson" = "Search Person";
 "discover" = "Discover";
+"voteLabel" = "Min - Max Average Vote";
+"yearLabel" = "Min - Max Release Year";
+"sortLabel" = "Sort Type";
 
 "sorry" = "Sorry!";
 "noResult" = "There is no result for given name";

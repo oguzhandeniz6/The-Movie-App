@@ -440,21 +440,48 @@
                                 <rect key="frame" x="-8" y="54" width="391" height="679"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="30" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="BeZ-D4-3Sl">
-                                        <rect key="frame" x="0.0" y="0.0" width="391" height="297"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="391" height="183"/>
                                         <color key="backgroundColor" name="Alternative Color 3"/>
                                     </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWg-IE-d5Z">
+                                        <rect key="frame" x="0.0" y="191" width="391" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="fdH-98-Qg0"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="20"/>
+                                        <color key="textColor" name="Text Color 1"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2fd-gA-DxD" userLabel="Vote Picker">
-                                        <rect key="frame" x="35.666666666666686" y="305" width="320" height="100"/>
+                                        <rect key="frame" x="35.666666666666686" y="229" width="320" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="ago-JD-9IJ"/>
                                         </constraints>
                                     </pickerView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vM7-a4-Ayh">
+                                        <rect key="frame" x="0.0" y="337" width="391" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="h2s-XY-3SJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="20"/>
+                                        <color key="textColor" name="Text Color 1"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A4X-tG-5se" userLabel="Year Picker">
-                                        <rect key="frame" x="35.666666666666686" y="413" width="320" height="100"/>
+                                        <rect key="frame" x="35.666666666666686" y="375" width="320" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="Lgn-Eq-FvC"/>
                                         </constraints>
                                     </pickerView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQA-Lr-q8W">
+                                        <rect key="frame" x="0.0" y="483" width="391" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="CeF-hr-xO3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="20"/>
+                                        <color key="textColor" name="Text Color 1"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HYe-7V-sOQ" userLabel="Sort Picker">
                                         <rect key="frame" x="0.0" y="521" width="391" height="100"/>
                                         <constraints>
@@ -469,18 +496,24 @@
                                         </constraints>
                                         <color key="tintColor" name="Alternative Color 4"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
                                         <connections>
                                             <action selector="discoverButtonTapped:" destination="qjj-Yb-wDS" eventType="touchUpInside" id="vvp-NY-Ots"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="vM7-a4-Ayh" secondAttribute="trailing" id="Fjf-ft-egg"/>
+                                    <constraint firstItem="vM7-a4-Ayh" firstAttribute="leading" secondItem="Y7t-kV-zYG" secondAttribute="leading" id="HNw-KE-Q35"/>
                                     <constraint firstItem="HYe-7V-sOQ" firstAttribute="leading" secondItem="Y7t-kV-zYG" secondAttribute="leading" id="LFw-oy-cSG"/>
                                     <constraint firstAttribute="trailing" secondItem="BeZ-D4-3Sl" secondAttribute="trailing" id="SlB-IW-Gir"/>
+                                    <constraint firstAttribute="trailing" secondItem="qQA-Lr-q8W" secondAttribute="trailing" id="UD3-rf-U6O"/>
                                     <constraint firstItem="BeZ-D4-3Sl" firstAttribute="leading" secondItem="Y7t-kV-zYG" secondAttribute="leading" id="gKf-Ba-h8x"/>
+                                    <constraint firstAttribute="trailing" secondItem="oWg-IE-d5Z" secondAttribute="trailing" id="hyL-Po-hvb"/>
                                     <constraint firstAttribute="trailing" secondItem="HYe-7V-sOQ" secondAttribute="trailing" id="iTF-QB-xpo"/>
+                                    <constraint firstItem="qQA-Lr-q8W" firstAttribute="leading" secondItem="Y7t-kV-zYG" secondAttribute="leading" id="lAn-br-DRJ"/>
                                     <constraint firstItem="9Kz-v1-iWt" firstAttribute="leading" secondItem="Y7t-kV-zYG" secondAttribute="leading" id="lY9-yT-2aY"/>
+                                    <constraint firstItem="oWg-IE-d5Z" firstAttribute="leading" secondItem="Y7t-kV-zYG" secondAttribute="leading" id="u8I-s4-fik"/>
                                     <constraint firstAttribute="trailing" secondItem="9Kz-v1-iWt" secondAttribute="trailing" id="wDr-bl-AJs"/>
                                 </constraints>
                             </stackView>
@@ -498,8 +531,11 @@
                     <connections>
                         <outlet property="discoverButton" destination="9Kz-v1-iWt" id="ARS-Vk-6jZ"/>
                         <outlet property="genresTableView" destination="BeZ-D4-3Sl" id="Zky-dX-F94"/>
+                        <outlet property="sortLabel" destination="qQA-Lr-q8W" id="laJ-Wf-lCC"/>
                         <outlet property="sortPicker" destination="HYe-7V-sOQ" id="4dI-Ex-k8p"/>
+                        <outlet property="voteLabel" destination="oWg-IE-d5Z" id="N7U-9Y-gFb"/>
                         <outlet property="votePicker" destination="2fd-gA-DxD" id="xXL-ke-0E5"/>
+                        <outlet property="yearLabel" destination="vM7-a4-Ayh" id="72b-rV-Gu6"/>
                         <outlet property="yearPicker" destination="A4X-tG-5se" id="Wsp-ul-hIg"/>
                     </connections>
                 </viewController>
