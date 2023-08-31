@@ -141,6 +141,11 @@ class MovieDetailViewController: UIViewController {
         }
     }
     
+//    bu da bir yöntem
+//    override func viewDidLayoutSubviews() {
+//        companiesTableView.contentSize.height
+//    }
+    
     
 }
 
@@ -272,6 +277,7 @@ extension MovieDetailViewController: UICollectionViewDelegate {
 
 extension MovieDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         companiesTableViewHeightConstraint.constant = CompanyTableViewCell.companyCellHeight * CGFloat(companies.count)
         return companies.count
     }

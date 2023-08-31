@@ -12,7 +12,9 @@ class LocalizationHelper {
 //    Tab Bar Names
     static let popularTabBarName: String = "popularTabBar"
     static let searchTabBarName: String = "searchTabBar"
-    static let favoriteTabBarName: String = "favoriteTabBar"
+    static let favoriteTabBarName: String = "favoriteTabBar".localizeString()
+//    buraya taşınabilir
+//    var ve computed property incele
     static let homepageTabBarName: String = "homepageTabBar"
     
 //    Title Names

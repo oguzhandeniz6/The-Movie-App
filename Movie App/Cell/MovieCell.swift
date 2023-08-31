@@ -21,6 +21,10 @@ class MovieCell: UITableViewCell {
                 favoriteIcon.image = UIImage(systemName: UIConstants.unfavoriteIcon)
             }
         }
+//        willset incele
+//        willSet{
+//
+//        }
     }
     
     @IBOutlet weak var favoriteIcon: UIImageView! {
