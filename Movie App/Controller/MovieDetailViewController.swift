@@ -118,6 +118,17 @@ class MovieDetailViewController: UIViewController {
         loadData()
     }
     
+    override func viewDidLayoutSubviews() {
+        companiesTableViewHeightConstraint.constant = companiesTableView.contentSize.height
+    }
+    
+    func loadData() {
+        
+        NetworkService.getMovie(movieID: movieID) { movie in
+            self.preparePage(movieDetail: movie)
+        }
+    }
+    
     @IBAction func homepageButtonPressed(_ sender: UIButton) {
         if let url = homepageURL {
             UIApplication.shared.open(url)
@@ -132,20 +143,6 @@ class MovieDetailViewController: UIViewController {
             self.present(nextVC, animated: true)
         }
     }
-    
-    
-    func loadData() {
-        
-        NetworkService.getMovie(movieID: movieID) { movie in
-            self.preparePage(movieDetail: movie)
-        }
-    }
-    
-//    bu da bir yöntem
-//    override func viewDidLayoutSubviews() {
-//        companiesTableView.contentSize.height
-//    }
-    
     
 }
 
@@ -277,8 +274,6 @@ extension MovieDetailViewController: UICollectionViewDelegate {
 
 extension MovieDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        companiesTableViewHeightConstraint.constant = CompanyTableViewCell.companyCellHeight * CGFloat(companies.count)
         return companies.count
     }
     

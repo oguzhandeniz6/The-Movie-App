@@ -116,7 +116,9 @@ extension MovieReviewsViewController {
     private func reviewsNetworkHandle(reviews: [Review], maxPage: Int) {
         
         if reviews.isEmpty {
-            self.present(Alerts.createAlertWithAction(title: LocalizationHelper.sorryName.localizeString(), message: LocalizationHelper.noReviewName.localizeString()), animated: true)
+            self.present(Alerts.createAlertWithAction(title: LocalizationHelper.sorryName.localizeString(), message: LocalizationHelper.noReviewName.localizeString(), handler: { alertAction in
+                self.dismiss(animated: true)
+            }), animated: true)
         } else {
             self.setTotalPages(maxPage: maxPage)
             self.appendMovies(newMovies: reviews)

@@ -187,7 +187,7 @@ extension DiscoverFiltersViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 
 extension DiscoverFiltersViewController: UITableViewDelegate {
-//    selectedGenres set olabilir
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedGenres.append(genresArray[indexPath.row])
     }

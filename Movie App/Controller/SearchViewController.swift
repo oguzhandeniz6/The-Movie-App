@@ -251,7 +251,7 @@ extension SearchViewController {
     
     private func searchMovieNetworkHandle(searchList: [Movie], maxPage: Int) {
         
-        if searchList.isEmpty {
+        if searchList.isEmpty && searchKey != "" {
             self.present(Alerts.createAlertWithAction(title: LocalizationHelper.sorryName.localizeString(), message: LocalizationHelper.noResultName.localizeString()), animated: true)
         } else {
             self.setTotalPages(maxPage: maxPage)
@@ -264,7 +264,7 @@ extension SearchViewController {
     
     private func searchPersonNetworkHandle(searchList: [Person], maxPage: Int) {
         
-        if searchList.isEmpty {
+        if searchList.isEmpty && searchKey != "" {
             self.present(Alerts.createAlertWithAction(title: LocalizationHelper.sorryName.localizeString(), message: LocalizationHelper.noResultName.localizeString()), animated: true)
         } else {
             self.setTotalPages(maxPage: maxPage)
