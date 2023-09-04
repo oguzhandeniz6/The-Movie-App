@@ -91,16 +91,16 @@ class PickerConstants {
     }
 }
 
-enum SortBy {
+enum SortBy: String {
     
-    case popularityAsc
-    case popularityDesc
-    case revenueAsc
-    case revenueDesc
-    case releaseDateAsc
-    case releaseDateDesc
-    case voteAvgAsc
-    case voteAvgDesc
-    case voteCountAsc
-    case voteCountDesc
+    case popularityAsc = "popularity.asc"
+    case popularityDesc = "popularity.desc"
+    case revenueAsc = "revenue.asc"
+    case revenueDesc = "revenue.desc"
+    case releaseDateAsc = "primary_release_date.asc"
+    case releaseDateDesc = "primary_release_date.desc"
+    case voteAvgAsc = "vote_average.asc"
+    case voteAvgDesc = "vote_average.desc"
+    case voteCountAsc = "vote_count.asc"
+    case voteCountDesc = "vote_count.desc"
 }

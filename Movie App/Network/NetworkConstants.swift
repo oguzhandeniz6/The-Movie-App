@@ -41,6 +41,11 @@ struct NetworkConstants {
     private static let queryAddon: String = "&query="
     private static let languageAddon: String = "&language="
     private static let genresAddon: String = "&with_genres="
+    private static let voteAverageGteAddon: String = "&vote_average.gte="
+    private static let voteAverageLteAddon: String = "&vote_average.lte="
+    private static let releaseDateGteAddon: String = "&primary_release_date.gte="
+    private static let releaseDateLteAddon: String = "&primary_release_date.lte="
+    private static let sortByAddon: String = "&sort_by="
     
     
 //MARK: - GET URL Functions
@@ -100,6 +105,12 @@ struct NetworkConstants {
         return String("\(baseURL)\(discoverNamespace)\(movieEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())\(genresAddon)\(genreid)\(pageAddon)\(pageNumber)").toURL()
     }
     
+//    GET Movies with Filters URL
+    static func getMoviesWithFilters(pageNumber: Int, callObject: DiscoverCallObject) -> URL {
+        return String("\(baseURL)\(discoverNamespace)\(movieEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())\(voteAverageGteAddon)\(callObject.minVote)\(voteAverageLteAddon)\(callObject.maxVote)\(releaseDateGteAddon)\(callObject.minYear)\(releaseDateLteAddon)\(callObject.maxYear)\(genresAddon)\(callObject.withGenres)\(pageAddon)\(pageNumber)").toURL()
+    }
+    
+//    GET Movie Reviews URL
     static func getMovieReviews(movieId: Int, pageNumber: Int) -> URL{
         return String("\(baseURL)\(movieNamespace)/\(movieId)/\(reviewsEndpoint)\(apiKey)\(pageAddon)\(pageNumber)").toURL()
     }

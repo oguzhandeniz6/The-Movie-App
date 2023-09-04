@@ -331,7 +331,7 @@ extension MovieDetailViewController {
         titleLabel.text = movieDetail.title
         orgTitleLabel.text = movieDetail.originalTitle
         taglineLabel.text = movieDetail.tagline
-        genresLabel.text = FormatChangers.genresFormatToStr(gen: movieDetail.genres)
+        genresLabel.text = FormatChangers.genresFormatToStrWithNames(gen: movieDetail.genres)
         runtimeLabel.text = "\(movieDetail.runtime ?? 0) \(LocalizationHelper.minuteName.localizeString())"
         scoreLabel.text = String(format: "%.1f" , movieDetail.voteAverage ?? 0.0)
         overviewLabel.text = movieDetail.overview

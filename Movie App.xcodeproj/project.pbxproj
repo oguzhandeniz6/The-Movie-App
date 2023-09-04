@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB05A2362AA5F236001829E7 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB05A2352AA5F236001829E7 /* MovieListViewController.swift */; };
+		FB05A2392AA5F37F001829E7 /* DiscoverCallObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB05A2382AA5F37F001829E7 /* DiscoverCallObject.swift */; };
 		FB63740F2A80E12800A89769 /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB63740E2A80E12800A89769 /* Genres.swift */; };
 		FB6374112A80E94300A89769 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6374102A80E94300A89769 /* MainPageViewController.swift */; };
 		FB6B970D2A78EBC70093798D /* CoreDataFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6B970C2A78EBC70093798D /* CoreDataFunctions.swift */; };
@@ -69,6 +71,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB05A2352AA5F236001829E7 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
+		FB05A2382AA5F37F001829E7 /* DiscoverCallObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCallObject.swift; sourceTree = "<group>"; };
 		FB63740E2A80E12800A89769 /* Genres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
 		FB6374102A80E94300A89769 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		FB6B970A2A78E32B0093798D /* MovieModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovieModel.xcdatamodel; sourceTree = "<group>"; };
@@ -147,6 +151,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FB05A2372AA5F35F001829E7 /* CallObjects */ = {
+			isa = PBXGroup;
+			children = (
+				FB05A2382AA5F37F001829E7 /* DiscoverCallObject.swift */,
+			);
+			path = CallObjects;
+			sourceTree = "<group>";
+		};
 		FB6B97102A7912CD0093798D /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +202,7 @@
 		FB7F1F2C2A6E508600F04E41 /* Movie App */ = {
 			isa = PBXGroup;
 			children = (
+				FB05A2372AA5F35F001829E7 /* CallObjects */,
 				FBA210C52A7B9E1800634D5E /* Localization */,
 				FB6B97102A7912CD0093798D /* CoreData */,
 				FBB4F3F62A6FEAF7001EF7EE /* Extension */,
@@ -241,6 +254,7 @@
 				FB6374102A80E94300A89769 /* MainPageViewController.swift */,
 				FBB214A72A94C37400CDE837 /* MovieReviewsViewController.swift */,
 				FB86C0E22A98CBBE00676D93 /* DiscoverFiltersViewController.swift */,
+				FB05A2352AA5F236001829E7 /* MovieListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -417,12 +431,14 @@
 				FB6374112A80E94300A89769 /* MainPageViewController.swift in Sources */,
 				FB9B86992A710301003C24A8 /* MovieDetailViewController.swift in Sources */,
 				FB7D58C82A77C396001B00F9 /* MoviePosterCell.swift in Sources */,
+				FB05A2392AA5F37F001829E7 /* DiscoverCallObject.swift in Sources */,
 				FB8EC8FE2A8A514B0099E947 /* LocalizationHelper.swift in Sources */,
 				FB86C0E32A98CBBE00676D93 /* DiscoverFiltersViewController.swift in Sources */,
 				FBB214A62A94C1B300CDE837 /* Review.swift in Sources */,
 				FB7F1F2E2A6E508600F04E41 /* AppDelegate.swift in Sources */,
 				FBA043862A9C898300C0A5A9 /* PickerConstants.swift in Sources */,
 				FBB214A32A94BFC300CDE837 /* ReviewCell.swift in Sources */,
+				FB05A2362AA5F236001829E7 /* MovieListViewController.swift in Sources */,
 				FB7F1F4B2A6E5DDC00F04E41 /* NetworkManager.swift in Sources */,
 				FB7F1F482A6E5D9800F04E41 /* MovieCell.swift in Sources */,
 				FB7F1F532A6E6C7F00F04E41 /* APIResults.swift in Sources */,

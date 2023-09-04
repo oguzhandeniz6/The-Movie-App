@@ -17,6 +17,7 @@ class DiscoverFiltersViewController: UIViewController {
     
 //    Filter Variables
     
+    var callObject: DiscoverCallObject?
     private var sortType: SortBy = .popularityDesc
     private var voteLeast: Float = 0.0
     private var voteHighest: Float = 10.0
@@ -82,12 +83,14 @@ class DiscoverFiltersViewController: UIViewController {
 
     
     @IBAction func discoverButtonTapped(_ sender: UIButton) {
-        print(voteLeast)
-        print(voteHighest)
-        print(yearLeast)
-        print(yearHighest)
-        print(sortType)
-        print(selectedGenres)
+        callObject = DiscoverCallObject(minYear: String("\(yearLeast)-01-01"), maxYear: String("\(yearHighest)-01-01"), minVote: voteLeast, maxVote: voteHighest, sortType: sortType, withGenres: FormatChangers.genresFormatToStrWithIDs(gen: selectedGenres))
+        
+        if let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: MovieListViewController.self)) as? MovieListViewController {
+            
+            nextVC.callObject = self.callObject
+            
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
     }
     
     

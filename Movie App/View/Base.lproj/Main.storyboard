@@ -428,23 +428,24 @@
             </objects>
             <point key="canvasLocation" x="2176.8000000000002" y="-18.472906403940886"/>
         </scene>
-        <!--Item-->
+        <!--Discover-->
         <scene sceneID="168-pI-IfL">
             <objects>
-                <viewController storyboardIdentifier="DiscoverFiltersViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qjj-Yb-wDS" customClass="DiscoverFiltersViewController" customModule="Movie_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DiscoverFiltersViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qjj-Yb-wDS" userLabel="Discover" customClass="DiscoverFiltersViewController" customModule="Movie_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ndl-Ba-Pyp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Y7t-kV-zYG">
-                                <rect key="frame" x="-8" y="54" width="391" height="679"/>
+                                <rect key="frame" x="-8" y="54" width="391" height="728"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="30" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="BeZ-D4-3Sl">
-                                        <rect key="frame" x="0.0" y="0.0" width="391" height="183"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="391" height="232"/>
                                         <color key="backgroundColor" name="Alternative Color 3"/>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWg-IE-d5Z">
-                                        <rect key="frame" x="0.0" y="191" width="391" height="30"/>
+                                        <rect key="frame" x="0.0" y="240" width="391" height="30"/>
+                                        <color key="backgroundColor" name="Alternative Color 3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="fdH-98-Qg0"/>
                                         </constraints>
@@ -453,13 +454,15 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2fd-gA-DxD" userLabel="Vote Picker">
-                                        <rect key="frame" x="35.666666666666686" y="229" width="320" height="100"/>
+                                        <rect key="frame" x="35.666666666666686" y="278" width="320" height="100"/>
+                                        <color key="backgroundColor" name="Alternative Color 3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="ago-JD-9IJ"/>
                                         </constraints>
                                     </pickerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vM7-a4-Ayh">
-                                        <rect key="frame" x="0.0" y="337" width="391" height="30"/>
+                                        <rect key="frame" x="0.0" y="386" width="391" height="30"/>
+                                        <color key="backgroundColor" name="Alternative Color 3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="h2s-XY-3SJ"/>
                                         </constraints>
@@ -468,13 +471,15 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A4X-tG-5se" userLabel="Year Picker">
-                                        <rect key="frame" x="35.666666666666686" y="375" width="320" height="100"/>
+                                        <rect key="frame" x="35.666666666666686" y="424" width="320" height="100"/>
+                                        <color key="backgroundColor" name="Alternative Color 3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="Lgn-Eq-FvC"/>
                                         </constraints>
                                     </pickerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQA-Lr-q8W">
-                                        <rect key="frame" x="0.0" y="483" width="391" height="30"/>
+                                        <rect key="frame" x="0.0" y="532" width="391" height="30"/>
+                                        <color key="backgroundColor" name="Alternative Color 3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="CeF-hr-xO3"/>
                                         </constraints>
@@ -483,18 +488,19 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HYe-7V-sOQ" userLabel="Sort Picker">
-                                        <rect key="frame" x="0.0" y="521" width="391" height="100"/>
+                                        <rect key="frame" x="0.0" y="570" width="391" height="100"/>
+                                        <color key="backgroundColor" name="Alternative Color 3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="gpe-0A-1ze"/>
                                         </constraints>
                                     </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Kz-v1-iWt" userLabel="DiscoverButton">
-                                        <rect key="frame" x="0.0" y="629" width="391" height="50"/>
-                                        <color key="backgroundColor" name="Main Color"/>
+                                        <rect key="frame" x="0.0" y="678" width="391" height="50"/>
+                                        <color key="backgroundColor" name="Alternative Color 1"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="7du-8Q-8rs"/>
                                         </constraints>
-                                        <color key="tintColor" name="Alternative Color 4"/>
+                                        <color key="tintColor" name="Text Color 1"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain"/>
                                         <connections>
@@ -528,6 +534,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="Gdl-O3-2ky"/>
+                    <navigationItem key="navigationItem" id="Nzj-eb-VsU"/>
                     <connections>
                         <outlet property="discoverButton" destination="9Kz-v1-iWt" id="ARS-Vk-6jZ"/>
                         <outlet property="genresTableView" destination="BeZ-D4-3Sl" id="Zky-dX-F94"/>
@@ -541,7 +548,37 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nfW-zG-Oj7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1602.4000000000001" y="1561.3300492610838"/>
+            <point key="canvasLocation" x="217" y="788"/>
+        </scene>
+        <!--Movie List View Controller-->
+        <scene sceneID="BZ6-fX-FcF">
+            <objects>
+                <viewController storyboardIdentifier="MovieListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Eqf-5k-SCP" customClass="MovieListViewController" customModule="Movie_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="38n-at-H7S">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Rom-iO-ozo">
+                                <rect key="frame" x="0.0" y="50" width="375" height="728"/>
+                                <color key="backgroundColor" name="Alternative Color 3"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nNv-nk-bMy"/>
+                        <color key="backgroundColor" name="Alternative Color 3"/>
+                        <constraints>
+                            <constraint firstItem="nNv-nk-bMy" firstAttribute="trailing" secondItem="Rom-iO-ozo" secondAttribute="trailing" id="Md1-ty-q7v"/>
+                            <constraint firstItem="Rom-iO-ozo" firstAttribute="leading" secondItem="nNv-nk-bMy" secondAttribute="leading" id="fd4-y1-nJz"/>
+                            <constraint firstItem="nNv-nk-bMy" firstAttribute="bottom" secondItem="Rom-iO-ozo" secondAttribute="bottom" id="prj-Wn-0Uc"/>
+                            <constraint firstItem="Rom-iO-ozo" firstAttribute="top" secondItem="nNv-nk-bMy" secondAttribute="top" id="y2D-E5-ogw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="moviesTableView" destination="Rom-iO-ozo" id="JDB-VN-2uY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a7O-W4-VXD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1204" y="788"/>
         </scene>
         <!--Popular Movies-->
         <scene sceneID="tne-QT-ifu">
@@ -607,7 +644,6 @@
                         <segue destination="2y3-gd-5jK" kind="relationship" relationship="viewControllers" id="8KZ-Yq-Xoc"/>
                         <segue destination="ZaN-l6-orB" kind="relationship" relationship="viewControllers" id="ARY-sK-4kT"/>
                         <segue destination="hiQ-0h-KDy" kind="relationship" relationship="viewControllers" id="YfP-7d-nSs"/>
-                        <segue destination="qjj-Yb-wDS" kind="relationship" relationship="viewControllers" id="XyG-jQ-E0N"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rIp-se-o8m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -653,8 +689,15 @@
                     <tabBarItem key="tabBarItem" title="Search Movie" image="magnifyingglass.circle.fill" catalog="system" id="a0h-yg-9Ha"/>
                     <navigationItem key="navigationItem" id="xYW-zh-2IA">
                         <nil key="title"/>
+                        <barButtonItem key="rightBarButtonItem" id="xXa-Gn-0Yk">
+                            <color key="tintColor" name="Alternative Color 4"/>
+                            <connections>
+                                <action selector="discoverButtonPressed:" destination="ik5-Wz-DaZ" id="ZjN-Rs-p0G"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="discoverBarButton" destination="xXa-Gn-0Yk" id="T3Q-N2-L0P"/>
                         <outlet property="searchTabBar" destination="a0h-yg-9Ha" id="dSP-5N-69T"/>
                         <outlet property="searchTableView" destination="WvT-Kx-nEK" id="MUs-9R-ynf"/>
                         <outlet property="searchTypeSegmentedControl" destination="Kzm-ui-kf1" id="Kmr-uj-v4Y"/>

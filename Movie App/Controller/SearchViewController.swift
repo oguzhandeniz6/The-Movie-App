@@ -35,6 +35,13 @@ class SearchViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var discoverBarButton: UIBarButtonItem! {
+        didSet {
+            discoverBarButton.title = LocalizationHelper.discoverButtonName.localizeString()
+        }
+    }
+    
+    
     @IBOutlet weak var searchTypeSegmentedControl: UISegmentedControl! {
         didSet {
             searchTypeSegmentedControl.setTitle(LocalizationHelper.searchMovieSegmentName.localizeString(), forSegmentAt: 0)
@@ -85,6 +92,14 @@ class SearchViewController: UIViewController {
             break
         }
     }
+    
+    @IBAction func discoverButtonPressed(_ sender: UIBarButtonItem) {
+        if let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: DiscoverFiltersViewController.self)) as? DiscoverFiltersViewController {
+            
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
+    }
+    
     
 
 }

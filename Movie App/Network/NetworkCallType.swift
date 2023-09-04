@@ -18,5 +18,6 @@ import Foundation
     case genre1
     case genre2
     case genre3
+    case discover
     case all
 }

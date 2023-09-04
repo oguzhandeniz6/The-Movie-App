@@ -9,7 +9,7 @@ import Foundation
 
 class FormatChangers{
     
-    static func genresFormatToStr(gen: [Genre]?, space: String = " ") -> String{
+    static func genresFormatToStrWithNames(gen: [Genre]?) -> String{
         guard var safeGen = gen else {
             return ""
         }
@@ -18,7 +18,7 @@ class FormatChangers{
             safeGen.removeFirst()
             
             for item in safeGen {
-                returnStr += ",\(space)\(item.name ?? "")"
+                returnStr += ", \(item.name ?? "")"
             }
             
             return returnStr
@@ -26,7 +26,24 @@ class FormatChangers{
             return ""
         }
     }
-
+    
+    static func genresFormatToStrWithIDs(gen: [Genre]?) -> String {
+        guard var safeGen = gen else {
+            return ""
+        }
+        if safeGen.count > 0 {
+            var returnStr: String = String(safeGen[0].id ?? 0)
+            safeGen.removeFirst()
+            
+            for item in safeGen {
+                returnStr += ",\(item.id ?? 0)"
+            }
+            
+            return returnStr
+        } else {
+            return ""
+        }
+    }
     
     static func dateFormatChanger(str: String, inputDateFormat: String = "yy-MM-dd") -> String {
         let dateFormatter = DateFormatter()
