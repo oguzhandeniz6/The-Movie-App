@@ -74,6 +74,7 @@ class DiscoverFiltersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.tintColor = UIConstants.mainColor
         
         NetworkService.getAllGenres { allGenres in
             self.genresArray = allGenres
@@ -83,7 +84,7 @@ class DiscoverFiltersViewController: UIViewController {
 
     
     @IBAction func discoverButtonTapped(_ sender: UIButton) {
-        callObject = DiscoverCallObject(minYear: String("\(yearLeast)-01-01"), maxYear: String("\(yearHighest)-01-01"), minVote: voteLeast, maxVote: voteHighest, sortType: sortType, withGenres: FormatChangers.genresFormatToStrWithIDs(gen: selectedGenres))
+        callObject = DiscoverCallObject(pageNumber: 1, minYear: String("\(yearLeast)-01-01"), maxYear: String("\(yearHighest)-01-01"), minVote: voteLeast, maxVote: voteHighest, sortType: sortType, withGenres: FormatChangers.genresFormatToStrWithIDs(gen: selectedGenres))
         
         if let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: MovieListViewController.self)) as? MovieListViewController {
             

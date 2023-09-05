@@ -56,6 +56,10 @@
 		FBB214A82A94C37400CDE837 /* MovieReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB214A72A94C37400CDE837 /* MovieReviewsViewController.swift */; };
 		FBB4F3F52A6FC48A001EF7EE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB4F3F42A6FC48A001EF7EE /* SearchViewController.swift */; };
 		FBB4F3F82A6FEB32001EF7EE /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB4F3F72A6FEB32001EF7EE /* TableViewExtension.swift */; };
+		FBB608BD2AA73ED6006F9F8A /* CallObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB608BC2AA73ED6006F9F8A /* CallObject.swift */; };
+		FBB608C12AA750A0006F9F8A /* PaginationCallObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB608C02AA750A0006F9F8A /* PaginationCallObject.swift */; };
+		FBB608C32AA754AF006F9F8A /* SearchCallObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB608C22AA754AF006F9F8A /* SearchCallObject.swift */; };
+		FBB608C52AA75519006F9F8A /* GenreCallObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB608C42AA75519006F9F8A /* GenreCallObject.swift */; };
 		FBBA30022A8E1ED000E60FB7 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBA30012A8E1ED000E60FB7 /* Person.swift */; };
 		FBBA30052A8E2D2200E60FB7 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBA30032A8E2D2200E60FB7 /* PersonCell.swift */; };
 		FBBA30062A8E2D2200E60FB7 /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBBA30042A8E2D2200E60FB7 /* PersonCell.xib */; };
@@ -124,6 +128,10 @@
 		FBB214A72A94C37400CDE837 /* MovieReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieReviewsViewController.swift; sourceTree = "<group>"; };
 		FBB4F3F42A6FC48A001EF7EE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		FBB4F3F72A6FEB32001EF7EE /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
+		FBB608BC2AA73ED6006F9F8A /* CallObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallObject.swift; sourceTree = "<group>"; };
+		FBB608C02AA750A0006F9F8A /* PaginationCallObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationCallObject.swift; sourceTree = "<group>"; };
+		FBB608C22AA754AF006F9F8A /* SearchCallObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCallObject.swift; sourceTree = "<group>"; };
+		FBB608C42AA75519006F9F8A /* GenreCallObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCallObject.swift; sourceTree = "<group>"; };
 		FBBA30012A8E1ED000E60FB7 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		FBBA30032A8E2D2200E60FB7 /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 		FBBA30042A8E2D2200E60FB7 /* PersonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonCell.xib; sourceTree = "<group>"; };
@@ -155,6 +163,10 @@
 			isa = PBXGroup;
 			children = (
 				FB05A2382AA5F37F001829E7 /* DiscoverCallObject.swift */,
+				FBB608BC2AA73ED6006F9F8A /* CallObject.swift */,
+				FBB608C02AA750A0006F9F8A /* PaginationCallObject.swift */,
+				FBB608C22AA754AF006F9F8A /* SearchCallObject.swift */,
+				FBB608C42AA75519006F9F8A /* GenreCallObject.swift */,
 			);
 			path = CallObjects;
 			sourceTree = "<group>";
@@ -412,15 +424,18 @@
 			files = (
 				FBC72C232A7A949300A6B09B /* UIConstants.swift in Sources */,
 				FBB4F3F82A6FEB32001EF7EE /* TableViewExtension.swift in Sources */,
+				FBB608C32AA754AF006F9F8A /* SearchCallObject.swift in Sources */,
 				FBB214A82A94C37400CDE837 /* MovieReviewsViewController.swift in Sources */,
 				FBD74DD22A8CBC2F00EB2B52 /* Movie.swift in Sources */,
 				FB7F1F512A6E642000F04E41 /* NetworkConstants.swift in Sources */,
 				FB8EC8FA2A8A3FED0099E947 /* FormatChangers.swift in Sources */,
 				FB7F1F322A6E508600F04E41 /* PopularMoviesViewController.swift in Sources */,
 				FB7D58C42A77BFAE001B00F9 /* ActorCell.swift in Sources */,
+				FBB608C12AA750A0006F9F8A /* PaginationCallObject.swift in Sources */,
 				FB709DC52A8280DF00B2F5FF /* CompanyTableViewCell.swift in Sources */,
 				FB7D58CB2A77C5B9001B00F9 /* CollectionViewExtension.swift in Sources */,
 				FB6B970D2A78EBC70093798D /* CoreDataFunctions.swift in Sources */,
+				FBB608BD2AA73ED6006F9F8A /* CallObject.swift in Sources */,
 				FBD74DD42A8CDAB100EB2B52 /* NotificationExtension.swift in Sources */,
 				FBB4F3F52A6FC48A001EF7EE /* SearchViewController.swift in Sources */,
 				FB63740F2A80E12800A89769 /* Genres.swift in Sources */,
@@ -434,6 +449,7 @@
 				FB05A2392AA5F37F001829E7 /* DiscoverCallObject.swift in Sources */,
 				FB8EC8FE2A8A514B0099E947 /* LocalizationHelper.swift in Sources */,
 				FB86C0E32A98CBBE00676D93 /* DiscoverFiltersViewController.swift in Sources */,
+				FBB608C52AA75519006F9F8A /* GenreCallObject.swift in Sources */,
 				FBB214A62A94C1B300CDE837 /* Review.swift in Sources */,
 				FB7F1F2E2A6E508600F04E41 /* AppDelegate.swift in Sources */,
 				FBA043862A9C898300C0A5A9 /* PickerConstants.swift in Sources */,

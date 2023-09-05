@@ -25,6 +25,8 @@ class MovieListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.tintColor = UIConstants.mainColor
+        
         loadData()
     }
     
@@ -34,8 +36,10 @@ class MovieListViewController: UIViewController {
     }
     
     @objc func loadData() {
-        NetworkService.getMovieList(callType: .discover, pageNumber: currentPage, callObject: callObject) { movieList, maxPage in
-            self.discoverNetworkHandle(discoverList: movieList, maxPage: maxPage)
+        if let discoverCallObject = callObject {
+            NetworkService.getMovieList(callType: .discover, callObject: discoverCallObject) { movieList, maxPage in
+                self.discoverNetworkHandle(discoverList: movieList, maxPage: maxPage)
+            }
         }
     }
 
@@ -105,6 +109,7 @@ extension MovieListViewController {
         self.setTotalPages(maxPage: maxPage)
         self.appendMovies(newMovies: discoverList)
         self.incrementCurrentPage()
+        callObject?.pageNumber = currentPage
         self.moviesTableView.reloadData()
         self.moviesTableView.refreshControl?.endRefreshing()
     }

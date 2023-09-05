@@ -106,8 +106,8 @@ struct NetworkConstants {
     }
     
 //    GET Movies with Filters URL
-    static func getMoviesWithFilters(pageNumber: Int, callObject: DiscoverCallObject) -> URL {
-        return String("\(baseURL)\(discoverNamespace)\(movieEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())\(voteAverageGteAddon)\(callObject.minVote)\(voteAverageLteAddon)\(callObject.maxVote)\(releaseDateGteAddon)\(callObject.minYear)\(releaseDateLteAddon)\(callObject.maxYear)\(genresAddon)\(callObject.withGenres)\(pageAddon)\(pageNumber)").toURL()
+    static func getMoviesWithFilters(callObject: DiscoverCallObject) -> URL {
+        return String("\(baseURL)\(discoverNamespace)\(movieEndpoint)\(apiKey)\(languageAddon)\(LocalizationHelper.getLanguage())\(voteAverageGteAddon)\(callObject.minVote)\(voteAverageLteAddon)\(callObject.maxVote)\(releaseDateGteAddon)\(callObject.minYear)\(releaseDateLteAddon)\(callObject.maxYear)\(genresAddon)\(callObject.withGenres)\(pageAddon)\(callObject.pageNumber)").toURL()
     }
     
 //    GET Movie Reviews URL

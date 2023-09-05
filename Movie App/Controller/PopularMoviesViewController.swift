@@ -10,8 +10,13 @@ import UIKit
 class PopularMoviesViewController: UIViewController {
     
     private var movieListCallType: NetworkCallType = .popularMovies
+    private var callObject: PaginationCallObject?
     
-    private var currentPage = 1
+    private var currentPage = 1 {
+        didSet {
+            self.callObject?.pageNumber = currentPage
+        }
+    }
     private var totalPages = 1
 
     private var movies: [Movie] = []
@@ -40,6 +45,7 @@ class PopularMoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        callObject = PaginationCallObject(pageNumber: currentPage)
         loadData()
     }
     
@@ -51,8 +57,10 @@ class PopularMoviesViewController: UIViewController {
     
     @objc func loadData() {
 //        Make a network call
-        NetworkService.getMovieList(callType: movieListCallType, pageNumber: currentPage) { movieList, maxPage in
-            self.popularNetworkHandle(popularList: movieList, maxPage: maxPage)
+        if let paginationCallObject = callObject {
+            NetworkService.getMovieList(callType: movieListCallType, callObject: paginationCallObject) { movieList, maxPage in
+                self.popularNetworkHandle(popularList: movieList, maxPage: maxPage)
+            }
         }
     }
     

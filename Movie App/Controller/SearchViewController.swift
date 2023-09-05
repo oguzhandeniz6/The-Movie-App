@@ -12,13 +12,22 @@ var searchController = UISearchController()
 class SearchViewController: UIViewController {
     
     private var searchCallType: NetworkCallType = .searchMovies
+    private var callObject: SearchCallObject?
     
-    private var currentPage = 1
+    private var currentPage = 1 {
+        didSet {
+            self.callObject?.pageNumber = currentPage
+        }
+    }
     private var totalPages = 1
 
     private var movies: [Movie] = []
     private var persons: [Person] = []
-    private var searchKey: String = ""
+    private var searchKey: String = "" {
+        didSet {
+            callObject?.searchKey = searchKey
+        }
+    }
     
     private var lastAppendedMovies: [Movie] = []
     private var lastAppendedPersons: [Person] = []
@@ -54,6 +63,8 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.searchController = searchController
         searchController.searchResultsUpdater = self
+        
+        callObject = SearchCallObject(pageNumber: currentPage, searchKey: searchKey)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,17 +76,19 @@ class SearchViewController: UIViewController {
     @objc func loadData() {
 //        Make a network call
         
-        switch searchCallType {
-        case .searchMovies:
-            NetworkService.getMovieList(callType: self.searchCallType, pageNumber: currentPage, searchKey: self.searchKey.percentEncode()) { searchList, maxPage in
-                self.searchMovieNetworkHandle(searchList: searchList, maxPage: maxPage)
+        if let searchCallObject = callObject {
+            switch searchCallType {
+            case .searchMovies:
+                NetworkService.getMovieList(callType: self.searchCallType, callObject: searchCallObject) { searchList, maxPage in
+                    self.searchMovieNetworkHandle(searchList: searchList, maxPage: maxPage)
+                }
+            case .searchPersons:
+                NetworkService.getPersonList(searchKey: searchKey.percentEncode(), pageNumber: currentPage) { searchList, maxPage in
+                    self.searchPersonNetworkHandle(searchList: searchList, maxPage: maxPage)
+                }
+            default:
+                break
             }
-        case .searchPersons:
-            NetworkService.getPersonList(searchKey: searchKey, pageNumber: currentPage) { searchList, maxPage in
-                self.searchPersonNetworkHandle(searchList: searchList, maxPage: maxPage)
-            }
-        default:
-            break
         }
     }
     

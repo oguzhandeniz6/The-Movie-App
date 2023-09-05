@@ -9,6 +9,12 @@ import UIKit
 
 class MainPageViewController: UIViewController {
     
+    var npCallObject: PaginationCallObject?
+    var upCallObject: PaginationCallObject?
+    var g1CallObject: GenreCallObject?
+    var g2CallObject: GenreCallObject?
+    var g3CallObject: GenreCallObject?
+    
     private var genresList: [Genre] = []
     
     private var nowPlayingList: [Movie] = []
@@ -17,11 +23,31 @@ class MainPageViewController: UIViewController {
     private var genre2List: [Movie] = []
     private var genre3List: [Movie] = []
     
-    private var npCurrentPage: Int = 1
-    private var upCurrentPage: Int = 1
-    private var g1CurrentPage: Int = 1
-    private var g2CurrentPage: Int = 1
-    private var g3CurrentPage: Int = 1
+    private var npCurrentPage: Int = 1 {
+        didSet {
+            npCallObject?.pageNumber = npCurrentPage
+        }
+    }
+    private var upCurrentPage: Int = 1 {
+        didSet {
+            upCallObject?.pageNumber = upCurrentPage
+        }
+    }
+    private var g1CurrentPage: Int = 1 {
+        didSet {
+            g1CallObject?.pageNumber = g1CurrentPage
+        }
+    }
+    private var g2CurrentPage: Int = 1 {
+        didSet {
+            g2CallObject?.pageNumber = g2CurrentPage
+        }
+    }
+    private var g3CurrentPage: Int = 1 {
+        didSet {
+            g3CallObject?.pageNumber = g3CurrentPage
+        }
+    }
     
     private var npMaxPage: Int = 1
     private var upMaxPage: Int = 1
@@ -102,56 +128,84 @@ class MainPageViewController: UIViewController {
         switch callType {
             
         case .nowPlaying:
-            NetworkService.getMovieList(callType: callType, pageNumber: npCurrentPage) { npList, maxPage in
-                
-                self.nowPlayingNetworkHandle(npList: npList, maxPage: maxPage)
+            if let callObject = npCallObject {
+                NetworkService.getMovieList(callType: callType, callObject: callObject) { npList, maxPage in
+                    
+                    self.nowPlayingNetworkHandle(npList: npList, maxPage: maxPage)
+                }
             }
         case .upcoming:
-            NetworkService.getMovieList(callType: callType, pageNumber: upCurrentPage) { upList, maxPage in
-                
-                self.upcomingNetworkHandle(upList: upList, maxPage: maxPage)
+            if let callObject = upCallObject {
+                NetworkService.getMovieList(callType: callType, callObject: callObject) { upList, maxPage in
+                    
+                    self.upcomingNetworkHandle(upList: upList, maxPage: maxPage)
+                }
             }
         case .genre1:
-            NetworkService.getMovieList(callType: callType, pageNumber: g1CurrentPage, genreId: genresList[0].id ?? 0) { g1List, maxPage in
-                
-                self.genre1NetworkHandle(g1List: g1List, maxPage: maxPage)
+            if let callObject = g1CallObject {
+                NetworkService.getMovieList(callType: callType, callObject: callObject) { g1List, maxPage in
+                    
+                    self.genre1NetworkHandle(g1List: g1List, maxPage: maxPage)
+                }
             }
         case .genre2:
-            NetworkService.getMovieList(callType: callType, pageNumber: g2CurrentPage, genreId: genresList[1].id ?? 0) { g2List, maxPage in
-                
-                self.genre2NetworkHandle(g2List: g2List, maxPage: maxPage)
+            if let callObject = g2CallObject {
+                NetworkService.getMovieList(callType: callType, callObject: callObject) { g2List, maxPage in
+                    
+                    self.genre2NetworkHandle(g2List: g2List, maxPage: maxPage)
+                }
             }
         case .genre3:
-            NetworkService.getMovieList(callType: callType, pageNumber: g3CurrentPage, genreId: genresList[2].id ?? 0) { g3List, maxPage in
-                
-                self.genre3NetworkHandle(g3List: g3List, maxPage: maxPage)
+            if let callObject = g3CallObject {
+                NetworkService.getMovieList(callType: callType, callObject: callObject) { g3List, maxPage in
+                    
+                    self.genre3NetworkHandle(g3List: g3List, maxPage: maxPage)
+                }
             }
             
         case .all:
-            NetworkService.getMovieList(callType: .nowPlaying, pageNumber: npCurrentPage) { npList, maxPage in
-                self.nowPlayingNetworkHandle(npList: npList, maxPage: maxPage)
+            
+            npCallObject = PaginationCallObject(pageNumber: npCurrentPage)
+            upCallObject = PaginationCallObject(pageNumber: upCurrentPage)
+            
+            if let callObject = npCallObject {
+                NetworkService.getMovieList(callType: .nowPlaying, callObject: callObject) { npList, maxPage in
+                    self.nowPlayingNetworkHandle(npList: npList, maxPage: maxPage)
+                }
             }
             
-            NetworkService.getMovieList(callType: .upcoming, pageNumber: upCurrentPage) { upList, maxPage in
-                self.upcomingNetworkHandle(upList: upList, maxPage: maxPage)
+            if let callObject = upCallObject {
+                NetworkService.getMovieList(callType: .upcoming, callObject: callObject) { upList, maxPage in
+                    self.upcomingNetworkHandle(upList: upList, maxPage: maxPage)
+                }
             }
             
             NetworkService.getAllGenres { allGenres in
                 self.selectGenresHandle(genresList: allGenres)
+                
+                self.g1CallObject = GenreCallObject(pageNumber: self.g1CurrentPage, genreId: self.genresList[0].id ?? 0)
+                self.g2CallObject = GenreCallObject(pageNumber: self.g2CurrentPage, genreId: self.genresList[1].id ?? 0)
+                self.g3CallObject = GenreCallObject(pageNumber: self.g3CurrentPage, genreId: self.genresList[2].id ?? 0)
 
-                NetworkService.getMovieList(callType: .genre1, pageNumber: self.g1CurrentPage, genreId: self.genresList[0].id ?? 0) { g1List, maxPage in
-                    
-                    self.genre1NetworkHandle(g1List: g1List, maxPage: maxPage)
+                if let callObject = self.g1CallObject {
+                    NetworkService.getMovieList(callType: .genre1, callObject: callObject) { g1List, maxPage in
+                        
+                        self.genre1NetworkHandle(g1List: g1List, maxPage: maxPage)
+                    }
                 }
                 
-                NetworkService.getMovieList(callType: .genre2, pageNumber: self.g2CurrentPage, genreId: self.genresList[1].id ?? 0) { g2List, maxPage in
-                    
-                    self.genre2NetworkHandle(g2List: g2List, maxPage: maxPage)
+                if let callObject = self.g2CallObject {
+                    NetworkService.getMovieList(callType: .genre2, callObject: callObject) { g2List, maxPage in
+                        
+                        self.genre2NetworkHandle(g2List: g2List, maxPage: maxPage)
+                    }
                 }
                 
-                NetworkService.getMovieList(callType: .genre3, pageNumber: self.g3CurrentPage, genreId: self.genresList[2].id ?? 0) { g3List, maxPage in
-                    
-                    self.genre3NetworkHandle(g3List: g3List, maxPage: maxPage)
+                if let callObject = self.g3CallObject {
+                    NetworkService.getMovieList(callType: .genre3, callObject: callObject) { g3List, maxPage in
+                        
+                        self.genre3NetworkHandle(g3List: g3List, maxPage: maxPage)
+                    }
                 }
             }
             
