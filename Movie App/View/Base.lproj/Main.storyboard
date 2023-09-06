@@ -572,6 +572,7 @@
                             <constraint firstItem="Rom-iO-ozo" firstAttribute="top" secondItem="nNv-nk-bMy" secondAttribute="top" id="y2D-E5-ogw"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="l9C-0U-mju"/>
                     <connections>
                         <outlet property="moviesTableView" destination="Rom-iO-ozo" id="JDB-VN-2uY"/>
                     </connections>

@@ -74,7 +74,7 @@ class DiscoverFiltersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = UIConstants.mainColor
+        prepareTabAndNavBar()
         
         NetworkService.getAllGenres { allGenres in
             self.genresArray = allGenres
@@ -216,5 +216,23 @@ extension DiscoverFiltersViewController {
     private func preparePickerView(pickerView: UIPickerView) {
         pickerView.delegate = self
         pickerView.dataSource = self
+    }
+    
+    private func prepareTabAndNavBar() {
+        let appearanceNav = UINavigationBarAppearance()
+        appearanceNav.configureWithOpaqueBackground()
+        appearanceNav.backgroundColor = UIConstants.mainColor
+
+        self.navigationController?.navigationBar.standardAppearance = appearanceNav
+        self.navigationController?.navigationBar.scrollEdgeAppearance = appearanceNav
+        
+        let appearanceTab = UITabBarAppearance()
+        appearanceTab.configureWithOpaqueBackground()
+        appearanceTab.backgroundColor = UIConstants.mainColor
+
+        self.tabBarController?.tabBar.standardAppearance = appearanceTab
+        if #available(iOS 15.0, *) {
+            self.tabBarController?.tabBar.scrollEdgeAppearance = appearanceTab
+        }
     }
 }

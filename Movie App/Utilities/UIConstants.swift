@@ -15,7 +15,7 @@ struct UIConstants {
     
     static let noImage = UIImage(named: "NoImage")
     
-    static let mainColor = UIColor(named: "Main")
+    static let mainColor = UIColor(named: "Main Color")
     static let alternativeColor1 = UIColor(named: "Alternative Color 1")
     static let alternativeColor2 = UIColor(named: "Alternative Color 2")
     static let alternativeColor3 = UIColor(named: "Alternative Color 3")
