@@ -131,7 +131,11 @@ class MovieDetailViewController: UIViewController {
     
     @IBAction func homepageButtonPressed(_ sender: UIButton) {
         if let url = homepageURL {
-            UIApplication.shared.open(url)
+            if url != (URL(string: "www.google.com")) {
+                UIApplication.shared.open(url)
+            } else {
+                self.present(Alerts.createAlertWithAction(title: LocalizationHelper.sorryName.localizeString(), message: LocalizationHelper.noHomepageName.localizeString()), animated: true)
+            }
         }
     }
     

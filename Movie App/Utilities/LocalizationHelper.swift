@@ -34,6 +34,7 @@ class LocalizationHelper {
     static let sorryName: String = "sorry"
     static let noResultName: String = "noResult"
     static let noReviewName: String = "noReview"
+    static let noHomepageName: String = "noHomepage"
     
 //    Sort Names
     

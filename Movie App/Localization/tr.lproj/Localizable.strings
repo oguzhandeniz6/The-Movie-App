@@ -24,6 +24,7 @@
 "sorry" = "Üzgünüz!";
 "noResult" = "Bu isimle herhangi bir sonuç bulunamadı";
 "noReview" = "Bu film için herhangi bir yorum yapılmamış gibi görünüyor";
+"noHomepage" = "Bu film için bir film anasayfası bulunmuyor";
 
 "popularityAsc" = "Artan Popülerlik";
 "popularityDesc" = "Azalan Popülerlik";

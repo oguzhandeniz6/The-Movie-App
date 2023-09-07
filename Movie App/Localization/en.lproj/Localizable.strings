@@ -24,6 +24,7 @@
 "sorry" = "Sorry!";
 "noResult" = "There is no result for given name";
 "noReview" = "It seems that there are no reviews for this movie.";
+"noHomepage" = "There is no homepage for this movie";
 
 "popularityAsc" = "Popularity Ascending";
 "popularityDesc" = "Popularity Descending";
