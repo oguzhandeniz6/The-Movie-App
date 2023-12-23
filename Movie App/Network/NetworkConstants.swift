@@ -12,7 +12,7 @@ struct NetworkConstants {
 //    URL's and API key
     private static let baseURL: String = "https://api.themoviedb.org/3"
     private static let imageURL: String = "https://image.tmdb.org/t/p/"
-    private static let apiKey: String = "?api_key=98dab9c655a73de7bfb04ab425a53fe2"
+    private static let apiKey: String = "?api_key="
     
 //    Namespaces
     private static let movieNamespace: String = "/movie"
